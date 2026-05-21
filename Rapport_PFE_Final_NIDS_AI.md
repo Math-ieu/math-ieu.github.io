@@ -185,12 +185,12 @@ The selected model was deployed in a production-grade cloud CyberRange on AWS, p
 * Figure 2.1 : Architecture mathématique détaillée du modèle d'Attention MLP
 * Figure 2.2 : Processus géométrique de génération de données synthétiques par SMOTE
 * Figure 3.1 : Architecture réseau physique et logique du CyberRange sur AWS
-* Figure 3.2 : Diagramme séquentiel de capture, d'inférence et de push d'alertes
+* Figure 3.2 : Pipeline détaillé d'ingestion passive, d'inférence temps réel et de transmission d'alertes
 * Figure 3.3 : Interface principale - Grille d'état des serveurs victimes (VictimsGrid)
 * Figure 3.4 : Journal en temps réel des alertes de sécurité détectées par le NIDS
 * Figure 3.5 : Visualisations analytiques de répartition des attaques en direct
 * Figure 3.6 : Panneau de détails d'une alerte critique et informations d'instances
-* Figure 3.7 : Diagramme de séquence détaillé d'une détection DoS SYN Flood
+* Figure 3.7 : Workflow détaillé d'une détection DoS SYN Flood
 
 ---
 
@@ -1122,13 +1122,91 @@ Ce panneau est un outil d'investigation de crise précieux. Il extrait et format
 ---
 
 ## 3.6. Simulations d'attaques par Scapy et validation systémique de latence
-               │                                           │                                   │   & SQS               │
-               │                                           │                                   │                       │
-               │                                           │                                   │ ──────(6) WS Push────>│  [ VictimsGrid clignote ]
-               │                                           │                                   │       Alert JSON      │  [ en rouge - Alerte  ]
-               ▼                                           ▼                                   ▼                       ▼  [ visible en <2s     ]
+Le diagramme de flux (workflow) ci-dessous modélise en détail le cycle complet d'une simulation offensive de type DoS SYN Flood avec Scapy, sa duplication passive, son analyse par inférence neuronale temps réel, et la réactivité visuelle du tableau de bord de supervision :
+
+```mermaid
+flowchart TD
+    %% Étape 1 : Simulation de l'attaque
+    subgraph ATTACK_SIM["1. Phase d'Attaque (Scapy)"]
+        SCAPY["💻 <b>Kali Linux (Attaquant)</b><br/><code>python3 attack_sim.py 172.31.20.12 syn 80</code>"]
+        TARGET["🖥️ <b>Victim-Web (Cible)</b><br/>IP: 172.31.20.12 (Port 80)"]
+        
+        SCAPY -->|"(1) Rafale continue de paquets TCP SYN<br/>(Adresses IP sources usurpées)"| TARGET
+    end
+
+    %% Étape 2 : Capture passive
+    subgraph PASSIVE_CAPTURE["2. Captation & Transport (VPC Mirroring)"]
+        NITRO["☁️ <b>AWS Nitro Hyperviseur</b><br/>(VPC Traffic Mirroring)"]
+        VXLAN_TUNNEL["🌐 <b>Interface vxlan0</b><br/>(Décapsulation Port UDP 4789, VNI 100)"]
+
+        TARGET -.->|"(2) Duplication passive sans impact"| NITRO
+        NITRO -->|"(3) Trame VXLAN encapsulée"| VXLAN_TUNNEL
+    end
+
+    %% Étape 3 : Inférence IA
+    subgraph INFERENCE_ENGINE["3. Agrégation & Inférence IA (ids_node)"]
+        NFSTREAM["🔍 <b>NFStreamer</b><br/>(Agrégation en flux TCP SYN Flood)"]
+        PREPROC["⚙️ <b>Pipeline de Prétraitement</b><br/>(IQR + Normalisation Z-Score)"]
+        ATTN_MLP["🧠 <b>Modèle Attention MLP (PyTorch)</b><br/>(Inférence temps réel : 0.42 ms)"]
+
+        VXLAN_TUNNEL -->|"(4) Capture en direct"| NFSTREAM
+        NFSTREAM -->|"(5) Clôture du flux après 10s d'activité<br/>(Active Timeout)"| PREPROC
+        PREPROC -->|"(6) Tenseur à 77 dimensions"| ATTN_MLP
+    end
+
+    %% Étape 4 : Stockage & Publication
+    subgraph ROUTING["4. Ingestion & Persistance Cloud"]
+        DYNAMO[("🗄️ <b>AWS DynamoDB</b><br/>Table NIDS-Alerts")]
+        SQS[("✉️ <b>AWS SQS</b><br/>File flow_queue")]
+
+        ATTN_MLP -->|"(7a) Classification: DoS_Hulk<br/>Confiance: 99.84%<br/>(Seuil >= 40%)"| DYNAMO
+        ATTN_MLP -->|"(7b) Publication asynchrone<br/>(Latence < 15ms)"| SQS
+    end
+
+    %% Étape 5 : SOC FastAPI & React
+    subgraph SOC_UI_FEED["5. Enrichissement & Réaction Visuelle (SOC)"]
+        BACKEND["⚙️ <b>SOC Backend (FastAPI)</b><br/>(Consommation continue SQS)"]
+        BOTO3["☁️ <b>boto3 IPResolver</b><br/>(Résout 172.31.20.12 -> Victim-Web)"]
+        WS_PUSH["🔌 <b>WebSockets Push</b><br/>(Diffusion instantanée : 180 ms)"]
+        SOC_DASHBOARD["📊 <b>React UI Dashboard</b><br/>(Journal & Cartes d'Hôtes)"]
+
+        SQS -->|"(8) Lecture asynchrone"| BACKEND
+        BACKEND <-->|"(9) Résolution d'hôte (TTLCache)"| BOTO3
+        BACKEND -->|"(10) Envoi de l'alerte JSON enrichie"| WS_PUSH
+        WS_PUSH -->|"(11) Notification WebSocket"| SOC_DASHBOARD
+    end
+
+    %% Réaction visuelle immédiate
+    ALERT_TRIGGER{"Affichage en <2s"}
+    SOC_DASHBOARD --> ALERT_TRIGGER
+    ALERT_TRIGGER -->|"VictimsGrid clignote"| FLASH["🟥 <b>Victim-Web clignote en rouge</b><br/>(Lueur périphérique + alerte sonore)"]
+    ALERT_TRIGGER -->|"LiveFeed enrichi"| FEED["📝 <b>Journal des alertes en direct</b><br/>(Affiche DoS_Hulk à 99.84%)"]
+
+    %% Style & Design (Rich Aesthetics)
+    style SCAPY fill:#f5f0ff,stroke:#7000ff,stroke-width:2px,color:#333
+    style TARGET fill:#ffe5e5,stroke:#ff3e60,stroke-width:2px,color:#333
+    style NITRO fill:#e6f9ff,stroke:#00d4ff,stroke-width:2px,color:#333
+    style VXLAN_TUNNEL fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style NFSTREAM fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style PREPROC fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style ATTN_MLP fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#333
+    style DYNAMO fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#333
+    style SQS fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#333
+    style BACKEND fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+    style BOTO3 fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+    style WS_PUSH fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+    style SOC_DASHBOARD fill:#faf5ff,stroke:#9333ea,stroke-width:2px,color:#333
+    style FLASH fill:#ffe5e5,stroke:#ff3e60,stroke-width:2px,color:#333
+    style FEED fill:#faf5ff,stroke:#9333ea,stroke-width:1px,color:#333
+
+    style ATTACK_SIM fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style PASSIVE_CAPTURE fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style INFERENCE_ENGINE fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style ROUTING fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style SOC_UI_FEED fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
 ```
-*Figure 3.7 : Diagramme de séquence détaillé d'une détection DoS SYN Flood*
+
+*Figure 3.7 : Workflow détaillé d'une détection DoS SYN Flood*
 
 1. **Scénario 1 : DoS SYN Flood** :
    * *Commande* : `python3 scripts/attack_sim.py 172.31.20.12 syn 80`

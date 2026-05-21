@@ -117,44 +117,96 @@ flowchart TB
 
 ## Pipeline de Détection et d'Alerte Étape par Étape
 
-Le diagramme de séquence ci-dessous illustre le parcours d'un flux de données réseau, depuis le déclenchement d'une cyber-attaque sur la zone d'entraînement jusqu'à sa visualisation en temps réel sur le tableau de bord du SOC :
+Le diagramme de flux (workflow) ci-dessous illustre le parcours d'un flux de données réseau, depuis le déclenchement d'une cyber-attaque sur la zone d'entraînement jusqu'à sa visualisation en temps réel sur le tableau de bord du SOC :
 
 ```mermaid
-sequenceDiagram
-    autonumber
-    actor Attaquant as 💻 Kali Linux (Attaquant)
-    participant Victime as 🖥️ Cible (Victim Node)
-    participant Mirror as ☁️ AWS VPC (Traffic Mirroring)
-    participant Sonde as 🔍 IDS-Node (NFStreamer)
-    participant IA as 🧠 Attention MLP (PyTorch)
-    participant Dynamo as 🗄️ AWS DynamoDB (NIDS-Alerts)
-    participant SQS as ✉️ AWS SQS (flow_queue)
-    participant Lambda as ⚡ AWS Lambda (Prep)
-    participant Back as ⚙️ SOC Backend (FastAPI)
-    actor Analyste as 📊 SOC Dashboard (React UI)
+flowchart TD
+    %% Zone d'Attaque & Cible
+    subgraph ZONE_ATTACK["1. Génération & Captation Réseau"]
+        KALI["💻 <b>Kali Linux</b><br/>(Machine d'Attaque)"]
+        VICTIM["🖥️ <b>Cibles Cyberrange</b><br/>(Victim-Web, DB, File)"]
+        MIRROR["☁️ <b>AWS VPC Traffic Mirroring</b><br/>(Duplication Passive Hyperviseur)"]
+        
+        KALI -->|"(1) Attaques (DDoS, Scan, Brute Force)"| VICTIM
+        VICTIM -.->|"(2) Trafic Dupliqué"| MIRROR
+    end
 
-    Note over Attaquant, Victime: Étape 1 : Attaque & Trafic Réseau
-    Attaquant->>Victime: Envoi de Trafic Malveillant (DDoS, Scan, Brute Force)
+    %% IDS Node & IA
+    subgraph ZONE_IDS["2. Analyse Temps Réel & Inférence IA (IDS-Node)"]
+        VXLAN["🌐 <b>Interface vxlan0</b><br/>(Décapsulation VXLAN Port 4789)"]
+        NFSTREAM["🔍 <b>Moteur NFStreamer</b><br/>(Agrégation statistique par flux)"]
+        PREPROC["⚙️ <b>Pipeline de Prétraitement</b><br/>(Clipping IQR + Normalisation Z-Score)"]
+        ATTN_MLP["🧠 <b>Attention MLP (PyTorch)</b><br/>(Classification 15 classes & Confiance)"]
+
+        MIRROR -->|"(3) Trames Encapsulées"| VXLAN
+        VXLAN -->|"(4) Flux Décapsulés"| NFSTREAM
+        NFSTREAM -->|"(5) Vecteur de 77 Features"| PREPROC
+        PREPROC -->|"(6) Tenseurs Normalisés"| ATTN_MLP
+    end
+
+    %% Pipeline Serverless & Persistance
+    subgraph ZONE_STORAGE["3. Ingestion Asynchrone & Persistance Cloud"]
+        DYNAMODB[("🗄️ <b>AWS DynamoDB</b><br/>Table 'NIDS-Alerts'")]
+        SQS[("✉️ <b>AWS SQS</b><br/>File 'flow_queue'")]
+        LAMBDA["⚡ <b>AWS Lambda</b><br/>(Normalisation & Archivage S3)"]
+
+        ATTN_MLP -->|"(7a) Sauvegarde immédiate si Conf >= 40%"| DYNAMODB
+        ATTN_MLP -->|"(7b) Bufferisation"| SQS
+        SQS -->|"(8) Déclenchement"| LAMBDA
+    end
+
+    %% FastAPI Backend & WebSockets
+    subgraph ZONE_SOC["4. Enrichissement & Diffusion SOC"]
+        FASTAPI["⚙️ <b>SOC Backend (FastAPI)</b><br/>(Dépilage SQS Asynchrone)"]
+        BOTO3["☁️ <b>Résolveur IP (boto3)</b><br/>(Cache local TTLCache 60s)"]
+        WEBSOCKET["🔌 <b>WebSockets (Port 8001)</b><br/>(Canal persistant de push)"]
+
+        SQS -->|"(9) Dépilage Continu"| FASTAPI
+        FASTAPI <-->|"(10) Résolution IP en Nom d'Hôte"| BOTO3
+        FASTAPI -->|"(11) Push Alerte Enrichie JSON"| WEBSOCKET
+    end
+
+    %% React UI Dashboard
+    subgraph ZONE_UI["5. Supervision en Temps Réel"]
+        DASHBOARD["📊 <b>SOC Dashboard (React UI)</b><br/>(Interface thématique Glassmorphism)"]
+        VICTIMS_GRID["🟥 <b>VictimsGrid</b><br/>(Clignotement Rouge de l'hôte ciblé)"]
+        LIVE_FEED["📝 <b>LiveFeed & Details</b><br/>(Journal & métadonnées du flux)"]
+        STATS_PANEL["📈 <b>StatsPanel</b><br/>(Mise à jour KPIs à 10s)"]
+
+        WEBSOCKET -->|"(12) Réception"| DASHBOARD
+        DASHBOARD -->|"(13a)"| VICTIMS_GRID
+        DASHBOARD -->|"(13b)"| LIVE_FEED
+        DASHBOARD -->|"(13c)"| STATS_PANEL
+    end
+
+    %% Style & Color Customization (Rich Aesthetics)
+    style KALI fill:#f5f0ff,stroke:#7000ff,stroke-width:2px,color:#333
+    style VICTIM fill:#ffe5e5,stroke:#ff3e60,stroke-width:2px,color:#333
+    style MIRROR fill:#e6f9ff,stroke:#00d4ff,stroke-width:2px,color:#333
     
-    Note over Victime, Mirror: Étape 2 : Captation (Zero-Impact)
-    Mirror->>Victime: Duplication passive des paquets suspects
-    Mirror->>Sonde: Encapsulation VXLAN (Port 4789) vers l'interface vxlan0
-    
-    Note over Sonde, IA: Étape 3 & 4 : Analyse & Inférence de l'IA
-    Sonde->>Sonde: Décapsulation VXLAN & Agrégation par flux réseau
-    Sonde->>IA: Extraction des 77 caractéristiques (Features) du flux
-    IA->>IA: Classification par le modèle de Deep Learning
-    Note over IA: Si Attaque détectée & Confiance >= 40%
-    
-    Note over IA, Dynamo: Étape 5 : Routage & Stockage des Alertes
-    IA->>Dynamo: Sauvegarde immédiate de l'Alerte enrichie
-    IA->>SQS: Bufferisation du JSON d'alerte pour les audits
-    SQS->>Lambda: Déclenchement automatique pour pré-traitement / archivage S3
-    
-    Note over Dynamo, Analyste: Étape 6 & 7 : Diffusion & Visualisation SOC
-    Back->>Dynamo: Polling et enrichissement de l'IP en Nom de Machine
-    Back->>Analyste: Diffusion en temps réel via WebSockets (Port 8001)
-    Analyste->>Analyste: Affichage instantané, alerte sonore, mise à jour des KPIs
+    style VXLAN fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style NFSTREAM fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style PREPROC fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#333
+    style ATTN_MLP fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#333
+
+    style DYNAMODB fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#333
+    style SQS fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#333
+    style LAMBDA fill:#ecfeff,stroke:#0891b2,stroke-width:2px,color:#333
+
+    style FASTAPI fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+    style BOTO3 fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+    style WEBSOCKET fill:#fff1f2,stroke:#e11d48,stroke-width:2px,color:#333
+
+    style DASHBOARD fill:#faf5ff,stroke:#9333ea,stroke-width:2px,color:#333
+    style VICTIMS_GRID fill:#faf5ff,stroke:#9333ea,stroke-width:1px,color:#333
+    style LIVE_FEED fill:#faf5ff,stroke:#9333ea,stroke-width:1px,color:#333
+    style STATS_PANEL fill:#faf5ff,stroke:#9333ea,stroke-width:1px,color:#333
+
+    style ZONE_ATTACK fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style ZONE_IDS fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style ZONE_STORAGE fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style ZONE_SOC fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
+    style ZONE_UI fill:#fafafa,stroke:#ccc,stroke-width:1px,stroke-dasharray: 5 5
 ```
 
 ---
