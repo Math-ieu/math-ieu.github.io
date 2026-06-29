@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts pour un look "Canva Premium Tech" -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Georgia&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         /* --- DESIGN SYSTEM "OBSIDIAN GLASS" --- */
@@ -32,9 +32,9 @@
             --color-mint: #34d399;
             --color-coral: #fb7185;
             
-            --font-title: 'Georgia', serif;
+            --font-title: 'Bricolage Grotesque', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --font-numeric: 'Space Grotesk', sans-serif;
+            --font-numeric: 'Bricolage Grotesque', sans-serif;
 
             /* Variables de diagramme d'architecture */
             --arch-bg: rgba(15, 23, 42, 0.15);
@@ -225,19 +225,54 @@
 
         .slide {
             display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
             width: 100%;
             height: 100%;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .slide.active {
+        /* Transitions fluides et premium de type "Apple/Figma" entre les pages */
+        .slide.active.forward {
             display: flex;
-            opacity: 1;
-            transform: translateY(0);
+            animation: slideEnterForward 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .slide.active.backward {
+            display: flex;
+            animation: slideEnterBackward 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideEnterForward {
+            from {
+                opacity: 0;
+                transform: translateX(40px) scale(0.995);
+                filter: blur(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes slideEnterBackward {
+            from {
+                opacity: 0;
+                transform: translateX(-40px) scale(0.995);
+                filter: blur(4px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* Épuration design : Retrait des icônes superflues pour éviter le look cliché "généré par IA" */
+        .slide-category i,
+        .card-title i,
+        .big-number-label i {
+            display: none !important;
         }
 
         /* --- HEADER PREMIUM --- */
@@ -321,8 +356,7 @@
             background: var(--card-midnight);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-subtle);
-            border-left: 4px solid transparent; /* Bordure d'accent sémantique */
+            border: 2px solid var(--border-subtle);
             border-radius: 12px;
             padding: 1.3rem 1.6rem;
             position: relative;
@@ -336,16 +370,29 @@
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5);
         }
         
+        body.light-theme .card {
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.04);
+        }
+        
         body.light-theme .card:hover {
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.08);
         }
 
-        /* Accent sémantique sytlé */
-        .card-cyan { border-left-color: var(--accent-cyan); }
-        .card-lavender { border-left-color: var(--accent-lavender); }
-        .card-mint { border-left-color: var(--color-mint); }
-        .card-coral { border-left-color: var(--color-coral); }
-        .card-orange { border-left-color: var(--arch-orange); }
+        /* Accent sémantique stylé sur toute la bordure */
+        .card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 50%, transparent); }
+        .card-cyan:hover { border-color: var(--accent-cyan); }
+
+        .card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 50%, transparent); }
+        .card-lavender:hover { border-color: var(--accent-lavender); }
+
+        .card-mint { border-color: color-mix(in srgb, var(--color-mint) 50%, transparent); }
+        .card-mint:hover { border-color: var(--color-mint); }
+
+        .card-coral { border-color: color-mix(in srgb, var(--color-coral) 50%, transparent); }
+        .card-coral:hover { border-color: var(--color-coral); }
+
+        .card-orange { border-color: color-mix(in srgb, var(--arch-orange) 50%, transparent); }
+        .card-orange:hover { border-color: var(--arch-orange); }
 
         .card.focus {
             background: var(--accent-blue-focus);
@@ -1310,9 +1357,7 @@
                             <p style="margin-top: 0.4rem;">
                                 Structure mixte accompagnant l'innovation technologique et industrielle de la R&D jusqu'à la mise en production.
                             </p>
-                            <div style="margin-top: 0.6rem; padding: 0.5rem 0.8rem; background: rgba(56, 189, 248, 0.06); border-radius: 6px; border-left: 3px solid var(--accent-cyan); font-size: 1.1rem; font-weight: 500;">
-                                <strong style="color: var(--text-white);">Cadre d'excellence :</strong> Validation de modèles d'IA complexes au sein d'architectures Cloud réelles de production.
-                            </div>
+
                         </div>
                     </div>
                     
@@ -1920,6 +1965,108 @@
                                 <ul style="margin-top: 0.4rem;">
                                     <li><strong>Interprétabilité :</strong> Pondération en direct de l'importance de chaque variable.</li>
                                     <li><strong>Transparence :</strong> Permet de comprendre le pourquoi de l'alerte.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================
+             SLIDE 13B : ARCHITECTURE DU MODÈLE OPTIMAL (Attention MLP)
+             ==================================================== -->
+        <div class="slide" id="slide-13-arch">
+            <div class="slide-header">
+                <div class="slide-category"><i class="fa-solid fa-gears"></i> Focus Architecture</div>
+                <h2 class="slide-title">Architecture Interne de l'Attention MLP</h2>
+            </div>
+            <div class="slide-content">
+                <div class="cols-2">
+                    <!-- Colonne Gauche : Schéma Synoptique du Réseau -->
+                    <div class="card card-cyan" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem;">
+                        <h3 class="card-title" style="font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                            <i class="fa-solid fa-sitemap"></i> Pipeline Neuronal d'Inférence
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center; justify-content: center; flex-grow: 1;">
+                            
+                            <!-- Étape 1 : Entrée brute -->
+                            <div style="border: 1px solid var(--accent-cyan); background: rgba(56, 189, 248, 0.05); border-radius: 8px; padding: 0.5rem; width: 95%; text-align: center;">
+                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">1. Entrée des Caractéristiques</div>
+                                <div style="font-size: 0.95rem; color: var(--text-white); font-weight: bold; margin-top: 0.15rem;">Vecteur réseau brut <span class="tech-badge">x &isin; &Ropf;<sup>77</sup></span></div>
+                            </div>
+                            
+                            <div style="color: var(--accent-cyan); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+                            
+                            <!-- Étape 2 : Masquage & Attention -->
+                            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0.5rem; width: 95%; align-items: stretch;">
+                                <div style="border: 1px dashed var(--accent-lavender); background: rgba(167, 139, 250, 0.03); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                                    <div style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Calcul des Poids d'Attention</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-white); font-weight: bold; line-height: 1.3; margin-top: 0.15rem;">
+                                        Linear(77➔77) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i> Tanh() <br>
+                                        Linear(77➔77) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i> Softmax()
+                                    </div>
+                                    <div style="margin-top: 0.25rem;"><span class="tech-badge badge-lavender" style="font-size: 0.5rem;">&alpha; &isin; [0,1]<sup>77</sup></span></div>
+                                </div>
+                                <div style="border: 1px solid var(--arch-orange); background: rgba(245, 158, 11, 0.05); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                    <div style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--arch-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Produit de Hadamard</div>
+                                    <div style="font-size: 1.15rem; color: var(--text-white); font-weight: bold; margin-top: 0.2rem;">x<sub>weighted</sub> = x &odot; &alpha;</div>
+                                    <span class="tech-badge badge-orange" style="font-size: 0.5rem; margin-top: 0.25rem;">Filtrage Actif</span>
+                                </div>
+                            </div>
+                            
+                            <div style="color: var(--arch-orange); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+                            
+                            <!-- Étape 3 : Classificateur MLP -->
+                            <div style="border: 1px solid var(--color-mint); background: rgba(52, 211, 153, 0.05); border-radius: 8px; padding: 0.5rem; width: 95%; text-align: center;">
+                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--color-mint); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">2. Classificateur Neural (MLP)</div>
+                                <div style="font-size: 0.85rem; color: var(--text-white); margin-top: 0.15rem; font-weight: bold; line-height: 1.4;">
+                                    Linear(77➔128) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> BatchNorm1d <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> ReLU <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> Dropout(0.3) <br>
+                                    Linear(128➔64) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> ReLU <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> Dropout(0.3)
+                                </div>
+                            </div>
+                            
+                            <div style="color: var(--color-mint); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
+                            
+                            <!-- Étape 4 : Sorties logits -->
+                            <div style="border: 1px solid var(--accent-lavender); background: rgba(167, 139, 250, 0.05); border-radius: 8px; padding: 0.45rem; width: 95%; text-align: center;">
+                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">3. Tête de Classification</div>
+                                <div style="font-size: 0.95rem; color: var(--text-white); font-weight: bold; margin-top: 0.1rem;">Linear(64➔15) ➔ <span class="tech-badge badge-lavender" style="font-size: 0.6rem; padding: 0.1rem 0.35rem;">15 logits (Classes d'Attaques)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Colonne Droite : Explications Scientifiques -->
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; height: 100%; justify-content: space-between;">
+                        <div class="card card-lavender" style="padding: 1rem 1.2rem;">
+                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-calculator"></i> Mécanisme Mathématique de l'Attention</h3>
+                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
+                                Le masque d'attention spatiale <span class="tech-badge badge-lavender">&alpha;</span> est calculé dynamiquement :
+                                <div style="background: rgba(0, 0, 0, 0.18); border-radius: 6px; padding: 0.35rem; margin: 0.35rem 0; font-family: var(--font-numeric); text-align: center; color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; border: 1px solid var(--border-subtle);">
+                                    h<sub>attn</sub> = tanh(W<sub>1</sub>x + b<sub>1</sub>) &nbsp;&nbsp;|&nbsp;&nbsp; &alpha; = softmax(W<sub>2</sub>h<sub>attn</sub> + b<sub>2</sub>)
+                                </div>
+                                L'activation <span class="tech-badge">Softmax</span> contraint les poids d'attention à sommer à 1 (&sum; &alpha;<sub>i</sub> = 1), distribuant dynamiquement l'importance sur les 77 features.
+                            </div>
+                        </div>
+                        
+                        <div class="card card-orange" style="padding: 1rem 1.2rem;">
+                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-filter"></i> Gating & Réduction de Bruit (Hadamard Product)</h3>
+                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
+                                Le produit de Hadamard <span class="tech-badge badge-orange">x &odot; &alpha;</span> filtre les 77 caractéristiques tabulaires :
+                                <ul style="margin-top: 0.3rem; font-size: 0.9rem; padding-left: 0.8rem;">
+                                    <li><strong>Atténuation du bruit :</strong> Masquage des variables redondantes ou non discriminantes induites par le collecteur de flux (ex. CICFlowMeter).</li>
+                                    <li><strong>Amplification des signaux :</strong> Focus immédiat sur les métriques critiques comme la distribution temporelle (<code>Flow IAT</code>) ou les drapeaux TCP (<code>SYN</code>, <code>FIN</code>).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-mint" style="padding: 1rem 1.2rem; background: var(--accent-blue-focus);">
+                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-circle-check" style="color: var(--color-mint);"></i> Avantages Clés en Production</h3>
+                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
+                                <ul style="margin-top: 0.2rem; font-size: 0.9rem; padding-left: 0.8rem;">
+                                    <li><strong>Explicabilité (XAI) :</strong> Extraction possible des poids d'attention en temps réel pour comprendre <em>pourquoi</em> l'IDS a classé un flux comme malveillant.</li>
+                                    <li><strong>Compacité Neuronale :</strong> Seulement <strong>49 915 paramètres</strong> (~50 Ko compressé), évitant la surcharge mémoire.</li>
+                                    <li><strong>Ultra-faible Latence :</strong> Inférence CPU brute en <strong>0.42 ms</strong> par flux, indispensable face au trafic réseau à haute vitesse.</li>
                                 </ul>
                             </div>
                         </div>
@@ -2694,7 +2841,7 @@
     <!-- Contrôles et Pagination en bas de l'écran -->
     <button class="btn-control fullscreen-btn" onclick="toggleFullScreen(); event.stopPropagation();">PLEIN ÉCRAN (F)</button>
     
-    <div class="page-counter" id="page-counter">[  01  /  23  ]</div>
+    <div class="page-counter" id="page-counter">[  01  /  24  ]</div>
     
     <div class="progress-bar-container">
         <div class="progress-bar" id="progress-bar"></div>
@@ -2706,14 +2853,21 @@
         const progressBar = document.getElementById('progress-bar');
         const pageCounter = document.getElementById('page-counter');
         let currentSlideIdx = 0;
+        let prevSlideIdx = 0;
         const totalSlides = slides.length;
 
         function updateSlide() {
-            // Retire la classe active de toutes les slides
-            slides.forEach(slide => slide.classList.remove('active'));
+            // Déterminer la direction de navigation
+            const direction = currentSlideIdx >= prevSlideIdx ? 'forward' : 'backward';
+            prevSlideIdx = currentSlideIdx;
             
-            // Active la slide courante
-            slides[currentSlideIdx].classList.add('active');
+            // Retire la classe active et les directions de toutes les slides
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'forward', 'backward');
+            });
+            
+            // Active la slide courante avec la classe de direction pour la transition
+            slides[currentSlideIdx].classList.add('active', direction);
             
             // Met à jour la barre de progression
             const progressPercent = ((currentSlideIdx + 1) / totalSlides) * 100;
