@@ -12,76 +12,88 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts pour un look "Canva Premium Tech" -->
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- DESIGN SYSTEM "OBSIDIAN GLASS" --- */
+        /* --- DESIGN SYSTEM "OBSIDIAN GLASS & PRECISION CAD" --- */
         :root {
-            --bg-obsidian: #0b0c10;
-            --card-midnight: rgba(28, 30, 46, 0.5);
+            /* Mode Sombre - Obsidian Cyan/Lavender */
+            --bg-obsidian: #06070a;
+            --card-midnight: rgba(6, 7, 12, 0.25);
             --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(56, 189, 248, 0.3);
+            --border-hover: rgba(0, 242, 254, 0.35);
             
             --text-white: #ffffff;
-            --text-warm-gray: #bec1d1;
+            --text-warm-gray: #abb0c4;
             
-            --accent-cyan: #38bdf8;
+            --accent-cyan: #00f2fe;
             --accent-lavender: #a78bfa;
-            --accent-blue-focus: rgba(30, 41, 75, 0.7);
+            --accent-blue-focus: rgba(21, 28, 54, 0.35);
             
-            --color-mint: #34d399;
+            --color-mint: #10b981;
             --color-coral: #fb7185;
             
             --font-title: 'Bricolage Grotesque', sans-serif;
             --font-body: 'Inter', sans-serif;
             --font-numeric: 'Bricolage Grotesque', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
 
-            /* Variables de diagramme d'architecture */
-            --arch-bg: rgba(15, 23, 42, 0.15);
-            --card-bg: rgba(28, 30, 46, 0.5);
-            --subnet-bg: rgba(15, 23, 42, 0.25);
-            --node-bg: rgba(30, 41, 59, 0.9);
-            --arch-orange: #f59e0b;
-            --arch-gold: #eab308;
+            /* Technical Grid Background Pattern */
+            --grid-dot: rgba(0, 242, 254, 0.04);
+            --grid-line-thin: rgba(255, 255, 255, 0.012);
+            --grid-line-thick: rgba(0, 242, 254, 0.022);
+
+            /* Architecture Colors */
+            --arch-bg: rgba(15, 23, 42, 0.05);
+            --card-bg: rgba(6, 7, 12, 0.25);
+            --subnet-bg: rgba(15, 23, 42, 0.1);
+            --node-bg: rgba(26, 36, 56, 0.4);
+            --arch-orange: #ff7b00;
+            --arch-gold: #fbbf24;
         }
 
         /* --- MODE CLAIR (LIGHT MODE OVERRIDES) --- */
         body.light-theme {
-            --bg-obsidian: #f3f4f6; /* gris clair neutre premium */
-            --card-midnight: rgba(255, 255, 255, 0.7); /* verre blanc dépoli */
+            --bg-obsidian: #f8fafc;
+            --card-midnight: rgba(255, 255, 255, 0.05);
             --border-subtle: rgba(0, 0, 0, 0.08);
-            --border-hover: rgba(14, 165, 233, 0.4);
+            --border-hover: rgba(3, 105, 161, 0.4);
             
-            --text-white: #111827; /* texte noir anthracite */
-            --text-warm-gray: #4b5563; /* sous-titres gris moyen */
+            --text-white: #0f172a;
+            --text-warm-gray: #475569;
             
-            --accent-cyan: #0284c7; /* bleu cyan plus profond pour lisibilité */
-            --accent-lavender: #6d28d9; /* violet plus saturé pour lisibilité */
-            --accent-blue-focus: rgba(224, 231, 255, 0.85); /* fond focus clair */
+            --accent-cyan: #0284c7;
+            --accent-lavender: #6d28d9;
+            --accent-blue-focus: rgba(219, 234, 254, 0.25);
             
-            --color-mint: #047857; /* vert foncé lisible */
-            --color-coral: #be123c; /* rouge foncé lisible */
+            --color-mint: #059669;
+            --color-coral: #dc2626;
 
-            /* Overrides variables d'architecture pour le mode clair */
-            --arch-bg: rgba(255, 255, 255, 0.35);
-            --card-bg: rgba(255, 255, 255, 0.65);
-            --subnet-bg: rgba(255, 255, 255, 0.45);
-            --node-bg: rgba(255, 255, 255, 0.95);
+            /* Technical Grid Background Pattern */
+            --grid-dot: rgba(2, 132, 199, 0.04);
+            --grid-line-thin: rgba(0, 0, 0, 0.012);
+            --grid-line-thick: rgba(2, 132, 199, 0.022);
+
+            /* Architecture Colors */
+            --arch-bg: rgba(255, 255, 255, 0.03);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --subnet-bg: rgba(255, 255, 255, 0.03);
+            --node-bg: rgba(255, 255, 255, 0.25);
             --arch-orange: #d97706;
             --arch-gold: #b45309;
         }
 
         body.light-theme .glow-1 {
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, transparent 70%);
         }
 
         body.light-theme .glow-2 {
-            background: radial-gradient(circle, rgba(109, 40, 217, 0.06) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(109, 40, 217, 0.05) 0%, transparent 70%);
         }
 
         body.light-theme .node {
             background: rgba(255, 255, 255, 0.9);
-            color: #111827;
+            color: #0f172a;
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
@@ -92,13 +104,13 @@
 
         body.light-theme .aws-vpc {
             background: rgba(255, 255, 255, 0.55);
-            border-color: rgba(14, 165, 233, 0.25);
+            border-color: rgba(2, 132, 199, 0.25);
         }
 
         body.light-theme .aws-service-node {
             background: rgba(255, 255, 255, 0.7);
             border-color: rgba(0, 0, 0, 0.1);
-            color: #111827;
+            color: #0f172a;
         }
 
         body.light-theme tr.highlight-row td {
@@ -107,7 +119,7 @@
         }
 
         body.light-theme .btn-control {
-            background: rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(0, 0, 0, 0.08);
             color: var(--accent-lavender);
         }
@@ -115,6 +127,7 @@
         body.light-theme .btn-control:hover {
             background: rgba(109, 40, 217, 0.08);
             color: #6d28d9;
+            border-color: var(--accent-lavender);
         }
 
         body.light-theme .garde-slide {
@@ -125,27 +138,38 @@
         .theme-toggle-btn {
             position: absolute;
             top: 1.5rem;
-            right: 2rem;
-            background: var(--card-midnight);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            right: 2.8rem;
+            background: rgba(13, 15, 26, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-subtle);
             color: var(--text-white);
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
             z-index: 500;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            font-size: 1.15rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            font-size: 1.1rem;
         }
         .theme-toggle-btn:hover {
             border-color: var(--accent-cyan);
-            transform: scale(1.08);
+            background: rgba(0, 242, 254, 0.08);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+        }
+        body.light-theme .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        body.light-theme .theme-toggle-btn:hover {
+            border-color: var(--accent-lavender);
+            background: rgba(109, 40, 217, 0.05);
+            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.1);
         }
 
         * {
@@ -156,6 +180,15 @@
 
         body {
             background-color: var(--bg-obsidian);
+            /* Double-grid CAD layout */
+            background-image: 
+                radial-gradient(circle at center, var(--grid-dot) 1px, transparent 1px),
+                linear-gradient(to right, var(--grid-line-thin) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line-thin) 1px, transparent 1px),
+                linear-gradient(to right, var(--grid-line-thick) 1.5px, transparent 1.5px),
+                linear-gradient(to bottom, var(--grid-line-thick) 1.5px, transparent 1.5px);
+            background-size: 32px 32px, 32px 32px, 32px 32px, 160px 160px, 160px 160px;
+            background-position: center center;
             font-family: var(--font-body);
             color: var(--text-warm-gray);
             height: 100vh;
@@ -171,33 +204,33 @@
         /* Lueurs d'arrière-plan diffuses */
         .glow-1 {
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+            top: -15%;
+            left: -15%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
             pointer-events: none;
             z-index: 1;
         }
 
         .glow-2 {
             position: absolute;
-            bottom: -10%;
-            right: -10%;
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.09) 0%, transparent 70%);
+            bottom: -15%;
+            right: -15%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.07) 0%, transparent 70%);
             pointer-events: none;
             z-index: 1;
         }
 
-        /* Double bandeau d'accentuation tout en haut (style Canva) */
+        /* Double bandeau d'accentuation tout en haut (style CAD / Dashboard) */
         .top-accent-bar {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
+            height: 4px;
             display: flex;
             z-index: 200;
         }
@@ -215,7 +248,7 @@
         /* --- STRUCTURE DE LA DIAPOSITIVE --- */
         .slide-container {
             width: 90%;
-            height: 85%;
+            height: 84%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -229,6 +262,36 @@
             height: 100%;
             flex-direction: column;
             justify-content: space-between;
+            /* border: 1px solid var(--border-subtle); */
+            /* border-radius: 16px; */
+            padding: 2.2rem 2.8rem;
+            position: relative;
+            overflow: hidden;
+            
+            /* Glassmorphic Background + Corner brackets */
+            background: 
+                /* Corner Brackets */
+                linear-gradient(to right, var(--accent-cyan) 3px, transparent 3px) 0 0,
+                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 0 0,
+                linear-gradient(to left, var(--accent-cyan) 3px, transparent 3px) 100% 0,
+                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 100% 0,
+                linear-gradient(to right, var(--accent-lavender) 3px, transparent 3px) 0 100%,
+                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 0 100%,
+                linear-gradient(to left, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
+                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
+                /* Glassmorphic Solid Fill */
+                var(--card-midnight);
+            background-repeat: no-repeat;
+            background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            /* box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); */
+        }
+
+        body.light-theme .slide {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.04);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
 
         /* Transitions fluides et premium de type "Apple/Figma" entre les pages */
@@ -245,8 +308,8 @@
         @keyframes slideEnterForward {
             from {
                 opacity: 0;
-                transform: translateX(40px) scale(0.995);
-                filter: blur(4px);
+                transform: translateX(30px) scale(0.995);
+                filter: blur(3px);
             }
             to {
                 opacity: 1;
@@ -258,21 +321,14 @@
         @keyframes slideEnterBackward {
             from {
                 opacity: 0;
-                transform: translateX(-40px) scale(0.995);
-                filter: blur(4px);
+                transform: translateX(-30px) scale(0.995);
+                filter: blur(3px);
             }
             to {
                 opacity: 1;
                 transform: translateX(0) scale(1);
                 filter: blur(0);
             }
-        }
-
-        /* Épuration design : Retrait des icônes superflues pour éviter le look cliché "généré par IA" */
-        .slide-category i,
-        .card-title i,
-        .big-number-label i {
-            display: none !important;
         }
 
         /* --- HEADER PREMIUM --- */
@@ -283,16 +339,37 @@
         }
 
         .slide-category {
-            font-family: var(--font-numeric);
-            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--accent-cyan);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        /* Custom Elegant Icon Badges */
+        .slide-category i {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.25);
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+        }
+        body.light-theme .slide-category i {
+            background: rgba(2, 132, 199, 0.08);
+            border-color: rgba(2, 132, 199, 0.25);
         }
 
         /* Trait vertical d'accentuation */
@@ -302,16 +379,17 @@
             left: 0;
             top: 15%;
             height: 70%;
-            width: 4px;
-            background-color: var(--accent-lavender);
+            width: 3.5px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-lavender));
             border-radius: 2px;
         }
 
         .slide-title {
             font-family: var(--font-title);
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--text-white);
+            letter-spacing: -0.5px;
         }
 
         /* --- CONTENU DE LA DIAPOSITIVE --- */
@@ -372,31 +450,100 @@
         
         body.light-theme .card {
             box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.04);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
         
         body.light-theme .card:hover {
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.08);
         }
 
-        /* Accent sémantique stylé sur toute la bordure */
-        .card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 50%, transparent); }
-        .card-cyan:hover { border-color: var(--accent-cyan); }
+        /* Accent sémantique stylé sur toute la bordure avec lueur diffuse */
+        .card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); }
+        .card-cyan:hover { 
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
+        }
 
-        .card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 50%, transparent); }
-        .card-lavender:hover { border-color: var(--accent-lavender); }
+        .card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); }
+        .card-lavender:hover { 
+            border-color: var(--accent-lavender);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.15);
+        }
 
-        .card-mint { border-color: color-mix(in srgb, var(--color-mint) 50%, transparent); }
-        .card-mint:hover { border-color: var(--color-mint); }
+        .card-mint { border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); }
+        .card-mint:hover { 
+            border-color: var(--color-mint);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
+        }
 
-        .card-coral { border-color: color-mix(in srgb, var(--color-coral) 50%, transparent); }
-        .card-coral:hover { border-color: var(--color-coral); }
+        .card-coral { border-color: color-mix(in srgb, var(--color-coral) 45%, transparent); }
+        .card-coral:hover { 
+            border-color: var(--color-coral);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 113, 133, 0.15);
+        }
 
-        .card-orange { border-color: color-mix(in srgb, var(--arch-orange) 50%, transparent); }
-        .card-orange:hover { border-color: var(--arch-orange); }
+        .card-orange { border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); }
+        .card-orange:hover { 
+            border-color: var(--arch-orange);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 123, 0, 0.15);
+        }
 
         .card.focus {
             background: var(--accent-blue-focus);
         }
+
+        /* --- QUANTITY QUERIES: AUTO-COLOR SOME CARDS IF > 2 CARDS ON A PAGE --- */
+        /* Targets containers having 3 or more standard .card elements, coloring alternate (odd) cards */
+        .card:first-child:nth-last-child(n+3):nth-child(odd),
+        .card:first-child:nth-last-child(n+3) ~ .card:nth-child(odd) {
+            background: color-mix(in srgb, var(--accent-cyan) 8%, var(--card-midnight));
+        }
+        .card.card-cyan:first-child:nth-last-child(n+3):nth-child(odd),
+        .card.card-cyan:first-child:nth-last-child(n+3) ~ .card.card-cyan:nth-child(odd) { 
+            background: color-mix(in srgb, var(--accent-cyan) 10%, var(--card-midnight)); 
+        }
+        .card.card-orange:first-child:nth-last-child(n+3):nth-child(odd),
+        .card.card-orange:first-child:nth-last-child(n+3) ~ .card.card-orange:nth-child(odd) { 
+            background: color-mix(in srgb, var(--arch-orange) 10%, var(--card-midnight)); 
+        }
+        .card.card-lavender:first-child:nth-last-child(n+3):nth-child(odd),
+        .card.card-lavender:first-child:nth-last-child(n+3) ~ .card.card-lavender:nth-child(odd) { 
+            background: color-mix(in srgb, var(--accent-lavender) 10%, var(--card-midnight)); 
+        }
+        .card.card-mint:first-child:nth-last-child(n+3):nth-child(odd),
+        .card.card-mint:first-child:nth-last-child(n+3) ~ .card.card-mint:nth-child(odd) { 
+            background: color-mix(in srgb, var(--color-mint) 10%, var(--card-midnight)); 
+        }
+        .card.card-coral:first-child:nth-last-child(n+3):nth-child(odd),
+        .card.card-coral:first-child:nth-last-child(n+3) ~ .card.card-coral:nth-child(odd) { 
+            background: color-mix(in srgb, var(--color-coral) 10%, var(--card-midnight)); 
+        }
+
+        /* Targets containers having 3 or more .flow-step-card elements, coloring alternate (odd) cards */
+        .flow-step-card:first-child:nth-last-child(n+3):nth-child(odd),
+        .flow-step-card:first-child:nth-last-child(n+3) ~ .flow-step-card:nth-child(odd) {
+            background: color-mix(in srgb, var(--accent-cyan) 8%, var(--card-midnight));
+        }
+        .flow-step-card.card-cyan:first-child:nth-last-child(n+3):nth-child(odd),
+        .flow-step-card.card-cyan:first-child:nth-last-child(n+3) ~ .flow-step-card.card-cyan:nth-child(odd) { 
+            background: color-mix(in srgb, var(--accent-cyan) 10%, var(--card-midnight)); 
+        }
+        .flow-step-card.card-orange:first-child:nth-last-child(n+3):nth-child(odd),
+        .flow-step-card.card-orange:first-child:nth-last-child(n+3) ~ .flow-step-card.card-orange:nth-child(odd) { 
+            background: color-mix(in srgb, var(--arch-orange) 10%, var(--card-midnight)); 
+        }
+        .flow-step-card.card-lavender:first-child:nth-last-child(n+3):nth-child(odd),
+        .flow-step-card.card-lavender:first-child:nth-last-child(n+3) ~ .flow-step-card.card-lavender:nth-child(odd) { 
+            background: color-mix(in srgb, var(--accent-lavender) 10%, var(--card-midnight)); 
+        }
+        .flow-step-card.card-mint:first-child:nth-last-child(n+3):nth-child(odd),
+        .flow-step-card.card-mint:first-child:nth-last-child(n+3) ~ .flow-step-card.card-mint:nth-child(odd) { 
+            background: color-mix(in srgb, var(--color-mint) 10%, var(--card-midnight)); 
+        }
+
+
+
 
         /* Pulsing LED status */
         .led-dot {
@@ -419,22 +566,22 @@
         /* Tech Badges moderns style cyber */
         .tech-badge {
             display: inline-block;
-            font-family: var(--font-numeric);
+            font-family: var(--font-mono);
             font-size: 0.72rem;
             font-weight: 700;
             color: var(--accent-cyan);
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid rgba(0, 242, 254, 0.25);
             border-radius: 4px;
             padding: 0.15rem 0.45rem;
             margin-right: 0.35rem;
             margin-bottom: 0.35rem;
-            background: rgba(56, 189, 248, 0.05);
+            background: rgba(0, 242, 254, 0.05);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .tech-badge:hover {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(0, 242, 254, 0.15);
             transform: translateY(-1px);
             border-color: var(--accent-cyan);
         }
@@ -448,24 +595,24 @@
         }
 
         .badge-coral { color: var(--color-coral); border-color: rgba(251, 113, 133, 0.25); background: rgba(251, 113, 133, 0.05); }
-        .badge-mint { color: var(--color-mint); border-color: rgba(52, 211, 153, 0.25); background: rgba(52, 211, 153, 0.05); }
+        .badge-mint { color: var(--color-mint); border-color: rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05); }
         .badge-lavender { color: var(--accent-lavender); border-color: rgba(167, 139, 250, 0.25); background: rgba(167, 139, 250, 0.05); }
-        .badge-orange { color: var(--arch-orange); border-color: rgba(245, 158, 11, 0.25); background: rgba(245, 158, 11, 0.05); }
+        .badge-orange { color: var(--arch-orange); border-color: rgba(255, 123, 0, 0.25); background: rgba(255, 123, 0, 0.05); }
 
         body.light-theme .badge-coral {
             color: var(--color-coral);
-            border-color: rgba(190, 18, 60, 0.25);
-            background: rgba(190, 18, 60, 0.05);
+            border-color: rgba(220, 38, 38, 0.25);
+            background: rgba(220, 38, 38, 0.05);
         }
         body.light-theme .badge-mint {
             color: var(--color-mint);
-            border-color: rgba(4, 120, 87, 0.25);
-            background: rgba(4, 120, 87, 0.05);
+            border-color: rgba(5, 150, 105, 0.25);
+            background: rgba(5, 150, 105, 0.05);
         }
         body.light-theme .badge-lavender {
             color: var(--accent-lavender);
-            border-color: rgba(109, 40, 217, 0.25);
-            background: rgba(109, 40, 217, 0.05);
+            border-color: rgba(109, 64, 217, 0.25);
+            background: rgba(109, 64, 217, 0.05);
         }
         body.light-theme .badge-orange {
             color: var(--arch-orange);
@@ -496,9 +643,24 @@
             gap: 0.6rem;
         }
 
+        /* Beautiful Icon Badge in card titles */
         .card-title i {
-            color: var(--accent-cyan);
-            font-size: 1.4rem;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: rgba(167, 139, 250, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            color: var(--accent-lavender);
+            font-size: 0.95rem;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+        }
+        body.light-theme .card-title i {
+            background: rgba(109, 64, 217, 0.08);
+            border-color: rgba(109, 64, 217, 0.25);
         }
 
         .card-desc {
@@ -516,6 +678,7 @@
             margin-top: 0.4rem;
         }
 
+        /* Technical Losange Bullet Points */
         .card-desc li {
             margin-bottom: 0.4rem;
             position: relative;
@@ -523,14 +686,18 @@
         }
 
         .card-desc li::before {
-            content: '•';
-            color: var(--accent-cyan);
+            content: '';
             position: absolute;
             left: 0.1rem;
-            font-weight: bold;
+            top: 0.55rem;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-lavender));
+            transform: rotate(45deg);
+            box-shadow: 0 0 6px rgba(0, 242, 254, 0.4);
         }
 
-        /* --- COMPOSANT "BIG NUMBERS" --- */
+        /* --- COMPOSANT "BIG NUMBERS" (Count-Up Enhanced) --- */
         .big-number-container {
             display: flex;
             flex-direction: column;
@@ -542,38 +709,114 @@
         .big-number-wrapper {
             width: 100%;
             text-align: center;
-            padding: 0.6rem 0;
+            padding: 0.8rem 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(18px) scale(0.92);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
+        .big-number-wrapper.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .big-number-wrapper:nth-child(1) { transition-delay: 0s; }
+        .big-number-wrapper:nth-child(3) { transition-delay: 0.18s; }
+        .big-number-wrapper:nth-child(5) { transition-delay: 0.36s; }
+        /* dividers use nth-child 2 and 4 */
+        .big-number-divider { transition-delay: 0.1s; }
+
         .big-number {
-            font-family: var(--font-title);
-            font-size: 3.8rem;
-            font-weight: 700;
+            font-family: var(--font-numeric);
+            font-size: 4rem;
+            font-weight: 800;
             color: var(--accent-cyan);
-            text-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
-            margin-bottom: 0.1rem;
-            animation: pulse-glow 2s infinite alternate;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
+            margin-bottom: 0.15rem;
+            animation: pulse-glow 2.5s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 2px;
+            /* Shimmer shine overlay */
+            background: linear-gradient(
+                105deg,
+                var(--accent-cyan) 0%,
+                var(--accent-cyan) 40%,
+                rgba(255,255,255,0.85) 50%,
+                var(--accent-cyan) 60%,
+                var(--accent-cyan) 100%
+            );
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .big-number-wrapper.revealed .big-number {
+            animation: pulse-glow 2.5s ease-in-out infinite alternate, shimmer-number 2.8s ease-in-out 0.4s 1;
+        }
+
+        @keyframes shimmer-number {
+            0%   { background-position: 100% center; }
+            100% { background-position: -100% center; }
         }
 
         @keyframes pulse-glow {
-            0% { text-shadow: 0 0 10px rgba(56, 189, 248, 0.15); }
-            100% { text-shadow: 0 0 30px rgba(56, 189, 248, 0.45); }
+            0%   { filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.12)); }
+            100% { filter: drop-shadow(0 0 28px rgba(0, 242, 254, 0.4)); }
+        }
+
+        /* Radial glow ring behind the number */
+        .big-number-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .big-number-wrapper.revealed::before {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .big-number-label {
             font-family: var(--font-body);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             color: var(--text-white);
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+        }
+
+        .big-number-wrapper.revealed .big-number-label {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .big-number-divider {
             width: 40%;
             height: 1px;
             background: var(--accent-blue-focus);
-            margin: 0.4rem auto;
+            margin: 0.5rem auto;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+        }
+
+        .big-number-container .big-number-divider.revealed {
+            opacity: 1;
+            transform: scaleX(1);
         }
 
         /* --- COMPOSANT "FLOW STEPS" --- */
@@ -588,7 +831,7 @@
         .flow-step-card {
             flex: 1;
             background: var(--card-midnight);
-            border: 1px solid var(--border-subtle);
+            border: 2px solid var(--border-subtle);
             border-radius: 12px;
             padding: 1.1rem 1.3rem;
             position: relative;
@@ -596,17 +839,51 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .flow-step-card:hover {
             border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5);
+        }
+        
+        body.light-theme .flow-step-card {
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.04);
+        }
+        
+        body.light-theme .flow-step-card:hover {
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .flow-step-card.card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); }
+        .flow-step-card.card-cyan:hover { 
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
+        }
+        
+        .flow-step-card.card-orange { border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); }
+        .flow-step-card.card-orange:hover { 
+            border-color: var(--arch-orange);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 123, 0, 0.15);
+        }
+        
+        .flow-step-card.card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); }
+        .flow-step-card.card-lavender:hover { 
+            border-color: var(--accent-lavender);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.15);
+        }
+        
+        .flow-step-card.card-mint { border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); }
+        .flow-step-card.card-mint:hover { 
+            border-color: var(--color-mint);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
         }
 
         .flow-icon-circle {
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(0, 242, 254, 0.1);
             border: 1px solid var(--accent-cyan);
             display: flex;
             align-items: center;
@@ -617,8 +894,8 @@
         }
 
         .flow-badge {
-            font-family: var(--font-body);
-            font-size: 1.0rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--accent-cyan);
             letter-spacing: 1.5px;
@@ -647,10 +924,15 @@
         }
 
         .flow-desc li::before {
-            content: '•';
-            color: var(--accent-cyan);
+            content: '';
             position: absolute;
             left: 0;
+            top: 0.5rem;
+            width: 5px;
+            height: 5px;
+            background: var(--accent-cyan);
+            transform: rotate(45deg);
+            box-shadow: 0 0 5px rgba(0, 242, 254, 0.4);
         }
 
         .flow-arrow {
@@ -670,44 +952,44 @@
             overflow: hidden;
             border-radius: 10px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+            background: rgba(13, 15, 26, 0.4);
         }
 
-        .premium-table {
+        table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-        }
-
-        .premium-table th {
-            background-color: var(--accent-blue-focus);
-            font-family: var(--font-title);
-            font-size: 1.40rem;
-            font-weight: bold;
-            color: var(--text-white);
-            padding: 1.2rem 1.6rem;
-            border-bottom: 1px solid var(--border-subtle);
-            text-align: center;
-        }
-
-        .premium-table td {
-            padding: 1.2rem 1.6rem;
-            border-bottom: 1px solid var(--border-subtle);
-            background-color: var(--card-midnight);
-            color: var(--text-warm-gray);
             font-size: 1.15rem;
-            text-align: center;
         }
 
-        .premium-table tr.highlight-row td {
-            background-color: rgba(30, 58, 138, 0.4);
-            font-weight: bold;
-            color: var(--text-white);
+        th {
+            background-color: rgba(21, 28, 54, 0.8);
+            color: var(--accent-cyan);
+            font-family: var(--font-title);
+            font-weight: 700;
+            padding: 0.9rem 1.2rem;
+            border-bottom: 1.5px solid var(--border-subtle);
+            letter-spacing: 0.5px;
         }
 
-        .premium-table tr.highlight-row td:nth-child(2),
-        .premium-table tr.highlight-row td:nth-child(3) {
-            color: var(--color-mint);
+        td {
+            padding: 0.85rem 1.2rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-warm-gray);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.015);
+        }
+
+        tr.highlight-row td {
+            background-color: rgba(30, 41, 75, 0.5) !important;
+            color: var(--accent-cyan) !important;
+            font-weight: 600;
         }
 
         /* --- DIAPOSITIVE DE GARDE --- */
@@ -716,16 +998,14 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            border: 1.5px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 3rem;
             position: relative;
+            padding: 1rem 0;
         }
 
         /* --- LOGOS PAGE DE GARDE --- */
         .garde-logo {
             position: absolute;
-            top: 1.5rem;
+            top: 0rem;
             height: 48px;
             padding: 6px 12px;
             border-radius: 10px;
@@ -747,15 +1027,15 @@
 
         /* Logo de l'école (HESTIM) - Gauche */
         .left-logo {
-            left: 2rem;
-            background: rgba(255, 255, 255, 0.92);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            left: 0rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Logo de l'entreprise (3D Smart Factory) - Droite */
         .right-logo {
-            right: 2rem;
+            right: 0rem;
             height: 68px;
             padding: 8px 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -764,7 +1044,7 @@
         /* Spécificités Thèmes pour le logo entreprise (blanc pur à l'origine) */
         body:not(.light-theme) .right-logo {
             background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         body:not(.light-theme) .right-logo img {
             filter: none;
@@ -772,36 +1052,72 @@
 
         body.light-theme .right-logo {
             background: rgba(0, 0, 0, 0.03);
-            border: 1.5px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
         body.light-theme .right-logo img {
             filter: invert(1) brightness(0.1);
         }
         
         body.light-theme .left-logo {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1.5px solid rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .garde-inst {
             font-family: var(--font-body);
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--accent-cyan);
             letter-spacing: 2.5px;
             text-align: center;
-            margin-top: 2.2rem;
+            margin-top: 4.2rem;
+            text-transform: uppercase;
         }
 
         .garde-title {
             font-family: var(--font-title);
-            font-size: 3.1rem;
-            line-height: 1.3;
+            font-size: 2.8rem;
+            line-height: 1.25;
             font-weight: 700;
             color: var(--text-white);
             text-align: center;
             margin: 1.5rem 0;
-            padding: 0 1rem;
+            padding: 1.5rem 2.5rem;
+            position: relative;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--text-white) 40%, var(--text-warm-gray) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cyber-Brackets around guard slide title */
+        .garde-title::before {
+            content: '[';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) scaleY(1.4);
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 3.5rem;
+            font-weight: 200;
+            opacity: 0.8;
+            -webkit-text-fill-color: var(--accent-cyan);
+            background-clip: border-box;
+        }
+        .garde-title::after {
+            content: ']';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) scaleY(1.4);
+            font-family: var(--font-mono);
+            color: var(--accent-lavender);
+            font-size: 3.5rem;
+            font-weight: 200;
+            opacity: 0.8;
+            -webkit-text-fill-color: var(--accent-lavender);
+            background-clip: border-box;
         }
 
         .garde-dividers {
@@ -839,8 +1155,8 @@
         }
 
         .person-label {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--accent-cyan);
             letter-spacing: 1.5px;
@@ -858,8 +1174,8 @@
 
         .garde-year {
             text-align: center;
-            font-family: var(--font-body);
-            font-size: 1.15rem;
+            font-family: var(--font-mono);
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-warm-gray);
             letter-spacing: 2px;
@@ -869,61 +1185,94 @@
         /* --- CONTROL BAR AT THE BOTTOM --- */
         .progress-bar-container {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.05);
+            bottom: 0.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
             z-index: 100;
+            overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            /* Segmented progress bar effect */
+            mask-image: linear-gradient(to right, black 70%, transparent 70%);
+            mask-size: 8px 100%;
+            -webkit-mask-image: linear-gradient(to right, black 70%, transparent 70%);
+            -webkit-mask-size: 8px 100%;
             transition: width 0.3s ease;
         }
 
         .page-counter {
             position: absolute;
-            bottom: 1.2rem;
+            bottom: 1.1rem;
             right: 2rem;
-            font-family: var(--font-numeric);
-            font-size: 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--accent-lavender);
+            background: rgba(13, 15, 26, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
             z-index: 100;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        body.light-theme .page-counter {
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .btn-control {
             position: absolute;
             bottom: 1.1rem;
-            font-family: var(--font-numeric);
+            font-family: var(--font-mono);
             font-size: 0.8rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(13, 15, 26, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-subtle);
             border-radius: 6px;
-            padding: 0.35rem 0.75rem;
-            color: var(--accent-lavender);
+            padding: 0.4rem 0.8rem;
+            color: var(--accent-cyan);
             cursor: pointer;
             transition: all 0.3s;
             z-index: 100;
             font-weight: 700;
             letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .btn-control:hover {
-            background: rgba(167, 139, 250, 0.1);
-            border-color: var(--accent-lavender);
+            border-color: var(--accent-cyan);
+            background: rgba(0, 242, 254, 0.1);
             color: var(--text-white);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
         }
 
         .fullscreen-btn {
             left: 2rem;
         }
 
-        /* --- DIAGRAMME D'ARCHITECTURE VPC AWS (Slide 14) --- */
+        .btn-control:hover {
+            background: rgba(0, 242, 254, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--text-white);
+        }
+
+        .fullscreen-btn {
+            left: 2rem;
+        }
+/* --- DIAGRAMME D'ARCHITECTURE VPC AWS (Slide 14) --- */
         .arch-wrapper {
             position: relative;
             width: 100%;
@@ -1685,42 +2034,87 @@
                 <div class="slide-category"><i class="fa-solid fa-database"></i> Données de Référence</div>
                 <h2 class="slide-title">Le Dataset de Référence : CICIDS2017</h2>
             </div>
-            <div class="slide-content">
-                <div class="cols-2">
-                    <div class="card card-cyan">
+            <div class="slide-content" style="gap: 1.2rem;">
+                <!-- ROW 1 : 3 stat cards -->
+                <div class="cols-3" style="flex: 1;">
+                    <div class="card card-cyan" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-network-wired" style="font-size: 1.6rem; color: var(--accent-cyan); margin-bottom: 0.8rem; opacity: 0.35;"></i>
                         <div class="big-number-container">
                             <div class="big-number-wrapper">
-                                <div class="big-number">2 830 743</div>
-                                <div class="big-number-label"><i class="fa-solid fa-list-ol"></i> Lignes de flux réseau bidirectionnels</div>
-                            </div>
-                            <div class="big-number-divider"></div>
-                            <div class="big-number-wrapper">
-                                <div class="big-number">77</div>
-                                <div class="big-number-label"><i class="fa-solid fa-sliders"></i> variables statistiques (Features) extraites</div>
-                            </div>
-                            <div class="big-number-divider"></div>
-                            <div class="big-number-wrapper">
-                                <div class="big-number">15</div>
-                                <div class="big-number-label"><i class="fa-solid fa-skull-crossbones"></i> Classes de comportement (1 Saine, 14 Attaques)</div>
+                                <div class="big-number" data-count-to="2830743" data-count-separator=" " data-count-duration="2200" style="font-size: 3rem;">0</div>
+                                <div class="big-number-label" style="font-size: 0.85rem; letter-spacing: 1.5px; margin-top: 0.3rem;">Flux réseau bidirectionnels</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card card-coral">
-                        <div class="card-number">DS</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--color-coral); box-shadow: 0 0 8px var(--color-coral);"></span>
-                            <i class="fa-solid fa-shield-virus"></i> Taxonomie des Menaces
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge">5 Jours Réalistes</span>
-                            <span class="tech-badge">CIC Dataset</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Trafic Sain :</strong> Activités HTTP, HTTPS, FTP, SSH ordinaires.</li>
-                                <li><strong>Déni de Service (DoS/DDoS) :</strong> SYN Flood, Hulk, GoldenEye, Slowloris.</li>
-                                <li><strong>Reconnaissance :</strong> Balayages et scans de ports furtifs (PortScan).</li>
-                                <li><strong>Infiltrations :</strong> Exploits web, BruteForce (SQLi, XSS), Heartbleed, Botnets.</li>
-                            </ul>
+
+                    <div class="card card-lavender" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-sliders" style="font-size: 1.6rem; color: var(--accent-lavender); margin-bottom: 0.8rem; opacity: 0.35;"></i>
+                        <div class="big-number-container">
+                            <div class="big-number-wrapper">
+                                <div class="big-number" data-count-to="77" data-count-duration="1600" style="font-size: 3rem; background: linear-gradient(105deg, var(--accent-lavender) 0%, var(--accent-lavender) 40%, rgba(255,255,255,0.85) 50%, var(--accent-lavender) 60%, var(--accent-lavender) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">0</div>
+                                <div class="big-number-label" style="font-size: 0.85rem; letter-spacing: 1.5px; margin-top: 0.3rem;">Variables statistiques (features)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-coral" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <i class="fa-solid fa-skull-crossbones" style="font-size: 1.6rem; color: var(--color-coral); margin-bottom: 0.8rem; opacity: 0.35;"></i>
+                        <div class="big-number-container">
+                            <div class="big-number-wrapper">
+                                <div class="big-number" data-count-to="15" data-count-duration="1400" style="font-size: 3rem; background: linear-gradient(105deg, var(--color-coral) 0%, var(--color-coral) 40%, rgba(255,255,255,0.85) 50%, var(--color-coral) 60%, var(--color-coral) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">0</div>
+                                <div class="big-number-label" style="font-size: 0.85rem; letter-spacing: 1.5px; margin-top: 0.3rem;">Classes (1 saine · 14 attaques)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROW 2 : Taxonomie des menaces — 1 carte pleine largeur -->
+                <div class="card card-orange" style="padding: 1.8rem 2.2rem; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.8rem;">
+                        <i class="fa-solid fa-shield-virus" style="color: var(--arch-orange); font-size: 1.4rem;"></i>
+                        Taxonomie des Menaces Couvertes
+                       
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.2rem;">
+                        <!-- Trafic Sain -->
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 56px; height: 56px; min-width: 56px; border-radius: 14px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-check-circle" style="color: var(--color-mint); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--color-mint); margin-bottom: 0.35rem;">Trafic Sain</div>
+                                <div style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.5;">HTTP, HTTPS, FTP, SSH</div>
+                            </div>
+                        </div>
+                        <!-- DoS / DDoS -->
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 56px; height: 56px; min-width: 56px; border-radius: 14px; background: rgba(251, 113, 133, 0.12); border: 1px solid rgba(251, 113, 133, 0.25); display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-burst" style="color: var(--color-coral); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--color-coral); margin-bottom: 0.35rem;">DoS / DDoS</div>
+                                <div style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.5;">SYN Flood, Hulk, GoldenEye, Slowloris</div>
+                            </div>
+                        </div>
+                        <!-- Reconnaissance -->
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 56px; height: 56px; min-width: 56px; border-radius: 14px; background: rgba(255, 123, 0, 0.12); border: 1px solid rgba(255, 123, 0, 0.25); display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-binoculars" style="color: var(--arch-orange); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--arch-orange); margin-bottom: 0.35rem;">Reconnaissance</div>
+                                <div style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.5;">PortScan, balayages furtifs</div>
+                            </div>
+                        </div>
+                        <!-- Infiltrations -->
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 56px; height: 56px; min-width: 56px; border-radius: 14px; background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.25); display: flex; align-items: center; justify-content: center;">
+                                <i class="fa-solid fa-virus" style="color: var(--accent-lavender); font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <div style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--accent-lavender); margin-bottom: 0.35rem;">Infiltrations</div>
+                                <div style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.5;">BruteForce, SQLi, XSS, Heartbleed, Botnets</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1737,7 +2131,7 @@
             </div>
             <div class="slide-content">
                 <div class="flow-container">
-                    <div class="flow-step-card" style="border-left: 4px solid var(--accent-cyan);">
+                    <div class="flow-step-card card-cyan">
                         <div class="flow-icon-circle"><i class="fa-solid fa-broom"></i></div>
                         <div class="flow-badge">ÉTAPE 01</div>
                         <h3 class="flow-title">Nettoyage (IQR)</h3>
@@ -1751,7 +2145,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--arch-orange);">
+                    <div class="flow-step-card card-orange">
                         <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-scale-balanced"></i></div>
                         <div class="flow-badge" style="color: var(--arch-orange);">ÉTAPE 02</div>
                         <h3 class="flow-title">Normalisation</h3>
@@ -1765,7 +2159,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--accent-lavender);">
+                    <div class="flow-step-card card-lavender">
                         <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1);"><i class="fa-solid fa-code-fork"></i></div>
                         <div class="flow-badge" style="color: var(--accent-lavender);">ÉTAPE 03</div>
                         <h3 class="flow-title">Équilibrage (SMOTE)</h3>
@@ -2553,7 +2947,7 @@
             </div>
             <div class="slide-content">
                 <div class="flow-container">
-                    <div class="flow-step-card" style="border-left: 4px solid var(--accent-cyan);">
+                    <div class="flow-step-card card-cyan">
                         <div class="flow-icon-circle"><i class="fa-solid fa-road-barrier"></i></div>
                         <div class="flow-badge">ÉTAPE 01</div>
                         <h3 class="flow-title">Capture VXLAN</h3>
@@ -2563,7 +2957,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--arch-orange);">
+                    <div class="flow-step-card card-orange">
                         <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-arrows-spin"></i></div>
                         <div class="flow-badge" style="color: var(--arch-orange);">ÉTAPE 02</div>
                         <h3 class="flow-title">Agrégation Flux</h3>
@@ -2573,7 +2967,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--accent-lavender);">
+                    <div class="flow-step-card card-lavender">
                         <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1);"><i class="fa-solid fa-brain"></i></div>
                         <div class="flow-badge" style="color: var(--accent-lavender);">ÉTAPE 03</div>
                         <h3 class="flow-title">Inférence PyTorch</h3>
@@ -2583,7 +2977,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--color-mint);">
+                    <div class="flow-step-card card-mint">
                         <div class="flow-icon-circle" style="border-color: var(--color-mint); color: var(--color-mint); background: rgba(52, 211, 153, 0.1);"><i class="fa-solid fa-envelope-open-text"></i></div>
                         <div class="flow-badge" style="color: var(--color-mint);">ÉTAPE 04</div>
                         <h3 class="flow-title">AWS SQS & DB</h3>
@@ -2593,7 +2987,7 @@
                         </div>
                     </div>
                     <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card" style="border-left: 4px solid var(--accent-cyan);">
+                    <div class="flow-step-card card-cyan">
                         <div class="flow-icon-circle"><i class="fa-solid fa-bolt"></i></div>
                         <div class="flow-badge">ÉTAPE 05</div>
                         <h3 class="flow-title">WebSockets SOC</h3>
@@ -2769,17 +3163,17 @@
                     <div class="card card-mint" style="background: var(--accent-blue-focus);">
                         <div class="big-number-container">
                             <div class="big-number-wrapper">
-                                <div class="big-number" style="color: var(--color-mint); text-shadow: 0 0 20px rgba(52, 211, 153, 0.25);">100 %</div>
+                                <div class="big-number" data-count-to="100" data-count-suffix=" %" data-count-duration="1800" style="--num-color: var(--color-mint); background: linear-gradient(105deg, var(--color-mint) 0%, var(--color-mint) 40%, rgba(255,255,255,0.85) 50%, var(--color-mint) 60%, var(--color-mint) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">0</div>
                                 <div class="big-number-label"><i class="fa-solid fa-circle-check"></i> Vrais Positifs (Détectés)</div>
                             </div>
                             <div class="big-number-divider" style="background: var(--border-subtle);"></div>
                             <div class="big-number-wrapper">
-                                <div class="big-number" style="color: var(--color-mint); text-shadow: 0 0 20px rgba(52, 211, 153, 0.25);">&lt; 2 s</div>
+                                <div class="big-number" data-count-text="&lt; 2 s" data-count-duration="1200" style="--num-color: var(--color-mint); background: linear-gradient(105deg, var(--color-mint) 0%, var(--color-mint) 40%, rgba(255,255,255,0.85) 50%, var(--color-mint) 60%, var(--color-mint) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">—</div>
                                 <div class="big-number-label"><i class="fa-solid fa-stopwatch"></i> Latence Globale Bout-en-Bout</div>
                             </div>
                             <div class="big-number-divider" style="background: var(--border-subtle);"></div>
                             <div class="big-number-wrapper">
-                                <div class="big-number" style="color: #fff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);">0.00 %</div>
+                                <div class="big-number" data-count-to="0" data-count-suffix=" %" data-count-decimals="2" data-count-duration="1400" style="--num-color: #fff; background: linear-gradient(105deg, #fff 0%, #fff 40%, rgba(200,220,255,0.85) 50%, #fff 60%, #fff 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">—</div>
                                 <div class="big-number-label"><i class="fa-solid fa-microchip"></i> Charge CPU sur machines cibles</div>
                             </div>
                         </div>
@@ -2856,6 +3250,102 @@
         let prevSlideIdx = 0;
         const totalSlides = slides.length;
 
+        /* --- COUNT-UP ANIMATION ENGINE --- */
+        function formatNumber(n, separator, decimals) {
+            if (decimals > 0) {
+                const fixed = n.toFixed(decimals);
+                if (!separator) return fixed;
+                const [intPart, decPart] = fixed.split('.');
+                return intPart.replace(/\B(?=(\d{3})+(?!\d))/g, separator) + '.' + decPart;
+            }
+            const intStr = Math.floor(n).toString();
+            if (!separator) return intStr;
+            return intStr.replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+        }
+
+        function easeOutExpo(t) {
+            return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        }
+
+        function animateCountUp(el) {
+            const target = parseFloat(el.dataset.countTo);
+            const duration = parseInt(el.dataset.countDuration) || 2000;
+            const separator = el.dataset.countSeparator || '';
+            const suffix = el.dataset.countSuffix || '';
+            const decimals = parseInt(el.dataset.countDecimals) || 0;
+            const textReveal = el.dataset.countText; // for non-numeric reveals like "< 2 s"
+
+            if (textReveal !== undefined) {
+                // For text values: show a brief scramble then reveal
+                const chars = '█▓▒░─';
+                let frame = 0;
+                const totalFrames = Math.round(duration / 50);
+                const interval = setInterval(() => {
+                    frame++;
+                    if (frame >= totalFrames) {
+                        clearInterval(interval);
+                        el.textContent = textReveal;
+                        return;
+                    }
+                    const progress = frame / totalFrames;
+                    let display = '';
+                    for (let i = 0; i < textReveal.length; i++) {
+                        if (progress > (i / textReveal.length) * 0.7 + 0.3) {
+                            display += textReveal[i];
+                        } else {
+                            display += chars[Math.floor(Math.random() * chars.length)];
+                        }
+                    }
+                    el.textContent = display;
+                }, 50);
+                return;
+            }
+
+            if (isNaN(target)) return;
+
+            const startTime = performance.now();
+            const startVal = 0;
+
+            function tick(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = easeOutExpo(progress);
+                const currentVal = startVal + (target - startVal) * easedProgress;
+                el.textContent = formatNumber(currentVal, separator, decimals) + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function revealBigNumbers(slideEl) {
+            // Reveal wrappers and dividers with staggered timing
+            const wrappers = slideEl.querySelectorAll('.big-number-wrapper');
+            const dividers = slideEl.querySelectorAll('.big-number-divider');
+            wrappers.forEach(w => w.classList.add('revealed'));
+            dividers.forEach(d => d.classList.add('revealed'));
+
+            // Trigger count-up for each .big-number with data attributes
+            const numbers = slideEl.querySelectorAll('.big-number[data-count-to], .big-number[data-count-text]');
+            numbers.forEach((el, idx) => {
+                setTimeout(() => animateCountUp(el), idx * 250);
+            });
+        }
+
+        function resetBigNumbers(slideEl) {
+            const wrappers = slideEl.querySelectorAll('.big-number-wrapper');
+            const dividers = slideEl.querySelectorAll('.big-number-divider');
+            wrappers.forEach(w => w.classList.remove('revealed'));
+            dividers.forEach(d => d.classList.remove('revealed'));
+
+            // Reset number text
+            const numbers = slideEl.querySelectorAll('.big-number[data-count-to]');
+            numbers.forEach(el => { el.textContent = '0'; });
+            const texts = slideEl.querySelectorAll('.big-number[data-count-text]');
+            texts.forEach(el => { el.textContent = '—'; });
+        }
+
         function updateSlide() {
             // Déterminer la direction de navigation
             const direction = currentSlideIdx >= prevSlideIdx ? 'forward' : 'backward';
@@ -2864,10 +3354,15 @@
             // Retire la classe active et les directions de toutes les slides
             slides.forEach(slide => {
                 slide.classList.remove('active', 'forward', 'backward');
+                resetBigNumbers(slide);
             });
             
             // Active la slide courante avec la classe de direction pour la transition
-            slides[currentSlideIdx].classList.add('active', direction);
+            const activeSlide = slides[currentSlideIdx];
+            activeSlide.classList.add('active', direction);
+            
+            // Trigger big-number reveal & count-up if present
+            setTimeout(() => revealBigNumbers(activeSlide), 200);
             
             // Met à jour la barre de progression
             const progressPercent = ((currentSlideIdx + 1) / totalSlides) * 100;
