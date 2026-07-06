@@ -39,9 +39,9 @@
             --font-mono: 'JetBrains Mono', monospace;
 
             /* Technical Grid Background Pattern */
-            --grid-dot: rgba(0, 242, 254, 0.04);
-            --grid-line-thin: rgba(255, 255, 255, 0.012);
-            --grid-line-thick: rgba(0, 242, 254, 0.022);
+            --grid-dot: rgba(0, 242, 254, 0.08);
+            --grid-line-thin: rgba(255, 255, 255, 0.024);
+            --grid-line-thick: rgba(0, 242, 254, 0.045);
 
             /* Architecture Colors */
             --arch-bg: rgba(15, 23, 42, 0.05);
@@ -70,9 +70,9 @@
             --color-coral: #dc2626;
 
             /* Technical Grid Background Pattern */
-            --grid-dot: rgba(2, 132, 199, 0.04);
-            --grid-line-thin: rgba(0, 0, 0, 0.012);
-            --grid-line-thick: rgba(2, 132, 199, 0.022);
+            --grid-dot: rgba(2, 132, 199, 0.08);
+            --grid-line-thin: rgba(0, 0, 0, 0.024);
+            --grid-line-thick: rgba(2, 132, 199, 0.045);
 
             /* Architecture Colors */
             --arch-bg: rgba(255, 255, 255, 0.03);
@@ -134,11 +134,133 @@
             border-color: rgba(0, 0, 0, 0.08);
         }
 
+        /* --- EN-TÊTE GLOBAL --- */
+        .global-header {
+            position: absolute;
+            top: 1.2rem;
+            left: 2.8rem;
+            right: 2.8rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header-logo {
+            height: 60px;
+            padding: 8px 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            pointer-events: auto;
+        }
+
+        .header-logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .left-header-logo {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .right-header-logo {
+            height: 75px;
+            padding: 4px 16px;
+        }
+
+        body:not(.light-theme) .right-header-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        body.light-theme .right-header-logo {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        body.light-theme .right-header-logo img {
+            filter: invert(1) brightness(0.1);
+        }
+        
+        body.light-theme .left-header-logo {
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(13, 15, 26, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 30px;
+            padding: 0.4rem 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            pointer-events: auto;
+            transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        body.light-theme .header-nav {
+            background: rgba(255, 255, 255, 0.55);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-item {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-warm-gray);
+            cursor: pointer;
+            padding: 0.25rem 0.65rem;
+            border-radius: 15px;
+            transition: all 0.25s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item:hover {
+            color: var(--accent-cyan);
+            background: rgba(0, 242, 254, 0.06);
+        }
+        
+        body.light-theme .nav-item:hover {
+            color: var(--accent-lavender);
+            background: rgba(109, 40, 217, 0.05);
+        }
+
+        .nav-item.active {
+            color: #06070a;
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            box-shadow: 0 2px 10px rgba(0, 242, 254, 0.2);
+        }
+        
+        body.light-theme .nav-item.active {
+            color: #ffffff;
+            background: linear-gradient(90deg, var(--accent-lavender) 0%, var(--accent-cyan) 100%);
+            box-shadow: 0 2px 10px rgba(109, 40, 217, 0.15);
+        }
+
+        .nav-arrow {
+            font-size: 0.8rem;
+            color: var(--border-subtle);
+            font-weight: bold;
+        }
+
         /* Bouton Thème Switcher */
         .theme-toggle-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 2.8rem;
             background: rgba(13, 15, 26, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -152,7 +274,6 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            z-index: 500;
             box-shadow: 0 4px 15px rgba(0,0,0,0.25);
             font-size: 1.1rem;
         }
@@ -248,7 +369,7 @@
         /* --- STRUCTURE DE LA DIAPOSITIVE --- */
         .slide-container {
             width: 90%;
-            height: 84%;
+            height: 78%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -390,6 +511,45 @@
             font-weight: 700;
             color: var(--text-white);
             letter-spacing: -0.5px;
+            display: inline-block;
+        }
+
+        /* --- THÉMATISATION CHROMATIQUE DES TITRES PAR SECTION --- */
+        .slide[data-section="1"] .slide-title {
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide[data-section="2"] .slide-title {
+            background: linear-gradient(90deg, var(--arch-orange) 0%, var(--color-coral) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide[data-section="3"] .slide-title {
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--color-mint) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide[data-section="4"] .slide-title {
+            background: linear-gradient(90deg, var(--accent-lavender) 0%, var(--color-coral) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide[data-section="5"] .slide-title {
+            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .slide[data-section="6"] .slide-title {
+            background: linear-gradient(90deg, var(--color-mint) 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* --- CONTENU DE LA DIAPOSITIVE --- */
@@ -406,6 +566,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
             align-items: stretch;
+            flex-grow: 1;
         }
 
         .cols-3 {
@@ -413,6 +574,7 @@
             grid-template-columns: 1fr 1fr 1fr;
             gap: 1.5rem;
             align-items: stretch;
+            flex-grow: 1;
         }
 
         .cols-5 {
@@ -427,6 +589,7 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto auto;
             gap: 1.2rem;
+            flex-grow: 1;
         }
 
         /* --- COMPOSANT "CARD GLASSMORPHISM" --- */
@@ -436,7 +599,7 @@
             -webkit-backdrop-filter: blur(16px);
             border: 2px solid var(--border-subtle);
             border-radius: 12px;
-            padding: 1.3rem 1.6rem;
+            padding: 1.8rem 2rem;
             position: relative;
             box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -459,88 +622,89 @@
         }
 
         /* Accent sémantique stylé sur toute la bordure avec lueur diffuse */
-        .card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); }
+        .card-cyan { 
+            border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(0, 242, 254, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-cyan {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-color: rgba(2, 132, 199, 0.3);
+        }
         .card-cyan:hover { 
             border-color: var(--accent-cyan);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
         }
 
-        .card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); }
+        .card-lavender { 
+            border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(167, 139, 250, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-lavender {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-color: rgba(109, 40, 217, 0.3);
+        }
         .card-lavender:hover { 
             border-color: var(--accent-lavender);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.15);
         }
 
-        .card-mint { border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); }
+        .card-mint { 
+            border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-mint {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-color: rgba(5, 150, 105, 0.3);
+        }
         .card-mint:hover { 
             border-color: var(--color-mint);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
         }
 
-        .card-coral { border-color: color-mix(in srgb, var(--color-coral) 45%, transparent); }
+        .card-coral { 
+            border-color: color-mix(in srgb, var(--color-coral) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(251, 113, 133, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-coral {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
         .card-coral:hover { 
             border-color: var(--color-coral);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 113, 133, 0.15);
         }
 
-        .card-orange { border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); }
+        .card-orange { 
+            border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(255, 123, 0, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-orange {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border-color: rgba(217, 119, 6, 0.3);
+        }
         .card-orange:hover { 
             border-color: var(--arch-orange);
             box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 123, 0, 0.15);
+        }
+
+        .card-gold { 
+            border-color: color-mix(in srgb, var(--arch-gold) 45%, transparent); 
+            background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.15), rgba(6, 7, 12, 0.85) 70%);
+        }
+        body.light-theme .card-gold {
+            background: linear-gradient(135deg, #fffdf5 0%, #fef9c3 100%);
+            border-color: rgba(180, 83, 9, 0.3);
+        }
+        .card-gold:hover { 
+            border-color: var(--arch-gold);
+            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 191, 36, 0.15);
         }
 
         .card.focus {
             background: var(--accent-blue-focus);
         }
 
-        /* --- QUANTITY QUERIES: AUTO-COLOR SOME CARDS IF > 2 CARDS ON A PAGE --- */
-        /* Targets containers having 3 or more standard .card elements, coloring alternate (odd) cards */
-        .card:first-child:nth-last-child(n+3):nth-child(odd),
-        .card:first-child:nth-last-child(n+3) ~ .card:nth-child(odd) {
-            background: color-mix(in srgb, var(--accent-cyan) 8%, var(--card-midnight));
-        }
-        .card.card-cyan:first-child:nth-last-child(n+3):nth-child(odd),
-        .card.card-cyan:first-child:nth-last-child(n+3) ~ .card.card-cyan:nth-child(odd) { 
-            background: color-mix(in srgb, var(--accent-cyan) 10%, var(--card-midnight)); 
-        }
-        .card.card-orange:first-child:nth-last-child(n+3):nth-child(odd),
-        .card.card-orange:first-child:nth-last-child(n+3) ~ .card.card-orange:nth-child(odd) { 
-            background: color-mix(in srgb, var(--arch-orange) 10%, var(--card-midnight)); 
-        }
-        .card.card-lavender:first-child:nth-last-child(n+3):nth-child(odd),
-        .card.card-lavender:first-child:nth-last-child(n+3) ~ .card.card-lavender:nth-child(odd) { 
-            background: color-mix(in srgb, var(--accent-lavender) 10%, var(--card-midnight)); 
-        }
-        .card.card-mint:first-child:nth-last-child(n+3):nth-child(odd),
-        .card.card-mint:first-child:nth-last-child(n+3) ~ .card.card-mint:nth-child(odd) { 
-            background: color-mix(in srgb, var(--color-mint) 10%, var(--card-midnight)); 
-        }
-        .card.card-coral:first-child:nth-last-child(n+3):nth-child(odd),
-        .card.card-coral:first-child:nth-last-child(n+3) ~ .card.card-coral:nth-child(odd) { 
-            background: color-mix(in srgb, var(--color-coral) 10%, var(--card-midnight)); 
-        }
 
-        /* Targets containers having 3 or more .flow-step-card elements, coloring alternate (odd) cards */
-        .flow-step-card:first-child:nth-last-child(n+3):nth-child(odd),
-        .flow-step-card:first-child:nth-last-child(n+3) ~ .flow-step-card:nth-child(odd) {
-            background: color-mix(in srgb, var(--accent-cyan) 8%, var(--card-midnight));
-        }
-        .flow-step-card.card-cyan:first-child:nth-last-child(n+3):nth-child(odd),
-        .flow-step-card.card-cyan:first-child:nth-last-child(n+3) ~ .flow-step-card.card-cyan:nth-child(odd) { 
-            background: color-mix(in srgb, var(--accent-cyan) 10%, var(--card-midnight)); 
-        }
-        .flow-step-card.card-orange:first-child:nth-last-child(n+3):nth-child(odd),
-        .flow-step-card.card-orange:first-child:nth-last-child(n+3) ~ .flow-step-card.card-orange:nth-child(odd) { 
-            background: color-mix(in srgb, var(--arch-orange) 10%, var(--card-midnight)); 
-        }
-        .flow-step-card.card-lavender:first-child:nth-last-child(n+3):nth-child(odd),
-        .flow-step-card.card-lavender:first-child:nth-last-child(n+3) ~ .flow-step-card.card-lavender:nth-child(odd) { 
-            background: color-mix(in srgb, var(--accent-lavender) 10%, var(--card-midnight)); 
-        }
-        .flow-step-card.card-mint:first-child:nth-last-child(n+3):nth-child(odd),
-        .flow-step-card.card-mint:first-child:nth-last-child(n+3) ~ .flow-step-card.card-mint:nth-child(odd) { 
-            background: color-mix(in srgb, var(--color-mint) 10%, var(--card-midnight)); 
-        }
 
 
 
@@ -633,7 +797,7 @@
 
         .card-title {
             font-family: var(--font-title);
-            font-size: 1.7rem;
+            font-size: 1.85rem;
             font-weight: 700;
             color: var(--text-white);
             margin-bottom: 0.8rem;
@@ -664,7 +828,7 @@
         }
 
         .card-desc {
-            font-size: 1.2rem;
+            font-size: 1.32rem;
             line-height: 1.6;
             color: var(--text-warm-gray);
         }
@@ -680,9 +844,10 @@
 
         /* Technical Losange Bullet Points */
         .card-desc li {
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
             position: relative;
             padding-left: 1.1rem;
+            font-size: 1.25rem;
         }
 
         .card-desc li::before {
@@ -992,6 +1157,39 @@
             font-weight: 600;
         }
 
+        /* --- CARD STYLES STANDARDIZED --- */
+        .slide-plan-card {
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+        .slide-9-card {
+            text-align: center;
+            padding: 1.8rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .slide-9-row2-card {
+            padding: 1.8rem 2.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .slide-tech-card {
+            padding: 1.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 380px;
+            height: 100%;
+        }
+
         /* --- DIAPOSITIVE DE GARDE --- */
         .garde-slide {
             display: flex;
@@ -1006,8 +1204,8 @@
         .garde-logo {
             position: absolute;
             top: 0rem;
-            height: 48px;
-            padding: 6px 12px;
+            height: 58px;
+            padding: 8px 16px;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -1016,6 +1214,7 @@
             -webkit-backdrop-filter: blur(10px);
             z-index: 10;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
         .garde-logo img {
@@ -1030,18 +1229,14 @@
             left: 0rem;
             background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Logo de l'entreprise (3D Smart Factory) - Droite */
         .right-logo {
             right: 0rem;
-            height: 68px;
-            padding: 8px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Spécificités Thèmes pour le logo entreprise (blanc pur à l'origine) */
+        /* Spécificités Thèmes pour les conteneurs de logos */
         body:not(.light-theme) .right-logo {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1061,6 +1256,7 @@
         body.light-theme .left-logo {
             background: rgba(255, 255, 255, 0.98);
             border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .garde-inst {
@@ -1074,6 +1270,38 @@
             text-transform: uppercase;
         }
 
+        .garde-title-container {
+            background: rgba(6, 7, 12, 0.3);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.2rem 3.5rem;
+            margin: 1.5rem auto;
+            max-width: 95%;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            
+            /* Corner Brackets on the frame itself for a premium cyber feel */
+            background: 
+                linear-gradient(to right, var(--accent-cyan) 3px, transparent 3px) 0 0,
+                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 0 0,
+                linear-gradient(to left, var(--accent-cyan) 3px, transparent 3px) 100% 0,
+                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 100% 0,
+                linear-gradient(to right, var(--accent-lavender) 3px, transparent 3px) 0 100%,
+                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 0 100%,
+                linear-gradient(to left, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
+                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 100% 100%;
+            background-size: 16px 16px;
+            background-repeat: no-repeat;
+        }
+
+        body.light-theme .garde-title-container {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+        }
+
         .garde-title {
             font-family: var(--font-title);
             font-size: 2.8rem;
@@ -1081,43 +1309,13 @@
             font-weight: 700;
             color: var(--text-white);
             text-align: center;
-            margin: 1.5rem 0;
-            padding: 1.5rem 2.5rem;
+            margin: 0 0 1rem 0;
+            padding: 0;
             position: relative;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, var(--text-white) 40%, var(--text-warm-gray) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        /* Cyber-Brackets around guard slide title */
-        .garde-title::before {
-            content: '[';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%) scaleY(1.4);
-            font-family: var(--font-mono);
-            color: var(--accent-cyan);
-            font-size: 3.5rem;
-            font-weight: 200;
-            opacity: 0.8;
-            -webkit-text-fill-color: var(--accent-cyan);
-            background-clip: border-box;
-        }
-        .garde-title::after {
-            content: ']';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%) scaleY(1.4);
-            font-family: var(--font-mono);
-            color: var(--accent-lavender);
-            font-size: 3.5rem;
-            font-weight: 200;
-            opacity: 0.8;
-            -webkit-text-fill-color: var(--accent-lavender);
-            background-clip: border-box;
         }
 
         .garde-dividers {
@@ -1315,10 +1513,10 @@
             border: 1.2px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             background: var(--subnet-bg);
-            padding: 0.4rem;
+            padding: 0.6rem 0.8rem;
             display: flex;
             flex-direction: column;
-            gap: 0.3rem;
+            gap: 0.5rem;
             transition: all 0.3s ease;
         }
         body.light-theme .subnet {
@@ -1434,6 +1632,10 @@
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
+        body.light-theme .laptop-screen {
+            border-color: #2a2b2d;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
         .laptop-screen img {
             width: 100%;
             height: 100%;
@@ -1492,6 +1694,15 @@
     </style>
 </head>
 <body>
+    <script>
+        // Initialisation immédiate du thème pour éviter les flashs visuels
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+        })();
+    </script>
 
     <!-- Lueurs d'arrière-plan diffuses -->
     <div class="glow-1"></div>
@@ -1503,10 +1714,34 @@
         <div class="top-accent-right"></div>
     </div>
 
-    <!-- Bouton flottant de Thème Switcher -->
-    <button class="theme-toggle-btn" onclick="toggleTheme(); event.stopPropagation();" id="theme-btn" title="Changer en thème clair (C)">
-        <i class="fa-solid fa-sun" style="color: var(--accent-cyan);"></i>
-    </button>
+    <!-- En-tête global avec Logos et Navigateur de Plan -->
+    <header class="global-header">
+        <div class="header-logo left-header-logo" title="Logo HESTIM">
+            <img src="logo-hestim.webp" alt="HESTIM Logo">
+        </div>
+        <nav class="header-nav">
+            <span class="nav-item" data-section="1">I. Contexte</span>
+            <span class="nav-arrow">&rarr;</span>
+            <span class="nav-item" data-section="2">II. Deep Learning</span>
+            <span class="nav-arrow">&rarr;</span>
+            <span class="nav-item" data-section="3">III. Architecture</span>
+            <span class="nav-arrow">&rarr;</span>
+            <span class="nav-item" data-section="4">IV. Technologies</span>
+            <span class="nav-arrow">&rarr;</span>
+            <span class="nav-item" data-section="5">V. Validation</span>
+            <span class="nav-arrow">&rarr;</span>
+            <span class="nav-item" data-section="6">VI. Conclusion</span>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 1rem; pointer-events: auto;">
+            <!-- Bouton flottant de Thème Switcher (déplacé dans l'en-tête) -->
+            <button class="theme-toggle-btn" onclick="toggleTheme(); event.stopPropagation();" id="theme-btn" title="Changer en thème clair (C)">
+                <i class="fa-solid fa-sun" style="color: var(--accent-cyan);"></i>
+            </button>
+            <div class="header-logo right-header-logo" title="Logo 3D Smart Factory">
+                <img src="1st-logo.png" alt="3D Smart Factory Logo">
+            </div>
+        </div>
+    </header>
 
     <!-- Conteneur principal des diapositives -->
     <div class="slide-container">
@@ -1516,29 +1751,22 @@
              ==================================================== -->
         <div class="slide active" id="slide-1">
             <div class="garde-slide">
-                <!-- Logos de garde -->
-                <div class="garde-logo left-logo" title="Logo HESTIM">
-                    <img src="logo-hestim.webp" alt="HESTIM Logo">
-                </div>
-                <div class="garde-logo right-logo" title="Logo 3D Smart Factory">
-                    <img src="1st-logo.png" alt="3D Smart Factory Logo">
-                </div>
 
-                <div class="garde-inst">HESTIM CASABLANCA &nbsp;|&nbsp; FILIÈRE GÉNIE INFORMATIQUE & IA</div>
+                <div class="garde-inst">FILIÈRE GÉNIE INFORMATIQUE & INTELLIGENCE ARTIFICIELLE</div>
                 
-                <div>
-                    <h1 class="garde-title">CONCEPTION ET DÉPLOIEMENT D'UN SYSTÈME DE DÉTECTION D'INTRUSIONS RÉSEAU (NIDS) BASÉ SUR LE DEEP LEARNING</h1>
+                <div class="garde-title-container">
+                    <h1 class="garde-title">DÉVELOPPEMENT D'UN SYSTÈME DE DÉTECTION D'INTRUSIONS RÉSEAU (NIDS) BASÉ SUR LE DEEP LEARNING</h1>
                     <div class="garde-dividers">
                         <div class="garde-div-left"></div>
                         <div class="garde-div-right"></div>
                     </div>
-                    <div class="garde-sub">MÉMOIRE DE PROJET DE FIN D'ÉTUDES &nbsp;•&nbsp; SÉCURITÉ CLOUD & IA</div>
+                    <div class="garde-sub">PRESENTATION DU PROJET DE FIN D'ÉTUDES</div>
                 </div>
 
                 <div class="garde-people">
                     <div>
                         <div class="person-label">Présenté par :</div>
-                        <div class="person-name">Mathieu AKAKPO-DJAKPATA<br><span style="font-family: var(--font-body); font-size: 0.9rem; font-weight: normal; color: var(--text-warm-gray);">Élève Ingénieur en Cybersécurité & IA</span></div>
+                        <div class="person-name">Mathieu AKAKPO-DJAKPATA<br><span style="font-family: var(--font-body); font-size: 0.9rem; font-weight: normal; color: var(--text-warm-gray);">Élève Ingénieur en Génie Informatique & Intelligence Artificielle</span></div>
                     </div>
                     <div>
                         <div class="person-label">Sous la direction de :</div>
@@ -1546,7 +1774,7 @@
                     </div>
                 </div>
 
-                <div class="garde-year">ANNÉE UNIVERSITAIRE : 2025 -- 2026</div>
+                <div class="garde-year">ANNÉE UNIVERSITAIRE : 2025&ndash;2026</div>
             </div>
         </div>
 
@@ -1559,76 +1787,82 @@
                 <h2 class="slide-title" style="font-size: 2.2rem;">Plan de la Présentation</h2>
             </div>
             <div class="slide-content">
-                <div class="cols-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.8rem; align-items: stretch; margin-top: 0.2rem;">
+                <div class="cols-2" style="gap: 1.2rem 1.8rem; margin-top: 0.2rem;">
                     
-                    <div class="card card-cyan" style="padding: 1.4rem 2rem; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Card I -->
+                    <div class="card card-cyan slide-plan-card">
                         <div style="position: relative;">
                             <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">I</div>
                             <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
-                                <i class="fa-solid fa-circle-info" style="font-size: 1.6rem;"></i> Introduction & Cadrage
+                                <i class="fa-solid fa-circle-info" style="font-size: 1.6rem;"></i> Introduction &amp; Contexte
                             </h4>
                             <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                Contexte cyber, structure d'accueil & spécifications.
+                                Présentation de l'entreprise, contexte cyber, limites de l'existant, méthodologie &amp; planning.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="card card-orange" style="padding: 1.4rem 2rem; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="position: relative;">
-                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">II</div>
-                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
-                                <i class="fa-solid fa-brain" style="font-size: 1.6rem;"></i> Modélisation IA
-                            </h4>
-                            <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                Benchmark de 11 modèles & Attention MLP.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card card-lavender" style="padding: 1.4rem 2rem; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="position: relative;">
-                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">III</div>
-                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
-                                <i class="fa-solid fa-cloud" style="font-size: 1.6rem;"></i> Architecture Cloud
-                            </h4>
-                            <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                VPC Mirroring, décapsulation & Terraform/Ansible.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card card-mint" style="padding: 1.4rem 2rem; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Card IV -->
+                    <div class="card card-mint slide-plan-card">
                         <div style="position: relative;">
                             <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">IV</div>
                             <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
-                                <i class="fa-solid fa-terminal" style="font-size: 1.6rem;"></i> Pipeline & Détection
+                                <i class="fa-solid fa-terminal" style="font-size: 1.6rem;"></i> Cartographie Technologique
                             </h4>
                             <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                Sonde active NFStream, Amazon SQS & DynamoDB.
+                                Sonde active NFStream, ingestion asynchrone Amazon SQS &amp; stockage persistant DynamoDB.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="card card-cyan" style="padding: 1.4rem 2rem; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Card II -->
+                    <div class="card card-orange slide-plan-card">
+                        <div style="position: relative;">
+                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">II</div>
+                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
+                                <i class="fa-solid fa-brain" style="font-size: 1.6rem;"></i> Modélisation Deep Learning
+                            </h4>
+                            <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
+                                Dataset CICIDS2017, variables caractéristiques, benchmark de 11 architectures &amp; modèle champion.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card V -->
+                    <div class="card card-coral slide-plan-card">
                         <div style="position: relative;">
                             <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">V</div>
                             <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
-                                <i class="fa-solid fa-display" style="font-size: 1.6rem;"></i> Démo SOC & Validation
+                                <i class="fa-solid fa-display" style="font-size: 1.6rem;"></i> Supervision &amp; Validation
                             </h4>
                             <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                Carrousel interactif d'écrans du SOC & latence.
+                                Validation expérimentale sous scénarios d'attaques réelles &amp; supervision via React SOC UI.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="card card-lavender" style="padding: 1.4rem 2rem; background: rgba(30, 41, 75, 0.25); display: flex; flex-direction: column; justify-content: center;">
+                    <!-- Card III -->
+                    <div class="card card-lavender slide-plan-card">
                         <div style="position: relative;">
-                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">VI</div>
-                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem; color: var(--accent-cyan);">
-                                <i class="fa-solid fa-flag-checkered" style="font-size: 1.6rem;"></i> Conclusion & Perspectives
+                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">III</div>
+                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
+                                <i class="fa-solid fa-cloud" style="font-size: 1.6rem;"></i> Architecture AWS
                             </h4>
                             <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
-                                Bilan du PFE, IA Explicable (XAI) & perspectives R&D.
+                                Conception du CyberRange Cloud, provisionnement Terraform et configuration Ansible.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card VI -->
+                    <div class="card card-gold slide-plan-card">
+                        <div style="position: relative;">
+                            <div class="card-number" style="font-size: 2rem; top: -0.4rem; right: 0rem; opacity: 0.25;">VI</div>
+                            <h4 class="card-title" style="font-size: 1.8rem; margin-bottom: 0.6rem; gap: 0.8rem; padding-right: 2rem;">
+                                <i class="fa-solid fa-flag-checkered" style="font-size: 1.6rem;"></i> Bilan &amp; Perspectives
+                            </h4>
+                            <div class="card-desc" style="font-size: 1.3rem; line-height: 1.5; color: var(--text-warm-gray);">
+                                Bilan du PFE, ouverture sur l'IA Explicable (XAI) &amp; perspectives R&amp;D.
                             </div>
                         </div>
                     </div>
@@ -1700,11 +1934,11 @@
                             <i class="fa-solid fa-industry"></i> 3D Smart Factory (CSIT) -- Mohammedia
                         </h3>
                         <div class="card-desc">
-                            <span class="tech-badge">Incubateur R&D</span>
+                            <span class="tech-badge">Incubateur Recherche &amp; Développement</span>
                             <span class="tech-badge">Maroc</span>
                             <span class="tech-badge">Cyber & IA</span>
                             <p style="margin-top: 0.4rem;">
-                                Structure mixte accompagnant l'innovation technologique et industrielle de la R&D jusqu'à la mise en production.
+                                Structure mixte accompagnant l'innovation technologique et industrielle de la Recherche &amp; Développement jusqu'à la mise en production.
                             </p>
 
                         </div>
@@ -1792,56 +2026,136 @@
         <div class="slide" id="slide-5">
             <div class="slide-header">
                 <div class="slide-category"><i class="fa-solid fa-clipboard-list"></i> Analyse des Spécifications</div>
-                <h2 class="slide-title">Besoins Fonctionnels & Non Fonctionnels</h2>
+                <h2 class="slide-title">Besoins Fonctionnels &amp; Non Fonctionnels</h2>
             </div>
-            <div class="slide-content">
-                <div class="grid-2x2">
-                    <div class="card card-cyan">
-                        <div class="card-number">01</div>
-                        <h3 class="card-title"><i class="fa-solid fa-download"></i> Capture & Ingestion</h3>
-                        <div class="card-desc">
-                            <span class="tech-badge">Passive</span>
-                            <span class="tech-badge">VXLAN 4789</span>
-                            <span class="tech-badge">NFStream</span>
-                            <p style="margin-top: 0.4rem;">
-                                Duplication passive hors-bande (sans impact CPU) • Décapsulation VXLAN temps réel • Agrégation en 77 statistiques de flux bidirectionnelles.
-                            </p>
+            <div class="slide-content" style="display: flex; flex-direction: column; gap: 1rem; justify-content: space-between;">
+                
+                <div class="cols-2" style="flex: 1; align-items: stretch; gap: 1.8rem;">
+                    
+                    <!-- Colonne gauche : Besoins Fonctionnels -->
+                    <div class="card card-cyan" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 1.5rem; height: 100%;">
+                        <h3 class="card-title" style="font-size: 1.55rem; margin-bottom: 1.5rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-gears"></i> Besoins Fonctionnels
+                        </h3>
+                        
+                        <!-- Timeline Pipeline Technique -->
+                        <div style="position: relative; padding-left: 2.2rem; border-left: 2px dashed color-mix(in srgb, var(--accent-cyan) 40%, transparent); margin-left: 1.2rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1;">
+                            
+                            <!-- Étape A -->
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -3.3rem; top: 0.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bg-obsidian); border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-title); font-size: 1.05rem; color: var(--accent-cyan); box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 40%, transparent);">
+                                    A
+                                </div>
+                                <h4 style="color: var(--text-white); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.2rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-download" style="font-size: 1rem; opacity: 0.85;"></i> Capture &amp; Ingestion
+                                </h4>
+                                <p style="font-size: 1.05rem; color: var(--text-warm-gray); line-height: 1.45; margin: 0;">
+                                    Capture passive sans impact sur la production, agrégation en flux et extraction des 77 caractéristiques normalisées.
+                                </p>
+                            </div>
+                            
+                            <!-- Étape B -->
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -3.3rem; top: 0.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bg-obsidian); border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-title); font-size: 1.05rem; color: var(--accent-cyan); box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 40%, transparent);">
+                                    B
+                                </div>
+                                <h4 style="color: var(--text-white); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.2rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-brain" style="font-size: 1rem; opacity: 0.85;"></i> Prétraitement &amp; Inférence
+                                </h4>
+                                <p style="font-size: 1.05rem; color: var(--text-warm-gray); line-height: 1.45; margin: 0;">
+                                    Prétraitement cohérent (imputation, IQR, normalisation), inférence temps réel (15 classes d'attaques) et seuil de confiance ajustable.
+                                </p>
+                            </div>
+                            
+                            <!-- Étape C -->
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -3.3rem; top: 0.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bg-obsidian); border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-title); font-size: 1.05rem; color: var(--accent-cyan); box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 40%, transparent);">
+                                    C
+                                </div>
+                                <h4 style="color: var(--text-white); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.2rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-bell" style="font-size: 1rem; opacity: 0.85;"></i> Alerting &amp; Supervision
+                                </h4>
+                                <p style="font-size: 1.05rem; color: var(--text-warm-gray); line-height: 1.45; margin: 0;">
+                                    Génération d'alertes asynchrones enrichies, diffusion temps réel vers le SOC et tableau de bord interactif (historique, stats).
+                                </p>
+                            </div>
+                            
+                            <!-- Étape D -->
+                            <div style="position: relative;">
+                                <div style="position: absolute; left: -3.3rem; top: 0.1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--bg-obsidian); border: 2px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; font-weight: 700; font-family: var(--font-title); font-size: 1.05rem; color: var(--accent-cyan); box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 40%, transparent);">
+                                    D
+                                </div>
+                                <h4 style="color: var(--text-white); font-size: 1.25rem; font-weight: 700; margin: 0 0 0.2rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-vial" style="font-size: 1rem; opacity: 0.85;"></i> Validation &amp; Reproductibilité
+                                </h4>
+                                <p style="font-size: 1.05rem; color: var(--text-warm-gray); line-height: 1.45; margin: 0;">
+                                    Validation globale par scénarios d'attaque reproductibles et déploiement automatisé de l'architecture par scripts.
+                                </p>
+                            </div>
+                            
                         </div>
                     </div>
-                    <div class="card card-orange">
-                        <div class="card-number">02</div>
-                        <h3 class="card-title"><i class="fa-solid fa-gears"></i> Prétraitement & Inférence</h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-orange">PyTorch CPU</span>
-                            <span class="tech-badge badge-orange">StandardScaler</span>
-                            <p style="margin-top: 0.4rem;">
-                                Standardisation en direct via StandardScaler • Inférence haute fréquence sur CPU par le modèle champion Attention MLP • Classification en 15 classes d'attaques.
-                            </p>
+                    
+                    <!-- Colonne droite : Besoins Non Fonctionnels -->
+                    <div class="card card-lavender" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 1.5rem; height: 100%;">
+                        <h3 class="card-title" style="font-size: 1.55rem; margin-bottom: 1.5rem; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-shield-halved"></i> Besoins Non Fonctionnels
+                        </h3>
+                        
+                        <!-- Grille 2x2 des contraintes architecture -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; flex: 1;">
+                            
+                            <!-- 1. Latence -->
+                            <div style="background: color-mix(in srgb, var(--accent-lavender) 5%, transparent); border: 1px solid color-mix(in srgb, var(--accent-lavender) 20%, transparent); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <h4 style="color: var(--text-white); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.4rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fa-solid fa-gauge-high" style="color: var(--accent-lavender); font-size: 1rem;"></i> Latence &amp; Temps Réel
+                                    </h4>
+                                    <p style="font-size: 1.02rem; color: var(--text-warm-gray); line-height: 1.4; margin: 0;">
+                                        Faible latence de traitement de bout-en-bout (objectif &lt; 2 s) pour l'alerte SOC immédiate.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 2. Scalabilité -->
+                            <div style="background: color-mix(in srgb, var(--accent-lavender) 5%, transparent); border: 1px solid color-mix(in srgb, var(--accent-lavender) 20%, transparent); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <h4 style="color: var(--text-white); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.4rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fa-solid fa-arrows-split-up-and-left" style="color: var(--accent-lavender); font-size: 1rem;"></i> Scalabilité
+                                    </h4>
+                                    <p style="font-size: 1.02rem; color: var(--text-warm-gray); line-height: 1.4; margin: 0;">
+                                        Capacité à absorber des volumes de trafic élevés et des pics d'alertes sans goulot d'étranglement.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 3. Disponibilité -->
+                            <div style="background: color-mix(in srgb, var(--accent-lavender) 5%, transparent); border: 1px solid color-mix(in srgb, var(--accent-lavender) 20%, transparent); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <h4 style="color: var(--text-white); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.4rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fa-solid fa-arrows-spin" style="color: var(--accent-lavender); font-size: 1rem;"></i> Disponibilité
+                                    </h4>
+                                    <p style="font-size: 1.02rem; color: var(--text-warm-gray); line-height: 1.4; margin: 0;">
+                                        Architecture à base de composants découplés asynchrones garantissant une reprise d'activité sans perte.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 4. Sécurité -->
+                            <div style="background: color-mix(in srgb, var(--accent-lavender) 5%, transparent); border: 1px solid color-mix(in srgb, var(--accent-lavender) 20%, transparent); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div>
+                                    <h4 style="color: var(--text-white); font-size: 1.2rem; font-weight: 700; margin: 0 0 0.4rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                                        <i class="fa-solid fa-shield-halved" style="color: var(--accent-lavender); font-size: 1rem;"></i> Sécurité
+                                    </h4>
+                                    <p style="font-size: 1.02rem; color: var(--text-warm-gray); line-height: 1.4; margin: 0;">
+                                        Capture hors bande (écoute passive) sans impact de production, et respect du principe du moindre privilège.
+                                    </p>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
-                    <div class="card card-lavender">
-                        <div class="card-number">03</div>
-                        <h3 class="card-title"><i class="fa-solid fa-envelope-open-text"></i> Alerting Asynchrone</h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-lavender">Amazon SQS</span>
-                            <span class="tech-badge badge-lavender">DynamoDB</span>
-                            <p style="margin-top: 0.4rem;">
-                                Découplage asynchrone par file d'attente Amazon SQS • Rétention élastique anti-surcharge • Stockage NoSQL persistant dans DynamoDB.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card card-mint" style="background: var(--accent-blue-focus);">
-                        <div class="card-number">04</div>
-                        <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> Visualisation SOC & Qualité</h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-mint">React SOC</span>
-                            <span class="tech-badge badge-mint">WebSockets</span>
-                            <span class="tech-badge badge-mint">EC2 Tags</span>
-                            <p style="margin-top: 0.4rem;">
-                                Dashboard réactif avec FastAPI WebSockets • Résolution dynamique contextuelle des tags AWS EC2 • Latence globale de bout-en-bout &lt; 2s.
-                            </p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1911,61 +2225,136 @@
         </div>
 
         <!-- ====================================================
-             SLIDE 7 : FATIGUE DES ALERTES
+             SLIDE 7 : MÉTHODOLOGIE DE TRAVAIL & PLANNING (NEW)
              ==================================================== -->
         <div class="slide" id="slide-7">
             <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-chart-pie"></i> Le paradoxe du SOC</div>
-                <h2 class="slide-title">Problématique de la Fatigue des Alertes dans les SOC</h2>
+                <div class="slide-category"><i class="fa-solid fa-calendar-check"></i> Organisation de Projet</div>
+                <h2 class="slide-title">Méthodologie de Travail &amp; Planning</h2>
             </div>
-            <div class="slide-content">
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <div class="card card-cyan" style="background: var(--accent-blue-focus);">
-                        <div class="card-title" style="font-size: 1.1rem; color: var(--accent-cyan);"><i class="fa-solid fa-calculator"></i> L'ÉQUATION DE BAYES EN PRODUCTION RÉSEAU</div>
-                        <div class="card-desc" style="font-family: var(--font-title); font-size: 1.3rem; font-weight: bold; color: var(--text-white); text-align: center; margin: 0.3rem 0;">
-                            P(Attaque | Alerte)  =  ( Sensibilité × P(Attaque) )  /  ( (Sensibilité × P(Attaque)) + (Faux Positifs × P(Normal)) )
+            <div class="slide-content" style="display: flex; flex-direction: column; gap: 1rem; justify-content: space-between;">
+                
+                <!-- ROW 1 : Méthodologie et Utilité (Légère & Synthétique) -->
+                <div class="card card-cyan" style="padding: 0.8rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-shrink: 0; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 1rem; flex: 1;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 242, 254, 0.08); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(0, 242, 254, 0.25); flex-shrink: 0;">
+                            <i class="fa-solid fa-rotate" style="color: var(--accent-cyan); font-size: 1.1rem;"></i>
                         </div>
-                        <div class="card-desc" style="font-size: 0.95rem; text-align: center;">
-                            Si P(Attaque) = 10^-5 (1 alerte sur 100 000 flux) et qu'un IDS est excellent (99% détection, 1% faux positifs) :
-                            <br><strong style="color: var(--color-coral); font-size: 1.05rem;">Constat critique : Précision bayésienne de 0,1% ➔ Sur 1000 alertes levées, 999 sont fausses !</strong>
+                        <div>
+                            <h3 class="card-title" style="font-size: 1.15rem; margin-bottom: 0.15rem; color: var(--accent-cyan);">Méthodologie Itérative (Agile SCRUM)</h3>
+                            <div class="card-desc" style="font-size: 0.9rem; color: var(--text-warm-gray); line-height: 1.4;">Sprints de 2 à 4 semaines avec livrables validés en continu.</div>
                         </div>
                     </div>
                     
-                    <div class="cols-2">
-                        <div class="card card-orange">
-                            <div class="card-number">01</div>
-                            <h3 class="card-title"><i class="fa-solid fa-sliders"></i> Les Paramètres</h3>
-                            <div class="card-desc">
-                                <span class="tech-badge badge-orange">P(Attaque)</span>
-                                <span class="tech-badge badge-orange">Sensibilité</span>
-                                <span class="tech-badge badge-orange">Faux Positifs</span>
-                                <ul style="margin-top: 0.4rem;">
-                                    <li><strong>P(Attaque) :</strong> Proportion réelle de menaces sur le réseau.</li>
-                                    <li><strong>Sensibilité :</strong> Capacité à capturer les attaques réelles.</li>
-                                    <li><strong>Défi Cyber :</strong> Réduire le taux de faux positifs à un niveau proche de zéro absolu pour stabiliser la formule de Bayes.</li>
-                                </ul>
-                            </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; flex: 1.2; border-left: 1.5px solid rgba(255,255,255,0.08); padding-left: 1.5rem;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(16, 185, 129, 0.08); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(16, 185, 129, 0.25); flex-shrink: 0;">
+                            <i class="fa-solid fa-circle-check" style="color: var(--color-mint); font-size: 1.1rem;"></i>
                         </div>
-                        <div class="card card-coral">
-                            <div class="card-number">02</div>
-                            <h3 class="card-title">
-                                <span class="led-dot" style="background-color: var(--color-coral); box-shadow: 0 0 8px var(--color-coral);"></span>
-                                <i class="fa-solid fa-brain-circuit"></i> Impact SOC
-                            </h3>
-                            <div class="card-desc">
-                                <span class="tech-badge badge-coral">Surcharge</span>
-                                <span class="tech-badge badge-coral">Angles Morts</span>
-                                <ul style="margin-top: 0.4rem;">
-                                    <li><strong>Fatigue Cognitive :</strong> Saturation des analystes par le bruit.</li>
-                                    <li><strong>Alertes Ignorées :</strong> Risque élevé de passer à côté d'une intrusion réelle (compromission masquée).</li>
-                                    <li><strong>Coût Opérationnel :</strong> Temps précieux d'investigation perdu.</li>
-                                </ul>
+                        <div>
+                            <h3 class="card-title" style="font-size: 1.15rem; margin-bottom: 0.15rem; color: var(--color-mint);">Utilité Majeure</h3>
+                            <div class="card-desc" style="font-size: 0.9rem; color: var(--text-warm-gray); line-height: 1.4;">Anti-effet tunnel, validation rapide des baselines IA &amp; conformité aux contraintes de production.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ROW 2 : Planning sous forme de diagramme de Gantt (Élargi & Dominant) -->
+                <div class="card card-lavender" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem; width: 100%;">
+                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 0.8rem;">
+                        <h3 class="card-title" style="font-size: 1.35rem; margin-bottom: 0.2rem; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-timeline"></i> Diagramme de Gantt du Projet (20 Semaines)
+                        </h3>
+                        
+                        <div class="gantt-container" style="background: rgba(255,255,255,0.015); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1; justify-content: center;">
+                            <!-- Gantt Header -->
+                            <div style="display: grid; grid-template-columns: 220px 1fr; border-bottom: 1.5px solid rgba(255,255,255,0.1); padding-bottom: 0.6rem; font-weight: bold; font-size: 1rem;">
+                                <div style="color: var(--text-white);">Phases / Lots de Travail</div>
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); text-align: center;">
+                                    <div style="color: var(--accent-cyan); border-left: 1px dashed rgba(255,255,255,0.08);">Février</div>
+                                    <div style="color: var(--accent-lavender); border-left: 1px dashed rgba(255,255,255,0.08);">Mars</div>
+                                    <div style="color: var(--accent-cyan); border-left: 1px dashed rgba(255,255,255,0.08);">Avril</div>
+                                    <div style="color: var(--arch-orange); border-left: 1px dashed rgba(255,255,255,0.08);">Mai</div>
+                                    <div style="color: var(--color-mint); border-left: 1px dashed rgba(255,255,255,0.08);">Juin</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gantt Rows -->
+                            <div style="display: flex; flex-direction: column; gap: 1.1rem; position: relative; margin-top: 0.3rem;">
+                                <!-- Vertical Grid Lines overlay -->
+                                <div style="position: absolute; top: 0; bottom: 0; left: 220px; right: 0; display: grid; grid-template-columns: repeat(5, 1fr); pointer-events: none;">
+                                    <div style="border-left: 1px dashed rgba(255,255,255,0.04); height: 100%;"></div>
+                                    <div style="border-left: 1px dashed rgba(255,255,255,0.04); height: 100%;"></div>
+                                    <div style="border-left: 1px dashed rgba(255,255,255,0.04); height: 100%;"></div>
+                                    <div style="border-left: 1px dashed rgba(255,255,255,0.04); height: 100%;"></div>
+                                    <div style="border-left: 1px dashed rgba(255,255,255,0.04); height: 100%;"></div>
+                                </div>
+                                
+                                <!-- Row 1: Cadrage -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">Cadrage &amp; Spécifications</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 0%; width: 10%; height: 100%; background: linear-gradient(90deg, var(--accent-cyan) 0%, #00b4d8 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #000; font-weight: bold; white-space: nowrap;">S1 - S2</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 2: Data Prep -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">Prétraitement &amp; Équilibrage</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 10%; width: 20%; height: 100%; background: linear-gradient(90deg, var(--accent-lavender) 0%, #8b5cf6 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(167, 139, 250, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #fff; font-weight: bold; white-space: nowrap;">S3 - S6</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 3: Modélisation -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">Benchmark &amp; Modélisation</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 30%; width: 30%; height: 100%; background: linear-gradient(90deg, var(--accent-cyan) 0%, #0284c7 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #000; font-weight: bold; white-space: nowrap;">Semaines 7 - 12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 4: Industrialisation -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">Industrialisation (FastAPI)</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 60%; width: 20%; height: 100%; background: linear-gradient(90deg, var(--arch-orange) 0%, #ea580c 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(255, 123, 0, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #fff; font-weight: bold; white-space: nowrap;">Semaines 13 - 16</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 5: Déploiement Cloud -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">AWS CyberRange &amp; SOC UI</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 80%; width: 10%; height: 100%; background: linear-gradient(90deg, var(--arch-gold) 0%, #d97706 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #000; font-weight: bold; white-space: nowrap;">S17 - S18</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Row 6: Validation -->
+                                <div style="display: grid; grid-template-columns: 220px 1fr; align-items: center; z-index: 1;">
+                                    <div style="color: var(--text-white); font-weight: 600; font-size: 0.95rem; padding-right: 8px;">Validation &amp; Rédaction</div>
+                                    <div style="position: relative; height: 30px;">
+                                        <div style="position: absolute; left: 90%; width: 10%; height: 100%; background: linear-gradient(90deg, var(--color-mint) 0%, #059669 100%); border-radius: 5px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);">
+                                            <span style="font-size: 0.78rem; color: #000; font-weight: bold; white-space: nowrap;">S19 - S20</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
+
 
         <!-- ====================================================
              SLIDE 8 : L'AVÈNEMENT DU DEEP LEARNING
@@ -2037,7 +2426,7 @@
             <div class="slide-content" style="gap: 1.2rem;">
                 <!-- ROW 1 : 3 stat cards -->
                 <div class="cols-3" style="flex: 1;">
-                    <div class="card card-cyan" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="card card-cyan slide-9-card">
                         <i class="fa-solid fa-network-wired" style="font-size: 1.6rem; color: var(--accent-cyan); margin-bottom: 0.8rem; opacity: 0.35;"></i>
                         <div class="big-number-container">
                             <div class="big-number-wrapper">
@@ -2047,7 +2436,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-lavender" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="card card-lavender slide-9-card">
                         <i class="fa-solid fa-sliders" style="font-size: 1.6rem; color: var(--accent-lavender); margin-bottom: 0.8rem; opacity: 0.35;"></i>
                         <div class="big-number-container">
                             <div class="big-number-wrapper">
@@ -2057,7 +2446,7 @@
                         </div>
                     </div>
 
-                    <div class="card card-coral" style="text-align: center; padding: 1.8rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <div class="card card-coral slide-9-card">
                         <i class="fa-solid fa-skull-crossbones" style="font-size: 1.6rem; color: var(--color-coral); margin-bottom: 0.8rem; opacity: 0.35;"></i>
                         <div class="big-number-container">
                             <div class="big-number-wrapper">
@@ -2069,7 +2458,7 @@
                 </div>
 
                 <!-- ROW 2 : Taxonomie des menaces — 1 carte pleine largeur -->
-                <div class="card card-orange" style="padding: 1.8rem 2.2rem; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <div class="card card-orange slide-9-row2-card">
                     <h3 style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--text-white); margin-bottom: 1.4rem; display: flex; align-items: center; gap: 0.8rem;">
                         <i class="fa-solid fa-shield-virus" style="color: var(--arch-orange); font-size: 1.4rem;"></i>
                         Taxonomie des Menaces Couvertes
@@ -2122,56 +2511,243 @@
         </div>
 
         <!-- ====================================================
+             SLIDE 9-BIS : VARIABLES CARACTÉRISTIQUES (FEATURES)
+             ==================================================== -->
+        <div class="slide" id="slide-9-features">
+            <div class="slide-header">
+                <div class="slide-category"><i class="fa-solid fa-list-check"></i> Variables Caractéristiques</div>
+                <h2 class="slide-title">Variables Caractéristiques (Sélection des plus pertinentes parmi 77 Features)</h2>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <!-- Note d'importance et de zoom -->
+                <div style="padding: 0.5rem 0.7rem; background: rgba(0, 242, 254, 0.03); border-left: 3px solid var(--accent-cyan); border-radius: 0 4px 4px 0; font-size: 1.05rem; color: var(--text-warm-gray); line-height: 1.4; width: 100%; flex-shrink: 0;">
+                    <i class="fa-solid fa-circle-info" style="color: var(--accent-cyan); margin-right: 0.3rem;"></i>
+                    Bien que <strong>l'ensemble des 77 caractéristiques</strong> soit important pour l'apprentissage global du modèle, nous présentons ici un <strong>zoom sur les variables les plus représentatives et pertinentes</strong>.
+                </div>
+                
+                <div class="cols-2" style="flex: 1; gap: 0.8rem; align-items: stretch;">
+                    
+                    <!-- Colonne gauche : Identification physique & Quintuplet -->
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; flex: 1;">
+                        <!-- Quintuplet standard -->
+                        <div class="card card-cyan" style="flex: 1.1; display: flex; flex-direction: column; justify-content: center; padding: 0.9rem 1.1rem;">
+                            <h3 class="card-title" style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--accent-cyan);">
+                                <i class="fa-solid fa-network-wired"></i> Le Quintuplet Standard (5-Tuple)
+                            </h3>
+                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                                <p style="margin-bottom: 0.4rem;">Chaque flux réseau est identifié et regroupé de façon bidirectionnelle par :</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-top: 0.4rem;">
+                                    <div style="padding: 0.35rem; background: rgba(0, 242, 254, 0.06); border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.15); text-align: center;">
+                                        <code style="font-family: var(--font-mono); color: var(--text-white); font-size: 0.98rem;">IP Source</code>
+                                    </div>
+                                    <div style="padding: 0.35rem; background: rgba(0, 242, 254, 0.06); border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.15); text-align: center;">
+                                        <code style="font-family: var(--font-mono); color: var(--text-white); font-size: 0.98rem;">Port Source</code>
+                                    </div>
+                                    <div style="padding: 0.35rem; background: rgba(0, 242, 254, 0.06); border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.15); text-align: center;">
+                                        <code style="font-family: var(--font-mono); color: var(--text-white); font-size: 0.98rem;">IP Destination</code>
+                                    </div>
+                                    <div style="padding: 0.35rem; background: rgba(0, 242, 254, 0.06); border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.15); text-align: center;">
+                                        <code style="font-family: var(--font-mono); color: var(--text-white); font-size: 0.98rem; font-weight: bold;">Port Destination</code>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 0.5rem; text-align: center; padding: 0.35rem; background: rgba(16, 185, 129, 0.08); border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2); width: 100%;">
+                                    <code style="font-family: var(--font-mono); color: var(--color-mint); font-size: 1.0rem;">Protocole (TCP / UDP)</code>
+                                </div>
+                                <p style="margin-top: 0.5rem; font-size: 0.95rem; font-style: italic; line-height: 1.35;">
+                                    *Note : Le <strong>Port Destination</strong> est une variable statistique cruciale indiquant le service ciblé (ex: 80/HTTP, 22/SSH).
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Indicateurs de contrôle TCP (Flags) -->
+                        <div class="card card-orange" style="flex: 0.9; display: flex; flex-direction: column; justify-content: center; padding: 0.9rem 1.1rem;">
+                            <h3 class="card-title" style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--arch-orange);">
+                                <i class="fa-solid fa-flag"></i> Drapeaux &amp; En-têtes TCP (Flags)
+                            </h3>
+                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                                <p style="margin-bottom: 0.4rem;">Le nombre d'occurrences et la distribution des drapeaux de signalisation réseau :</p>
+                                <ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; list-style: none; padding: 0; margin: 0.4rem 0 0.4rem 0;">
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">SYN</strong></li>
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">ACK</strong></li>
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">PSH</strong></li>
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">FIN</strong></li>
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">RST</strong></li>
+                                    <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">URG</strong></li>
+                                </ul>
+                                <p style="margin-top: 0.4rem; font-size: 0.95rem; font-style: italic; line-height: 1.35;">
+                                    Permet de caractériser les comportements d'attaques comme les scans furtifs ou les inondations (ex: SYN Flood).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Colonne droite : 77 Variables Statistiques de Flux -->
+                    <div class="card card-lavender" style="flex: 1.25; display: flex; flex-direction: column; justify-content: space-between; padding: 0.9rem 1.1rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h3 class="card-title" style="font-size: 1.35rem; margin: 0; color: var(--accent-lavender);">
+                                    <i class="fa-solid fa-calculator"></i> Les Variables Statistiques (77 Features)
+                                </h3>
+                                <span style="font-size: 0.9rem; background: rgba(167, 139, 250, 0.12); color: var(--accent-lavender); padding: 0.15rem 0.4rem; border-radius: 3px; border: 1px solid rgba(167, 139, 250, 0.2); font-weight: bold;">Stats Réelles</span>
+                            </div>
+                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                                <p style="margin-bottom: 0.5rem;">
+                                    Extraites par <strong>NFStream / CICFlowMeter</strong>. Dispersion réelle calculée sur 150k flux (Monday Dataset) :
+                                </p>
+                                
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <!-- Temporelles -->
+                                    <div style="padding: 0.5rem 0.7rem; background: rgba(167, 139, 250, 0.05); border-radius: 6px; border: 1px solid rgba(167, 139, 250, 0.12);">
+                                        <strong style="color: var(--text-white); font-size: 1.08rem;"><i class="fa-solid fa-clock"></i> Variables Temporelles (IAT) :</strong>
+                                        <ul style="margin: 0.2rem 0 0 1.1rem; padding: 0; font-size: 0.98rem; list-style-type: disc;">
+                                            <li style="margin-bottom: 0.15rem;">Durée totale (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Flow Duration</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Moyenne = 16,1s | Std = 33,9s</span></li>
+                                            <li style="margin-bottom: 0.15rem;">Temps inter-paquets (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Fwd/Bwd IAT Total</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Std ~33s</span></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Volumétriques -->
+                                    <div style="padding: 0.5rem 0.7rem; background: rgba(167, 139, 250, 0.05); border-radius: 6px; border: 1px solid rgba(167, 139, 250, 0.12);">
+                                        <strong style="color: var(--text-white); font-size: 1.08rem;"><i class="fa-solid fa-weight-hanging"></i> Variables Volumétriques (Volume &amp; En-têtes) :</strong>
+                                        <ul style="margin: 0.2rem 0 0 1.1rem; padding: 0; font-size: 0.98rem; list-style-type: disc;">
+                                            <li style="margin-bottom: 0.15rem;">Volume total retour (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Total Length of Bwd Packets</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Max = 655 Mo</span></li>
+                                            <li style="margin-bottom: 0.15rem;">Taille en-tête forward (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Fwd Header Length</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Std = 5,8 Mo</span></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <!-- Débits -->
+                                    <div style="padding: 0.5rem 0.7rem; background: rgba(167, 139, 250, 0.05); border-radius: 6px; border: 1px solid rgba(167, 139, 250, 0.12);">
+                                        <strong style="color: var(--text-white); font-size: 1.08rem;"><i class="fa-solid fa-gauge"></i> Débits &amp; Configuration TCP :</strong>
+                                        <ul style="margin: 0.2rem 0 0 1.1rem; padding: 0; font-size: 0.98rem; list-style-type: disc;">
+                                            <li style="margin-bottom: 0.15rem;">Débit forward (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Fwd Packets/s</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Moyenne = 76,7k p/s | Max = 3M p/s</span></li>
+                                            <li style="margin-bottom: 0.15rem;">Fenêtre initiale TCP (<code style="font-family: var(--font-mono); color: var(--accent-lavender); font-size: 0.92rem;">Init_Win_bytes_forward</code>) : <span style="color: var(--accent-cyan); font-weight: 600;">Moyenne = 14,4k octets</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================================================
              SLIDE 10 : PRÉTRAITEMENT ET ÉQUILIBRAGE
              ==================================================== -->
         <div class="slide" id="slide-10">
             <div class="slide-header">
                 <div class="slide-category"><i class="fa-solid fa-filter"></i> Pipeline de données</div>
-                <h2 class="slide-title">Prétraitement & Équilibrage des Données</h2>
+                <h2 class="slide-title">Pipeline de Prétraitement &amp; Équilibrage des Données</h2>
             </div>
-            <div class="slide-content">
-                <div class="flow-container">
-                    <div class="flow-step-card card-cyan">
-                        <div class="flow-icon-circle"><i class="fa-solid fa-broom"></i></div>
-                        <div class="flow-badge">ÉTAPE 01</div>
-                        <h3 class="flow-title">Nettoyage (IQR)</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge">Filtrage NaN</span>
-                            <span class="tech-badge">Outliers</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li>Suppression des valeurs infinies et manquantes.</li>
-                                <li>Filtrage des aberrations statistiques par écart interquartile (IQR).</li>
-                            </ul>
+            <div class="slide-content" style="justify-content: center;">
+                <div class="flow-container" style="gap: 0.6rem; margin-top: 1rem;">
+                    
+                    <!-- Étape 1 : Nettoyage & Imputation -->
+                    <div class="flow-step-card card-cyan" style="padding: 1.8rem 1.6rem; min-height: 410px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+                        <div>
+                            <div class="flow-icon-circle" style="width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-broom"></i></div>
+                            <div class="flow-badge" style="font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 01</div>
+                            <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Nettoyage &amp; Imputation</h3>
+                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                                <div style="margin-bottom: 0.6rem;">
+                                    <span class="tech-badge" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem;">Nettoyage NaN</span>
+                                    <span class="tech-badge" style="font-size: 0.88rem; padding: 0.25rem 0.55rem;">Label Encoding</span>
+                                </div>
+                                <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-cyan); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-cyan);"></span>
+                                        Conversion des <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">±Inf</code> en <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">NaN</code> et imputation par la médiane du Train Set (anti-leakage).
+                                    </li>
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-cyan); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-cyan);"></span>
+                                        Encodage Label des variables catégorielles et des 15 classes cibles.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-orange">
-                        <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <div class="flow-badge" style="color: var(--arch-orange);">ÉTAPE 02</div>
-                        <h3 class="flow-title">Normalisation</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge badge-orange">StandardScaler</span>
-                            <span class="tech-badge badge-orange">Z-Score</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li>Application d'un StandardScaler d'échelle uniforme.</li>
-                                <li>Centrage et réduction des variables (variance=1) pour converger plus vite.</li>
-                            </ul>
+                    
+                    <div class="flow-arrow" style="font-size: 1.8rem; width: 1.8rem;">➔</div>
+                    
+                    <!-- Étape 2 : Écrêtage Outliers -->
+                    <div class="flow-step-card card-orange" style="padding: 1.8rem 1.6rem; min-height: 410px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+                        <div>
+                            <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-crop-simple"></i></div>
+                            <div class="flow-badge" style="color: var(--arch-orange); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 02</div>
+                            <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Écrêtage IQR</h3>
+                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                                <div style="margin-bottom: 0.6rem;">
+                                    <span class="tech-badge badge-orange" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(255, 123, 0, 0.25); background: rgba(255, 123, 0, 0.05);">Clipping IQR</span>
+                                    <span class="tech-badge badge-orange" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(255, 123, 0, 0.25); background: rgba(255, 123, 0, 0.05);">Facteur 1.5</span>
+                                </div>
+                                <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--arch-orange); transform: rotate(45deg); box-shadow: 0 0 5px var(--arch-orange);"></span>
+                                        Calcul des bornes de confiance stables par variable : <code style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-white);">Q1/Q3 ± 1.5 &times; IQR</code>.
+                                    </li>
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--arch-orange); transform: rotate(45deg); box-shadow: 0 0 5px var(--arch-orange);"></span>
+                                        Écrêtage sans suppression pour préserver l'intégrité des signatures d'attaques volumétriques.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-lavender">
-                        <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1);"><i class="fa-solid fa-code-fork"></i></div>
-                        <div class="flow-badge" style="color: var(--accent-lavender);">ÉTAPE 03</div>
-                        <h3 class="flow-title">Équilibrage (SMOTE)</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge badge-lavender">SMOTE Hybride</span>
-                            <span class="tech-badge badge-lavender">K-Voisins</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li>Résolution du déséquilibre extrême (99% sain).</li>
-                                <li>Génération de flux synthétiques d'attaques minoritaires.</li>
-                            </ul>
+                    
+                    <div class="flow-arrow" style="font-size: 1.8rem; width: 1.8rem;">➔</div>
+                    
+                    <!-- Étape 3 : Normalisation -->
+                    <div class="flow-step-card card-mint" style="padding: 1.8rem 1.6rem; min-height: 410px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+                        <div>
+                            <div class="flow-icon-circle" style="border-color: var(--color-mint); color: var(--color-mint); background: rgba(16, 185, 129, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <div class="flow-badge" style="color: var(--color-mint); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 03</div>
+                            <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Normalisation</h3>
+                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                                <div style="margin-bottom: 0.6rem;">
+                                    <span class="tech-badge badge-mint" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05);">Z-Score</span>
+                                    <span class="tech-badge badge-mint" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05);">Scaler</span>
+                                </div>
+                                <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--color-mint); transform: rotate(45deg); box-shadow: 0 0 5px var(--color-mint);"></span>
+                                        Standardisation centré-réduite (<code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">z = (x-&mu;)/&sigma;</code>) des 77 caractéristiques physiques.
+                                    </li>
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--color-mint); transform: rotate(45deg); box-shadow: 0 0 5px var(--color-mint);"></span>
+                                        Sauvegarde de la moyenne et variance du Train Set pour l'inférence temps réel.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="flow-arrow" style="font-size: 1.8rem; width: 1.8rem;">➔</div>
+                    
+                    <!-- Étape 4 : Équilibrage Hybride -->
+                    <div class="flow-step-card card-lavender" style="padding: 1.8rem 1.6rem; min-height: 410px; display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+                        <div>
+                            <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-code-fork"></i></div>
+                            <div class="flow-badge" style="color: var(--accent-lavender); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 04</div>
+                            <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Équilibrage</h3>
+                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                                <div style="margin-bottom: 0.6rem;">
+                                    <span class="tech-badge badge-lavender" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(167, 139, 250, 0.25); background: rgba(167, 139, 250, 0.05);">RUS (50k)</span>
+                                    <span class="tech-badge badge-lavender" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(167, 139, 250, 0.25); background: rgba(167, 139, 250, 0.05);">SMOTE (k=5)</span>
+                                </div>
+                                <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-lavender); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-lavender);"></span>
+                                        Sous-échantillonnage de la classe saine (`BENIGN`) à 50k pour élaguer la redondance.
+                                    </li>
+                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                        <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-lavender); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-lavender);"></span>
+                                        Interpolation linéaire vectorielle locale pour rééquilibrer les classes minoritaires à 5 796.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -2239,6 +2815,90 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ====================================================
+             SLIDE 11B : PROTOCOLE D'ENTRAÎNEMENT (NEW)
+             ==================================================== -->
+        <div class="slide" id="slide-11-train">
+            <div class="slide-header">
+                <div class="slide-category"><i class="fa-solid fa-gears"></i> Phase de Modélisation</div>
+                <h2 class="slide-title">Processus d'Entraînement des Modèles</h2>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: column; gap: 1.2rem; justify-content: space-between;">
+                
+                <!-- ROW 1 : Processus d'Entraînement & Fonction de Perte (Horizontal Layout) -->
+                <div class="card card-cyan" style="padding: 1.2rem 1.5rem; display: flex; flex-direction: row; gap: 2rem; justify-content: space-between; align-items: stretch; flex-shrink: 0; width: 100%;">
+                    
+                    <!-- Bloc Perte -->
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 0.4rem;">
+                        <h3 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.2rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-scale-balanced"></i> Pondération des Classes (Loss)
+                        </h3>
+                        <div class="card-desc" style="font-size: 1rem; color: var(--text-warm-gray); line-height: 1.5;">
+                            Utilisation de la <strong>Cross-Entropy pondérée</strong> (`CrossEntropyLoss`) pour pénaliser plus fortement les erreurs sur les classes minoritaires (les attaques) et compenser le fort déséquilibre du dataset.
+                        </div>
+                    </div>
+                    
+                    <!-- Séparateur vertical -->
+                    <div style="width: 1.5px; background: rgba(255,255,255,0.08); align-self: stretch;"></div>
+                    
+                    <!-- Bloc Optimisation -->
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 0.4rem;">
+                        <h3 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.2rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-chart-line"></i> Optimisation &amp; Convergence
+                        </h3>
+                        <div class="card-desc" style="font-size: 1rem; color: var(--text-warm-gray); line-height: 1.5;">
+                            Mise à jour des poids via l'optimiseur <strong>Adam</strong>, combiné à un ajustement dynamique du taux d'apprentissage sur plateau (division par 2 si stagnation de la loss de validation).
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- ROW 2 : Les Hyperparamètres Clés (Horizontal Dashboard Cards) -->
+                <div class="card card-lavender" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem 1.5rem; width: 100%;">
+                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1rem;">
+                        
+                        <h3 class="card-title" style="font-size: 1.3rem; margin-bottom: 0.2rem; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.6rem;">
+                            <i class="fa-solid fa-sliders"></i> Configuration du Training (Hyperparamètres Clés)
+                        </h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; flex: 1; align-items: center; width: 100%;">
+                            
+                            <!-- Param 1 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Taux d'Apprentissage</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 10px rgba(0,242,254,0.15);">0.001</span>
+                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Initial / Adam</span>
+                            </div>
+                            
+                            <!-- Param 2 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Taille de Batch</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--accent-lavender); font-weight: 800; text-shadow: 0 0 10px rgba(167,139,250,0.15);">512</span>
+                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Échantillons</span>
+                            </div>
+                            
+                            <!-- Param 3 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Époques Maximales</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--arch-orange); font-weight: 800; text-shadow: 0 0 10px rgba(255,123,0,0.15);">50</span>
+                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Limite d'Époques</span>
+                            </div>
+                            
+                            <!-- Param 4 -->
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Early Stopping</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--color-mint); font-weight: 800; text-shadow: 0 0 10px rgba(16,185,129,0.15);">10</span>
+                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Patience d'Arrêt</span>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
 
@@ -2352,13 +3012,13 @@
                         </div>
                         <div class="card card-lavender">
                             <div class="card-number">03</div>
-                            <h4 class="card-title"><i class="fa-solid fa-circle-question" style="color: var(--accent-lavender);"></i> Explicabilité</h4>
+                            <h4 class="card-title"><i class="fa-solid fa-eye" style="color: var(--accent-lavender);"></i> Interprétabilité</h4>
                             <div class="card-desc">
                                 <span class="tech-badge badge-lavender">Poids d'Attention</span>
                                 <span class="tech-badge badge-lavender">XAI SOC</span>
                                 <ul style="margin-top: 0.4rem;">
-                                    <li><strong>Interprétabilité :</strong> Pondération en direct de l'importance de chaque variable.</li>
-                                    <li><strong>Transparence :</strong> Permet de comprendre le pourquoi de l'alerte.</li>
+                                    <li><strong>Poids d'Attention :</strong> Pondération en direct de l'importance de chaque variable.</li>
+                                    <li><strong>Transparence :</strong> Permet de comprendre le déclenchement de l'alerte.</li>
                                 </ul>
                             </div>
                         </div>
@@ -2375,95 +3035,168 @@
                 <div class="slide-category"><i class="fa-solid fa-gears"></i> Focus Architecture</div>
                 <h2 class="slide-title">Architecture Interne de l'Attention MLP</h2>
             </div>
-            <div class="slide-content">
-                <div class="cols-2">
-                    <!-- Colonne Gauche : Schéma Synoptique du Réseau -->
-                    <div class="card card-cyan" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem;">
-                        <h3 class="card-title" style="font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
-                            <i class="fa-solid fa-sitemap"></i> Pipeline Neuronal d'Inférence
-                        </h3>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center; justify-content: center; flex-grow: 1;">
+            <div class="slide-content" style="gap: 1.2rem; display: flex; flex-direction: column;">
+                
+                <!-- Diagramme d'Architecture Neuronal Animé -->
+                <div class="arch-wrapper" style="position: relative; width: 100%; height: 320px; min-height: 320px; border: 1px solid var(--border-subtle); border-radius: 16px; overflow: visible; background: var(--arch-bg); transition: all 0.3s ease;">
+                    
+                    <!-- SVG Overlay pour les flux de données (viewBox 1000 320) -->
+                    <svg viewBox="0 0 1000 320" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
+                        <defs>
+                            <!-- Marqueurs de flèche directionnels -->
+                            <marker id="arrow-cyan-arch" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent-cyan)" />
+                            </marker>
+                            <marker id="arrow-lavender-arch" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent-lavender)" />
+                            </marker>
+                            <marker id="arrow-orange-arch" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--arch-orange)" />
+                            </marker>
+                            <marker id="arrow-mint-arch" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                                <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--color-mint)" />
+                            </marker>
                             
-                            <!-- Étape 1 : Entrée brute -->
-                            <div style="border: 1px solid var(--accent-cyan); background: rgba(56, 189, 248, 0.05); border-radius: 8px; padding: 0.5rem; width: 95%; text-align: center;">
-                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">1. Entrée des Caractéristiques</div>
-                                <div style="font-size: 0.95rem; color: var(--text-white); font-weight: bold; margin-top: 0.15rem;">Vecteur réseau brut <span class="tech-badge">x &isin; &Ropf;<sup>77</sup></span></div>
-                            </div>
-                            
-                            <div style="color: var(--accent-cyan); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
-                            
-                            <!-- Étape 2 : Masquage & Attention -->
-                            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0.5rem; width: 95%; align-items: stretch;">
-                                <div style="border: 1px dashed var(--accent-lavender); background: rgba(167, 139, 250, 0.03); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                                    <div style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Calcul des Poids d'Attention</div>
-                                    <div style="font-size: 0.85rem; color: var(--text-white); font-weight: bold; line-height: 1.3; margin-top: 0.15rem;">
-                                        Linear(77➔77) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i> Tanh() <br>
-                                        Linear(77➔77) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem;"></i> Softmax()
-                                    </div>
-                                    <div style="margin-top: 0.25rem;"><span class="tech-badge badge-lavender" style="font-size: 0.5rem;">&alpha; &isin; [0,1]<sup>77</sup></span></div>
-                                </div>
-                                <div style="border: 1px solid var(--arch-orange); background: rgba(245, 158, 11, 0.05); border-radius: 8px; padding: 0.5rem; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                                    <div style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--arch-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Produit de Hadamard</div>
-                                    <div style="font-size: 1.15rem; color: var(--text-white); font-weight: bold; margin-top: 0.2rem;">x<sub>weighted</sub> = x &odot; &alpha;</div>
-                                    <span class="tech-badge badge-orange" style="font-size: 0.5rem; margin-top: 0.25rem;">Filtrage Actif</span>
-                                </div>
-                            </div>
-                            
-                            <div style="color: var(--arch-orange); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
-                            
-                            <!-- Étape 3 : Classificateur MLP -->
-                            <div style="border: 1px solid var(--color-mint); background: rgba(52, 211, 153, 0.05); border-radius: 8px; padding: 0.5rem; width: 95%; text-align: center;">
-                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--color-mint); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">2. Classificateur Neural (MLP)</div>
-                                <div style="font-size: 0.85rem; color: var(--text-white); margin-top: 0.15rem; font-weight: bold; line-height: 1.4;">
-                                    Linear(77➔128) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> BatchNorm1d <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> ReLU <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> Dropout(0.3) <br>
-                                    Linear(128➔64) <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> ReLU <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; opacity: 0.7;"></i> Dropout(0.3)
-                                </div>
-                            </div>
-                            
-                            <div style="color: var(--color-mint); font-size: 0.9rem; line-height: 1; margin: -0.2rem 0;"><i class="fa-solid fa-arrow-down"></i></div>
-                            
-                            <!-- Étape 4 : Sorties logits -->
-                            <div style="border: 1px solid var(--accent-lavender); background: rgba(167, 139, 250, 0.05); border-radius: 8px; padding: 0.45rem; width: 95%; text-align: center;">
-                                <div style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">3. Tête de Classification</div>
-                                <div style="font-size: 0.95rem; color: var(--text-white); font-weight: bold; margin-top: 0.1rem;">Linear(64➔15) ➔ <span class="tech-badge badge-lavender" style="font-size: 0.6rem; padding: 0.1rem 0.35rem;">15 logits (Classes d'Attaques)</span></div>
-                            </div>
+                            <!-- Lueur néon active -->
+                            <filter id="glow-cyan-arch" x="-30%" y="-30%" width="160%" height="160%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                            <filter id="glow-lavender-arch" x="-30%" y="-30%" width="160%" height="160%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                            <filter id="glow-orange-arch" x="-30%" y="-30%" width="160%" height="160%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+
+                        <!-- Chemins de flux -->
+                        <!-- 1. Entrée -> Branche Attention (Haut) -->
+                        <path d="M 170 160 C 220 160, 210 75, 270 75" fill="none" stroke="var(--accent-cyan)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-cyan-arch)" style="opacity: 0.75;" />
+                        
+                        <!-- 2. Entrée -> Hadamard Node (Identity path, Bas/Milieu) -->
+                        <path d="M 170 160 L 490 160" fill="none" stroke="var(--accent-cyan)" stroke-width="2" marker-end="url(#arrow-cyan-arch)" style="opacity: 0.85;" />
+                        
+                        <!-- 3. Attention Weights -> Hadamard Node -->
+                        <path d="M 450 75 C 490 75, 490 115, 510 140" fill="none" stroke="var(--accent-lavender)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow-lavender-arch)" style="opacity: 0.85;" />
+                        
+                        <!-- 4. Hadamard Node -> MLP Classifier -->
+                        <path d="M 530 160 L 610 160" fill="none" stroke="var(--arch-orange)" stroke-width="2.2" marker-end="url(#arrow-orange-arch)" style="opacity: 0.9;" />
+                        
+                        <!-- 5. MLP Classifier -> Output Logits -->
+                        <path d="M 810 160 L 870 160" fill="none" stroke="var(--color-mint)" stroke-width="2.2" marker-end="url(#arrow-mint-arch)" style="opacity: 0.9;" />
+
+                        <!-- Particules de flux animées -->
+                        <!-- Entrée -> Attention (Cyan) -->
+                        <circle r="4.5" fill="var(--accent-cyan)" style="filter: url(#glow-cyan-arch);">
+                            <animateMotion dur="2.2s" repeatCount="indefinite" path="M 170 160 C 220 160, 210 75, 270 75" />
+                        </circle>
+                        
+                        <!-- Entrée -> Hadamard (Cyan) -->
+                        <circle r="4.5" fill="var(--accent-cyan)" style="filter: url(#glow-cyan-arch);">
+                            <animateMotion dur="1.8s" repeatCount="indefinite" path="M 170 160 L 490 160" />
+                        </circle>
+                        
+                        <!-- Poids Attention -> Hadamard (Lavender) -->
+                        <circle r="4.5" fill="var(--accent-lavender)" style="filter: url(#glow-lavender-arch);">
+                            <animateMotion dur="1.6s" repeatCount="indefinite" path="M 450 75 C 490 75, 490 115, 510 140" />
+                        </circle>
+                        
+                        <!-- Hadamard -> MLP (Orange) -->
+                        <circle r="5" fill="var(--arch-orange)" style="filter: url(#glow-orange-arch);">
+                            <animateMotion dur="1.4s" repeatCount="indefinite" path="M 530 160 L 610 160" />
+                        </circle>
+                        
+                        <!-- MLP -> Classification (Mint) -->
+                        <circle r="5" fill="var(--color-mint)">
+                            <animateMotion dur="1.1s" repeatCount="indefinite" path="M 810 160 L 870 160" />
+                        </circle>
+                    </svg>
+
+                    <!-- HTML NODES ABSOLUTE POSITIONED -->
+                    
+                    <!-- 1. Entrée des Caractéristiques -->
+                    <div class="card card-cyan" style="position: absolute; left: 2%; top: 25%; width: 15%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-cyan); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                        <i class="fa-solid fa-list-check" style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 0.3rem;"></i>
+                        <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">1. Entrée Brute</span>
+                        <div style="font-family: var(--font-title); font-size: 0.95rem; font-weight: bold; margin-top: 0.2rem; text-align: center; color: var(--text-white);">x &isin; &Ropf;<sup>77</sup></div>
+                        <span class="tech-badge" style="font-size: 0.55rem; padding: 0.05rem 0.3rem; margin-top: 0.3rem; border-color: rgba(0, 242, 254, 0.25);">77 Features</span>
+                    </div>
+
+                    <!-- 2. Branche Attention -->
+                    <div class="card card-lavender" style="position: absolute; left: 27%; top: 6%; width: 18%; height: 40%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-lavender); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                        <i class="fa-solid fa-brain" style="color: var(--accent-lavender); font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
+                        <span style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">Poids d'Attention</span>
+                        <div style="font-size: 0.72rem; color: var(--text-white); text-align: center; font-family: var(--font-mono); margin-top: 0.15rem; line-height: 1.25;">
+                            Linear(77&rarr;77) &rarr; Tanh<br>
+                            Linear(77&rarr;77) &rarr; Softmax
                         </div>
+                        <span class="tech-badge badge-lavender" style="font-size: 0.55rem; padding: 0.05rem 0.3rem; margin-top: 0.25rem;">&alpha; &isin; [0,1]<sup>77</sup></span>
+                    </div>
+
+                    <!-- 3. Noeud de Hadamard (Multiplication) -->
+                    <div class="card card-orange" style="position: absolute; left: 49%; top: 38%; width: 4.5%; height: 24%; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; border-color: var(--arch-orange); background: color-mix(in srgb, var(--arch-orange) 15%, var(--bg-obsidian)); box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); z-index: 10;">
+                        <div style="font-family: var(--font-title); font-size: 1.4rem; font-weight: bold; color: var(--arch-orange);">&odot;</div>
+                    </div>
+                    <!-- Label au dessus du multiplicateur -->
+                    <div style="position: absolute; left: 45%; top: 65%; width: 12.5%; text-align: center; font-size: 0.65rem; color: var(--arch-orange); font-family: var(--font-numeric); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; z-index: 10;">
+                        x<sub>weighted</sub> = x &odot; &alpha;<br>
+                        <span style="color: var(--text-warm-gray); font-size: 0.55rem; font-family: var(--font-body); font-weight: normal; text-transform: none;">Filtre dynamique</span>
+                    </div>
+
+                    <!-- 4. Classificateur MLP -->
+                    <div class="card card-orange" style="position: absolute; left: 61%; top: 15%; width: 20%; height: 70%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--arch-orange); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                        <i class="fa-solid fa-layer-group" style="color: var(--arch-orange); font-size: 1.3rem; margin-bottom: 0.3rem;"></i>
+                        <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--arch-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">2. Classificateur MLP</span>
+                        <div style="font-size: 0.72rem; color: var(--text-white); font-family: var(--font-mono); margin-top: 0.2rem; line-height: 1.35; text-align: center;">
+                            BatchNorm1d &rarr; Dropout(0.3)<br>
+                            Linear(77&rarr;128) &rarr; ReLU<br>
+                            Linear(128&rarr;64) &rarr; ReLU
+                        </div>
+                        <span class="tech-badge badge-orange" style="font-size: 0.55rem; padding: 0.05rem 0.3rem; margin-top: 0.25rem;">Réseau Profond</span>
+                    </div>
+
+                    <!-- 5. Tête de Classification (Sortie) -->
+                    <div class="card card-mint" style="position: absolute; left: 87%; top: 25%; width: 11%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--color-mint); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                        <i class="fa-solid fa-circle-nodes" style="color: var(--color-mint); font-size: 1.3rem; margin-bottom: 0.3rem;"></i>
+                        <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--color-mint); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">3. Classification</span>
+                        <div style="font-family: var(--font-title); font-size: 0.85rem; font-weight: bold; margin-top: 0.2rem; color: var(--color-mint); text-align: center; line-height: 1.2;">15 Logits<br>(Attaques)</div>
+                        <span class="tech-badge badge-mint" style="font-size: 0.55rem; padding: 0.05rem 0.3rem; margin-top: 0.3rem;">Inférence</span>
+                    </div>
+                </div>
+
+                <!-- Section du bas : 3 explications clés sous forme de cartes minimalistes à hauteur égale -->
+                <div class="cols-3" style="margin-top: 0.1rem;">
+                    <!-- Masquage attentionnel -->
+                    <div class="card card-lavender" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
+                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                            <i class="fa-solid fa-bolt"></i> Pondération Attentionnelle
+                        </h4>
+                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                            Calcul des poids d'attention &alpha;<sub>i</sub> par Softmax. Permet au réseau de se focaliser dynamiquement sur les variables les plus discriminantes à chaque instant.
+                        </p>
                     </div>
                     
-                    <!-- Colonne Droite : Explications Scientifiques -->
-                    <div style="display: flex; flex-direction: column; gap: 0.8rem; height: 100%; justify-content: space-between;">
-                        <div class="card card-lavender" style="padding: 1rem 1.2rem;">
-                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-calculator"></i> Mécanisme Mathématique de l'Attention</h3>
-                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
-                                Le masque d'attention spatiale <span class="tech-badge badge-lavender">&alpha;</span> est calculé dynamiquement :
-                                <div style="background: rgba(0, 0, 0, 0.18); border-radius: 6px; padding: 0.35rem; margin: 0.35rem 0; font-family: var(--font-numeric); text-align: center; color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; border: 1px solid var(--border-subtle);">
-                                    h<sub>attn</sub> = tanh(W<sub>1</sub>x + b<sub>1</sub>) &nbsp;&nbsp;|&nbsp;&nbsp; &alpha; = softmax(W<sub>2</sub>h<sub>attn</sub> + b<sub>2</sub>)
-                                </div>
-                                L'activation <span class="tech-badge">Softmax</span> contraint les poids d'attention à sommer à 1 (&sum; &alpha;<sub>i</sub> = 1), distribuant dynamiquement l'importance sur les 77 features.
-                            </div>
-                        </div>
-                        
-                        <div class="card card-orange" style="padding: 1rem 1.2rem;">
-                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-filter"></i> Gating & Réduction de Bruit (Hadamard Product)</h3>
-                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
-                                Le produit de Hadamard <span class="tech-badge badge-orange">x &odot; &alpha;</span> filtre les 77 caractéristiques tabulaires :
-                                <ul style="margin-top: 0.3rem; font-size: 0.9rem; padding-left: 0.8rem;">
-                                    <li><strong>Atténuation du bruit :</strong> Masquage des variables redondantes ou non discriminantes induites par le collecteur de flux (ex. CICFlowMeter).</li>
-                                    <li><strong>Amplification des signaux :</strong> Focus immédiat sur les métriques critiques comme la distribution temporelle (<code>Flow IAT</code>) ou les drapeaux TCP (<code>SYN</code>, <code>FIN</code>).</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="card card-mint" style="padding: 1rem 1.2rem; background: var(--accent-blue-focus);">
-                            <h3 class="card-title" style="font-size: 1.2rem; margin-bottom: 0.4rem;"><i class="fa-solid fa-circle-check" style="color: var(--color-mint);"></i> Avantages Clés en Production</h3>
-                            <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
-                                <ul style="margin-top: 0.2rem; font-size: 0.9rem; padding-left: 0.8rem;">
-                                    <li><strong>Explicabilité (XAI) :</strong> Extraction possible des poids d'attention en temps réel pour comprendre <em>pourquoi</em> l'IDS a classé un flux comme malveillant.</li>
-                                    <li><strong>Compacité Neuronale :</strong> Seulement <strong>49 915 paramètres</strong> (~50 Ko compressé), évitant la surcharge mémoire.</li>
-                                    <li><strong>Ultra-faible Latence :</strong> Inférence CPU brute en <strong>0.42 ms</strong> par flux, indispensable face au trafic réseau à haute vitesse.</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <!-- Hadamard Gating -->
+                    <div class="card card-orange" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
+                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--arch-orange); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                            <i class="fa-solid fa-filter"></i> Gating de Hadamard (x &odot; &alpha;)
+                        </h4>
+                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                            Multiplication terme à terme qui filtre et élimine dynamiquement le bruit (les variables redondantes induites par le collecteur de flux).
+                        </p>
+                    </div>
+
+                    <!-- Compacité & Latence -->
+                    <div class="card card-mint" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
+                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--color-mint); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                            <i class="fa-solid fa-gauge-high"></i> Compacité & Rapidité
+                        </h4>
+                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                            Seulement <strong>50 Ko</strong> (49,9k paramètres). Latence d'inférence de <strong>0,42 ms</strong> sur CPU simple, permettant une classification réseau en temps réel à très haut débit.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -2475,7 +3208,7 @@
         <div class="slide" id="slide-14">
             <div class="slide-header">
                 <div class="slide-category"><i class="fa-solid fa-network-wired"></i> Le CyberRange AWS</div>
-                <h2 class="slide-title">Architecture Globale du CyberRange Cloud (Haute Fidélité)</h2>
+                <h2 class="slide-title">Architecture Globale du CyberRange Cloud</h2>
             </div>
             <div class="slide-content" style="position: relative; overflow: visible;">
                 <!-- Conteneur global de la carte d'architecture (la hauteur 490px est pilotée par la feuille de style) -->
@@ -2521,16 +3254,16 @@
                         <path d="M 180 250 C 200 250, 200 159, 232 159" fill="none" stroke="var(--color-coral)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-coral)" style="opacity: 0.85;" />
                         <path d="M 180 250 C 200 250, 200 218, 232 218" fill="none" stroke="var(--color-coral)" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-coral)" style="opacity: 0.85;" />
 
-                        <!-- 2. VPC Traffic Mirroring (Victims -> IDS Probe) -->
-                        <path d="M 449 100 C 510 100, 480 280, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
-                        <path d="M 449 159 C 500 159, 460 285, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
-                        <path d="M 449 218 C 490 218, 440 290, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
+                        <!-- 2. VPC Traffic Mirroring (Victims -> IDS Probe) - Optimisé pour éviter le croisement de l'axe central -->
+                        <path d="M 430 100 C 465 100, 440 280, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
+                        <path d="M 430 159 C 460 159, 435 285, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
+                        <path d="M 430 218 C 455 218, 430 290, 350 319" fill="none" stroke="var(--accent-cyan)" stroke-width="1.8" stroke-dasharray="5 5" marker-end="url(#arrow-cyan)" style="opacity: 0.85;" />
 
-                        <!-- 3. S3 Bucket Model Deployment (S3 -> IDS Node) -->
-                        <path d="M 650 223 C 650 290, 420 270, 350 319" fill="none" stroke="var(--arch-orange)" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-orange)" style="opacity: 0.8;" />
+                        <!-- 3. S3 Bucket Model Deployment (S3 -> IDS Node) - Évite tout croisement avec Traffic Mirroring -->
+                        <path d="M 530 210 C 490 230, 470 280, 440 330" fill="none" stroke="var(--arch-orange)" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow-orange)" style="opacity: 0.8;" />
 
                         <!-- 4. Pipeline Flow (IDS -> SQS) -->
-                        <path d="M 467 358 C 550 358, 650 70, 800 70" fill="none" stroke="var(--accent-lavender)" stroke-width="2" marker-end="url(#arrow-lavender)" style="opacity: 0.85;" />
+                        <path d="M 467 358 C 580 358, 700 200, 800 85" fill="none" stroke="var(--accent-lavender)" stroke-width="2" marker-end="url(#arrow-lavender)" style="opacity: 0.85;" />
 
                         <!-- 5. Pipeline Interne (SQS -> Lambda -> DynamoDB) -->
                         <path d="M 890 100 L 890 140" fill="none" stroke="var(--accent-lavender)" stroke-width="1.8" marker-end="url(#arrow-lavender)" style="opacity: 0.85;" />
@@ -2556,23 +3289,23 @@
 
                         <!-- VPC Traffic Mirroring (Cyan) -->
                         <circle r="4" fill="var(--accent-cyan)" style="filter: url(#glow-cyan-path);">
-                            <animateMotion dur="3s" repeatCount="indefinite" path="M 449 100 C 510 100, 480 280, 350 319" />
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M 430 100 C 465 100, 440 280, 350 319" />
                         </circle>
                         <circle r="4" fill="var(--accent-cyan)" style="filter: url(#glow-cyan-path);">
-                            <animateMotion dur="2.5s" repeatCount="indefinite" path="M 449 159 C 500 159, 460 285, 350 319" />
+                            <animateMotion dur="2.5s" repeatCount="indefinite" path="M 430 159 C 460 159, 435 285, 350 319" />
                         </circle>
                         <circle r="4" fill="var(--accent-cyan)" style="filter: url(#glow-cyan-path);">
-                            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 449 218 C 490 218, 440 290, 350 319" />
+                            <animateMotion dur="3.5s" repeatCount="indefinite" path="M 430 218 C 455 218, 430 290, 350 319" />
                         </circle>
 
                         <!-- S3 Models loading (Orange) -->
                         <circle r="3.5" fill="var(--arch-orange)">
-                            <animateMotion dur="4s" repeatCount="indefinite" path="M 650 223 C 650 290, 420 270, 350 319" />
+                            <animateMotion dur="4s" repeatCount="indefinite" path="M 530 210 C 490 230, 470 280, 440 330" />
                         </circle>
 
                         <!-- Features Ingestion (Lavender) -->
                         <circle r="4" fill="var(--accent-lavender)">
-                            <animateMotion dur="2.8s" repeatCount="indefinite" path="M 467 358 C 550 358, 650 70, 800 70" />
+                            <animateMotion dur="2.8s" repeatCount="indefinite" path="M 467 358 C 580 358, 700 200, 800 85" />
                         </circle>
 
                         <!-- Pipeline Interne -->
@@ -2624,12 +3357,12 @@
                             <i class="fa-solid fa-cloud"></i> VPC SECURITY ZONE (10.0.0.0/16) -- AWS eu-west-1
                         </div>
 
-                        <!-- Subnet Public (Cibles) -->
-                        <div class="subnet" style="position: absolute; left: 2%; top: 6%; width: 44%; height: 46%; border-color: rgba(255, 255, 255, 0.08); padding: 0.4rem; gap: 0.3rem; display: flex; flex-direction: column;">
+                        <!-- Subnet Public (Cibles) - Espacements intérieurs optimisés -->
+                        <div class="subnet" style="position: absolute; left: 2%; top: 6%; width: 44%; height: 46%; border-color: rgba(255, 255, 255, 0.08); gap: 0.6rem;">
                             <div class="subnet-title" style="font-size: 0.62rem; color: var(--text-white); padding-bottom: 0.15rem; display: flex; align-items: center; gap: 0.3rem;">
                                 <i class="fa-solid fa-globe" style="color: var(--accent-cyan); font-size: 0.7rem;"></i> Subnet Public (10.0.1.0/24)
                             </div>
-                            <div style="display: flex; flex-direction: column; gap: 0.35rem; flex-grow: 1; justify-content: center;">
+                            <div style="display: flex; flex-direction: column; gap: 0.6rem; flex-grow: 1; justify-content: center;">
                                 <div class="node victim" style="padding: 0.25rem 0.4rem; font-size: 0.7rem; display: flex; align-items: center; justify-content: space-between; border-color: var(--color-mint);">
                                     <span style="font-weight: bold; color: var(--text-white); display: inline-flex; align-items: center;"><span class="led-dot"></span>Victim-Web</span>
                                     <span style="font-family: var(--font-numeric); font-size: 0.58rem; opacity: 0.85;">10.0.1.232 [Apache]</span>
@@ -2646,11 +3379,11 @@
                         </div>
 
                         <!-- Subnet IDS Probe -->
-                        <div class="subnet" style="position: absolute; left: 2%; top: 56%; width: 44%; height: 38%; border-color: var(--accent-lavender); padding: 0.4rem; display: flex; flex-direction: column;">
+                        <div class="subnet" style="position: absolute; left: 2%; top: 56%; width: 44%; height: 38%; border-color: var(--accent-lavender); gap: 0.5rem;">
                             <div class="subnet-title" style="font-size: 0.62rem; color: var(--accent-lavender); padding-bottom: 0.15rem; display: flex; align-items: center; gap: 0.3rem;">
                                 <i class="fa-solid fa-eye-slash" style="font-size: 0.7rem;"></i> Subnet IDS Probe (10.0.2.0/24)
                             </div>
-                            <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; gap: 0.25rem;">
+                            <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; gap: 0.4rem;">
                                 <div class="node probe" style="padding: 0.35rem; border-color: var(--accent-lavender); display: flex; align-items: center; justify-content: space-between;">
                                     <span style="font-weight: 700; font-size: 0.75rem; color: var(--text-white); display: inline-flex; align-items: center;">
                                         <span class="led-dot" style="background-color: var(--accent-lavender); box-shadow: 0 0 6px var(--accent-lavender);"></span>IDS-Node
@@ -2668,11 +3401,11 @@
                         </div>
 
                         <!-- Subnet Supervision -->
-                        <div class="subnet" style="position: absolute; left: 54%; top: 56%; width: 44%; height: 38%; border-color: var(--color-mint); padding: 0.4rem; display: flex; flex-direction: column;">
+                        <div class="subnet" style="position: absolute; left: 54%; top: 56%; width: 44%; height: 38%; border-color: var(--color-mint); gap: 0.5rem;">
                             <div class="subnet-title" style="font-size: 0.62rem; color: var(--color-mint); padding-bottom: 0.15rem; display: flex; align-items: center; gap: 0.3rem;">
                                 <i class="fa-solid fa-desktop" style="font-size: 0.7rem;"></i> Subnet Supervision (10.0.3.0/24)
                             </div>
-                            <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; gap: 0.25rem;">
+                            <div style="display: flex; flex-direction: column; justify-content: center; flex-grow: 1; gap: 0.4rem;">
                                 <div class="node" style="padding: 0.35rem; border-color: var(--color-mint); display: flex; align-items: center; justify-content: space-between;">
                                     <span style="font-weight: 700; font-size: 0.75rem; color: var(--text-white); display: inline-flex; align-items: center;">
                                         <span class="led-dot"></span>SOC-Server
@@ -2771,12 +3504,12 @@
             <div class="slide-content">
                 <div class="cols-5" style="margin-top: 0.2rem;">
                     
-                    <!-- Niveau 1 : R&D / IA -->
-                    <div class="card card-orange" style="padding: 1.1rem 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
+                    <!-- Niveau 1 : Recherche & Développement / IA -->
+                    <div class="card card-orange slide-tech-card">
                         <div>
                             <div class="card-number" style="font-size: 1.4rem; top: 0.6rem; right: 0.8rem; opacity: 0.25;">01</div>
                             <h4 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.6rem; gap: 0.4rem; color: var(--text-white);">
-                                <i class="fa-solid fa-brain" style="font-size: 1.2rem; color: var(--arch-orange);"></i> R&D / IA
+                                <i class="fa-solid fa-brain" style="font-size: 1.2rem; color: var(--arch-orange);"></i> Recherche &amp; Développement / IA
                             </h4>
                             <div class="card-desc" style="font-size: 0.95rem; line-height: 1.4;">
                                 <span class="tech-badge badge-orange" style="font-size: 0.65rem; padding: 0.1rem 0.35rem;">PyTorch</span>
@@ -2790,12 +3523,12 @@
                             </div>
                         </div>
                         <div style="font-size: 0.75rem; font-weight: bold; color: var(--text-warm-gray); border-top: 1px solid var(--border-subtle); padding-top: 0.4rem; margin-top: 0.4rem; text-align: center;">
-                            R&D algorithmique
+                            Recherche &amp; Développement algorithmique
                         </div>
                     </div>
 
                     <!-- Niveau 2 : IaC & Déploiement -->
-                    <div class="card card-coral" style="padding: 1.1rem 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
+                    <div class="card card-coral slide-tech-card">
                         <div>
                             <div class="card-number" style="font-size: 1.4rem; top: 0.6rem; right: 0.8rem; opacity: 0.25;">02</div>
                             <h4 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.6rem; gap: 0.4rem; color: var(--text-white);">
@@ -2817,7 +3550,7 @@
                     </div>
 
                     <!-- Niveau 3 : Capture & Sonde -->
-                    <div class="card card-cyan" style="padding: 1.1rem 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
+                    <div class="card card-cyan slide-tech-card">
                         <div>
                             <div class="card-number" style="font-size: 1.4rem; top: 0.6rem; right: 0.8rem; opacity: 0.25;">03</div>
                             <h4 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.6rem; gap: 0.4rem; color: var(--text-white);">
@@ -2840,7 +3573,7 @@
                     </div>
 
                     <!-- Niveau 4 : Ingestion Cloud Serverless -->
-                    <div class="card card-lavender" style="padding: 1.1rem 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
+                    <div class="card card-lavender slide-tech-card">
                         <div>
                             <div class="card-number" style="font-size: 1.4rem; top: 0.6rem; right: 0.8rem; opacity: 0.25;">04</div>
                             <h4 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.6rem; gap: 0.4rem; color: var(--text-white);">
@@ -2863,7 +3596,7 @@
                     </div>
 
                     <!-- Niveau 5 : Restitution & SOC -->
-                    <div class="card card-mint" style="padding: 1.1rem 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
+                    <div class="card card-mint slide-tech-card">
                         <div>
                             <div class="card-number" style="font-size: 1.4rem; top: 0.6rem; right: 0.8rem; opacity: 0.25;">05</div>
                             <h4 class="card-title" style="font-size: 1.25rem; margin-bottom: 0.6rem; gap: 0.4rem; color: var(--text-white);">
@@ -2889,219 +3622,14 @@
             </div>
         </div>
 
-        <!-- ====================================================
-             SLIDE 15 : CAPTURE RÉSEAU PASSIVE
-             ==================================================== -->
-        <div class="slide" id="slide-15">
-            <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-satellite-dish"></i> Écoute Réseau</div>
-                <h2 class="slide-title">Capture Réseau Passive et VXLAN</h2>
-            </div>
-            <div class="slide-content">
-                <div class="cols-2">
-                    <div class="card card-cyan">
-                        <div class="card-number">01</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
-                            <i class="fa-solid fa-route"></i> Traffic Mirroring
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge">Capture Native</span>
-                            <span class="tech-badge">Zero Agent</span>
-                            <span class="tech-badge">Inviolable</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Copie Passive :</strong> Duplication des paquets directement au niveau de l'infrastructure hyperviseur AWS.</li>
-                                <li><strong>Zéro Impact :</strong> Aucun agent ni CPU consommé sur les instances de production cibles.</li>
-                                <li><strong>Intégrité :</strong> Impossible à désactiver par l'attaquant, même avec accès root.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card card-lavender">
-                        <div class="card-number">02</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-lavender); box-shadow: 0 0 8px var(--accent-lavender);"></span>
-                            <i class="fa-solid fa-road-barrier"></i> Encapsulation VXLAN
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-lavender">VNI Vlan 100</span>
-                            <span class="tech-badge badge-lavender">UDP 4789</span>
-                            <span class="tech-badge badge-lavender">Tunnel</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Isolé logiquement :</strong> Transport du trafic dupliqué encapsulé dans un tunnel UDP 4789.</li>
-                                <li><strong>Sécurisé :</strong> Flux isolé imperméable au réseau de production ordinaire.</li>
-                                <li><strong>Décapsulation :</strong> Démon d'écoute hautes performances extrayant le paquet IP brut en direct.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- ====================================================
-             SLIDE 16 : SONDE D'INGESTION & D'INFÉRENCE (Diagramme linéaire horizontal)
-             ==================================================== -->
-        <div class="slide" id="slide-16">
-            <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-code-fork"></i> Le Démon de Détection</div>
-                <h2 class="slide-title">Sonde d'Ingestion & d'Inférence</h2>
-            </div>
-            <div class="slide-content">
-                <div class="flow-container">
-                    <div class="flow-step-card card-cyan">
-                        <div class="flow-icon-circle"><i class="fa-solid fa-road-barrier"></i></div>
-                        <div class="flow-badge">ÉTAPE 01</div>
-                        <h3 class="flow-title">Capture VXLAN</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge">UDP 4789</span>
-                            <p style="margin-top: 0.3rem; font-size: 1.05rem;">Décapsulation passive temps réel des flux dupliqués par AWS.</p>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-orange">
-                        <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1);"><i class="fa-solid fa-arrows-spin"></i></div>
-                        <div class="flow-badge" style="color: var(--arch-orange);">ÉTAPE 02</div>
-                        <h3 class="flow-title">Agrégation Flux</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge badge-orange">77 Features</span>
-                            <p style="margin-top: 0.3rem; font-size: 1.05rem;">Agrégation statistique bidirectionnelle des trames IP par NFStream.</p>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-lavender">
-                        <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1);"><i class="fa-solid fa-brain"></i></div>
-                        <div class="flow-badge" style="color: var(--accent-lavender);">ÉTAPE 03</div>
-                        <h3 class="flow-title">Inférence PyTorch</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge badge-lavender">Attention MLP</span>
-                            <p style="margin-top: 0.3rem; font-size: 1.05rem;">Normalisation standardisée et classification directe en 15 classes.</p>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-mint">
-                        <div class="flow-icon-circle" style="border-color: var(--color-mint); color: var(--color-mint); background: rgba(52, 211, 153, 0.1);"><i class="fa-solid fa-envelope-open-text"></i></div>
-                        <div class="flow-badge" style="color: var(--color-mint);">ÉTAPE 04</div>
-                        <h3 class="flow-title">AWS SQS & DB</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge badge-mint">Queue & NoSQL</span>
-                            <p style="margin-top: 0.3rem; font-size: 1.05rem;">Découplage asynchrone hautement disponible (SQS/DynamoDB).</p>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">➔</div>
-                    <div class="flow-step-card card-cyan">
-                        <div class="flow-icon-circle"><i class="fa-solid fa-bolt"></i></div>
-                        <div class="flow-badge">ÉTAPE 05</div>
-                        <h3 class="flow-title">WebSockets SOC</h3>
-                        <div class="flow-desc">
-                            <span class="tech-badge">FastAPI Async</span>
-                            <p style="margin-top: 0.3rem; font-size: 1.05rem;">Consommation asynchrone et push instantané vers l'UI React.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ====================================================
-             SLIDE 17 : PIPELINE ASYNCHRONE DES ALERTES
-             ==================================================== -->
-        <div class="slide" id="slide-17">
-            <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-cubes"></i> Architecture Cloud</div>
-                <h2 class="slide-title">Pipeline Asynchrone des Alertes</h2>
-            </div>
-            <div class="slide-content">
-                <div class="cols-2">
-                    <div class="card card-lavender">
-                        <div class="card-number">SQS</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-lavender); box-shadow: 0 0 8px var(--accent-lavender);"></span>
-                            <i class="fa-solid fa-envelopes-bulk"></i> Amazon SQS Queue
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-lavender">Asynchrone</span>
-                            <span class="tech-badge badge-lavender">Anti-Spike</span>
-                            <span class="tech-badge badge-lavender">Élastique</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Rétention Élastique :</strong> Absorption des tempêtes d'alertes lors d'attaques DDoS volumétriques.</li>
-                                <li><strong>Découplage :</strong> Inférence continue sans attente de consommation graphique.</li>
-                                <li><strong>Fiabilité :</strong> Garantie de livraison. Aucune alerte cyber n'est perdue.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card card-mint">
-                        <div class="card-number">DB</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--color-mint); box-shadow: 0 0 8px var(--color-mint);"></span>
-                            <i class="fa-solid fa-table-columns"></i> Amazon DynamoDB NoSQL
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-mint">NoSQL Managé</span>
-                            <span class="tech-badge badge-mint">Latence &lt; 10ms</span>
-                            <span class="tech-badge badge-mint">Forensics</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Très Haut Débit :</strong> Écritures et lectures ultra-rapides sans verrous.</li>
-                                <li><strong>Persistance Structurée :</strong> IP source/dest, ports, type d'attaque et scores d'attention.</li>
-                                <li><strong>Historisation :</strong> Base d'audit idéale pour l'analyse forensique post-incident.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ====================================================
-             SLIDE 18 : API TEMPS RÉEL & RÉSOLUTION
-             ==================================================== -->
-        <div class="slide" id="slide-18">
-            <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-server"></i> Traitement de l'Information</div>
-                <h2 class="slide-title">API Temps Réel & Résolution d'IP</h2>
-            </div>
-            <div class="slide-content">
-                <div class="cols-2">
-                    <div class="card card-cyan">
-                        <div class="card-number">API</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
-                            <i class="fa-solid fa-bolt"></i> FastAPI & WebSockets
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">WebSockets</span>
-                            <span class="tech-badge">Streaming Push</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Streaming Live :</strong> Consommation asynchrone non-bloquante de la file Amazon SQS.</li>
-                                <li><strong>Push Instantané :</strong> Alertes poussées en moins de 10 ms vers le dashboard React.</li>
-                                <li><strong>Légèreté :</strong> Suppression complète du HTTP Polling surchargeant le réseau.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card card-orange">
-                        <div class="card-number">CTX</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--arch-orange); box-shadow: 0 0 8px var(--arch-orange);"></span>
-                            <i class="fa-solid fa-tags"></i> Enrichissement AWS EC2
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-orange">AWS Boto3 API</span>
-                            <span class="tech-badge badge-orange">Context-Aware</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Adresses Éphémères :</strong> Résolution automatique de la volatilité des IPs du Cloud.</li>
-                                <li><strong>Contexte Live :</strong> FastAPI associe dynamiquement l'IP à l'instance et ses tags.</li>
-                                <li><strong>Aide à la Décision :</strong> L'analyste voit direct "Web-Prod-01", "Ubuntu" et l'ID de l'instance.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ====================================================
-             SLIDE 19 : DASHBOARD SOC PREMIUM (Carrousel de screenshots réel)
+             SLIDE 19 : DASHBOARD DU SOC (Carrousel de screenshots réel)
              ==================================================== -->
         <div class="slide" id="slide-19">
             <div class="slide-header">
                 <div class="slide-category"><i class="fa-solid fa-tv"></i> Supervision SOC</div>
-                <h2 class="slide-title">Dashboard SOC Premium (Interface Réelle)</h2>
+                <h2 class="slide-title">Dashboard du SOC (Interface Réelle)</h2>
             </div>
             <div class="slide-content">
                 <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
@@ -3199,7 +3727,7 @@
                             <i class="fa-solid fa-graduation-cap"></i> Bilan du Projet PFE
                         </h3>
                         <div class="card-desc">
-                            <span class="tech-badge">Concrétisation R&D</span>
+                            <span class="tech-badge">Concrétisation Recherche &amp; Développement</span>
                             <span class="tech-badge">Inférence CPU</span>
                             <ul style="margin-top: 0.4rem;">
                                 <li><strong>DL Théorique vers Cloud :</strong> Déploiement d'un pipeline passif de bout-en-bout résilient sur AWS.</li>
@@ -3212,7 +3740,7 @@
                         <div class="card-number">NEXT</div>
                         <h3 class="card-title">
                             <span class="led-dot" style="background-color: var(--accent-lavender); box-shadow: 0 0 8px var(--accent-lavender);"></span>
-                            <i class="fa-solid fa-compass"></i> Perspectives R&D
+                            <i class="fa-solid fa-compass"></i> Perspectives Recherche &amp; Développement
                         </h3>
                         <div class="card-desc">
                             <span class="tech-badge badge-lavender">MLOps</span>
@@ -3220,8 +3748,7 @@
                             <span class="tech-badge badge-lavender">SOAR AWS</span>
                             <ul style="margin-top: 0.4rem;">
                                 <li><strong>MLOps Continu :</strong> Réentraînement automatique sur détection de dérives de données (data drift).</li>
-                                <li><strong>IA Explicable (XAI) :</strong> Intégration SHAP/LIME ou résumés LLM pour l'analyste.</li>
-                                <li><strong>Zéro-Day Autonome :</strong> Détection auto-supervisée d'anomalies.</li>
+                                <li><strong>IA Explicable (XAI) :</strong> Intégration SHAP/LIME.</li>
                                 <li><strong>Réponse Active (SOAR) :</strong> Quarantaine via modification d'AWS Security Groups.</li>
                             </ul>
                         </div>
@@ -3249,6 +3776,68 @@
         let currentSlideIdx = 0;
         let prevSlideIdx = 0;
         const totalSlides = slides.length;
+
+        // Cartographie des slides par section du plan
+        const slideSectionMap = {
+            'slide-1': 0, // Page de garde
+            'slide-plan': 0, // Sommaire
+            
+            // Section I : Introduction & Contexte
+            'slide-2': 1,
+            'slide-3': 1,
+            'slide-4': 1,
+            'slide-5': 1,
+            'slide-6': 1,
+            'slide-7': 1,
+            
+            // Section II : Modélisation Deep Learning
+            'slide-8': 2,
+            'slide-9': 2,
+            'slide-9-features': 2,
+            'slide-10': 2,
+            'slide-11': 2,
+            'slide-11-train': 2,
+            'slide-12': 2,
+            'slide-13': 2,
+            'slide-13-arch': 2,
+            
+            // Section III : Architecture AWS
+            'slide-14': 3,
+            
+            // Section IV : Cartographie Technologique
+            'slide-tech-stack': 4,
+            
+            // Section V : Supervision & Validation
+            'slide-19': 5,
+            'slide-20': 5,
+            
+            // Section VI : Bilan & Perspectives
+            'slide-21': 6
+        };
+
+        // Assigner les data-section dynamiquement
+        Object.entries(slideSectionMap).forEach(([id, section]) => {
+            const slide = document.getElementById(id);
+            if (slide) {
+                slide.setAttribute('data-section', section);
+            }
+        });
+
+        // Navigation par clic sur le plan
+        document.querySelectorAll('.header-nav .nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const section = parseInt(e.currentTarget.dataset.section);
+                // Trouver la première slide de cette section
+                const targetSlideIdx = Array.from(slides).findIndex(slide => {
+                    return parseInt(slide.getAttribute('data-section')) === section;
+                });
+                if (targetSlideIdx !== -1) {
+                    currentSlideIdx = targetSlideIdx;
+                    updateSlide();
+                }
+                e.stopPropagation();
+            });
+        });
 
         /* --- COUNT-UP ANIMATION ENGINE --- */
         function formatNumber(n, separator, decimals) {
@@ -3372,6 +3961,31 @@
             const currentStr = String(currentSlideIdx + 1).padStart(2, '0');
             const totalStr = String(totalSlides).padStart(2, '0');
             pageCounter.innerText = `[  ${currentStr}  /  ${totalStr}  ]`;
+
+            // Met à jour le navigateur global
+            const sectionIdx = parseInt(activeSlide.getAttribute('data-section')) || 0;
+            const navItems = document.querySelectorAll('.header-nav .nav-item');
+            navItems.forEach(item => {
+                if (parseInt(item.dataset.section) === sectionIdx) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Masque ou affiche le navigateur sur les slides d'accueil/plan (section 0)
+            const headerNav = document.querySelector('.header-nav');
+            if (headerNav) {
+                if (sectionIdx === 0) {
+                    headerNav.style.opacity = '0';
+                    headerNav.style.pointerEvents = 'none';
+                    headerNav.style.transform = 'translateY(-10px)';
+                } else {
+                    headerNav.style.opacity = '1';
+                    headerNav.style.pointerEvents = 'auto';
+                    headerNav.style.transform = 'translateY(0)';
+                }
+            }
         }
 
         function nextSlide() {
@@ -3439,12 +4053,11 @@
             buttons[idx].classList.add('active');
         }
 
-        // Toggle Thème Clair / Sombre
-        function toggleTheme() {
+        // Update Theme Button styling & tooltip based on state
+        function updateThemeButton() {
             const body = document.body;
             const btn = document.getElementById('theme-btn');
-            body.classList.toggle('light-theme');
-            
+            if (!btn) return;
             if (body.classList.contains('light-theme')) {
                 btn.innerHTML = '<i class="fa-solid fa-moon" style="color: var(--accent-lavender);"></i>';
                 btn.title = "Changer en thème sombre (C)";
@@ -3454,7 +4067,17 @@
             }
         }
 
-        // Initialisation de la première slide
+        // Toggle Thème Clair / Sombre
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            const currentTheme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeButton();
+        }
+
+        // Initialisation de la première slide et du bouton de thème
+        updateThemeButton();
         updateSlide();
     </script>
 </body>

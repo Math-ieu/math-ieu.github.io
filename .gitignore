@@ -37,4 +37,5 @@ attention_mlp_best.pth
 nids-pfe-key.pem
 
 *.txt
+*pcap*
 check_word_count.py
