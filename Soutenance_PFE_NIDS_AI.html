@@ -17,18 +17,18 @@
     <style>
         /* --- DESIGN SYSTEM "OBSIDIAN GLASS & PRECISION CAD" --- */
         :root {
-            /* Mode Sombre - Obsidian Cyan/Lavender */
-            --bg-obsidian: #06070a;
-            --card-midnight: rgba(6, 7, 12, 0.25);
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(0, 242, 254, 0.35);
+            /* Mode Sombre - Brutalist Dark Terminal */
+            --bg-obsidian: #0A0A0A;
+            --card-midnight: #121212;
+            --border-subtle: #262626;
+            --border-hover: #00f2fe;
             
-            --text-white: #ffffff;
-            --text-warm-gray: #abb0c4;
+            --text-white: #EAEAEA;
+            --text-warm-gray: #888888;
             
             --accent-cyan: #00f2fe;
             --accent-lavender: #a78bfa;
-            --accent-blue-focus: rgba(21, 28, 54, 0.35);
+            --accent-blue-focus: #181c26;
             
             --color-mint: #10b981;
             --color-coral: #fb7185;
@@ -52,27 +52,31 @@
             --arch-gold: #fbbf24;
         }
 
+        html {
+            font-size: 100%;
+        }
+
         /* --- MODE CLAIR (LIGHT MODE OVERRIDES) --- */
         body.light-theme {
-            --bg-obsidian: #f8fafc;
-            --card-midnight: rgba(255, 255, 255, 0.05);
-            --border-subtle: rgba(0, 0, 0, 0.08);
-            --border-hover: rgba(3, 105, 161, 0.4);
+            --bg-obsidian: #F4F4F0;
+            --card-midnight: #ffffff;
+            --border-subtle: #111111;
+            --border-hover: #E61919;
             
-            --text-white: #0f172a;
-            --text-warm-gray: #475569;
+            --text-white: #111111;
+            --text-warm-gray: #4a4a4a;
             
-            --accent-cyan: #0284c7;
+            --accent-cyan: #E61919;
             --accent-lavender: #6d28d9;
-            --accent-blue-focus: rgba(219, 234, 254, 0.25);
+            --accent-blue-focus: #EAE8E3;
             
             --color-mint: #059669;
             --color-coral: #dc2626;
 
             /* Technical Grid Background Pattern */
-            --grid-dot: rgba(2, 132, 199, 0.08);
+            --grid-dot: rgba(0, 0, 0, 0.08);
             --grid-line-thin: rgba(0, 0, 0, 0.024);
-            --grid-line-thick: rgba(2, 132, 199, 0.045);
+            --grid-line-thick: rgba(0, 0, 0, 0.045);
 
             /* Architecture Colors */
             --arch-bg: rgba(255, 255, 255, 0.03);
@@ -151,14 +155,12 @@
         .header-logo {
             height: 60px;
             padding: 8px 18px;
-            border-radius: 10px;
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
             pointer-events: auto;
         }
 
@@ -202,20 +204,19 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            background: rgba(13, 15, 26, 0.45);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 30px;
+            background: var(--card-midnight);
+            border: 3px solid #000;
+            border-radius: 0px;
             padding: 0.4rem 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 4px 4px 0px #000;
             pointer-events: auto;
-            transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         body.light-theme .header-nav {
-            background: rgba(255, 255, 255, 0.55);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
         }
 
         .nav-item {
@@ -225,32 +226,37 @@
             color: var(--text-warm-gray);
             cursor: pointer;
             padding: 0.25rem 0.65rem;
-            border-radius: 15px;
-            transition: all 0.25s ease;
+            border: 2px solid transparent;
+            border-radius: 0px;
+            transition: all 0.15s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .nav-item:hover {
             color: var(--accent-cyan);
-            background: rgba(0, 242, 254, 0.06);
+            background: var(--accent-blue-focus);
+            border-color: #000;
         }
         
         body.light-theme .nav-item:hover {
             color: var(--accent-lavender);
-            background: rgba(109, 40, 217, 0.05);
+            background: var(--accent-blue-focus);
+            border-color: #000;
         }
 
         .nav-item.active {
-            color: #06070a;
-            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
-            box-shadow: 0 2px 10px rgba(0, 242, 254, 0.2);
+            color: #000 !important;
+            background: var(--accent-cyan);
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
         }
         
         body.light-theme .nav-item.active {
-            color: #ffffff;
-            background: linear-gradient(90deg, var(--accent-lavender) 0%, var(--accent-cyan) 100%);
-            box-shadow: 0 2px 10px rgba(109, 40, 217, 0.15);
+            color: #ffffff !important;
+            background: var(--accent-lavender);
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
         }
 
         .nav-arrow {
@@ -259,38 +265,35 @@
             font-weight: bold;
         }
 
-        /* Bouton Thème Switcher */
+        /* Bouton Thème Switcher Brutaliste */
         .theme-toggle-btn {
-            background: rgba(13, 15, 26, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-subtle);
+            background: var(--card-midnight);
+            border: 3px solid #000;
             color: var(--text-white);
-            border-radius: 8px;
+            border-radius: 0px;
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            transition: transform 0.1s, box-shadow 0.1s;
+            box-shadow: 4px 4px 0px #000;
             font-size: 1.1rem;
         }
         .theme-toggle-btn:hover {
-            border-color: var(--accent-cyan);
-            background: rgba(0, 242, 254, 0.08);
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+            border-color: #000;
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px #000;
         }
         body.light-theme .theme-toggle-btn {
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
         }
         body.light-theme .theme-toggle-btn:hover {
-            border-color: var(--accent-lavender);
-            background: rgba(109, 40, 217, 0.05);
-            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.1);
+            transform: translate(-1px, -1px);
+            box-shadow: 5px 5px 0px #000;
         }
 
         * {
@@ -383,72 +386,52 @@
             height: 100%;
             flex-direction: column;
             justify-content: space-between;
-            /* border: 1px solid var(--border-subtle); */
-            /* border-radius: 16px; */
+            border: 4px solid #000;
+            border-radius: 0px;
             padding: 2.2rem 2.8rem;
             position: relative;
             overflow: hidden;
-            
-            /* Glassmorphic Background + Corner brackets */
-            background: 
-                /* Corner Brackets */
-                linear-gradient(to right, var(--accent-cyan) 3px, transparent 3px) 0 0,
-                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 0 0,
-                linear-gradient(to left, var(--accent-cyan) 3px, transparent 3px) 100% 0,
-                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 100% 0,
-                linear-gradient(to right, var(--accent-lavender) 3px, transparent 3px) 0 100%,
-                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 0 100%,
-                linear-gradient(to left, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
-                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
-                /* Glassmorphic Solid Fill */
-                var(--card-midnight);
-            background-repeat: no-repeat;
-            background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 100% 100%;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            /* box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); */
+            background: var(--card-midnight);
+            box-shadow: 10px 10px 0px #000;
         }
 
         body.light-theme .slide {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.04);
+            border: 4px solid #000;
+            box-shadow: 10px 10px 0px #000;
             backdrop-filter: none;
             -webkit-backdrop-filter: none;
         }
 
-        /* Transitions fluides et premium de type "Apple/Figma" entre les pages */
+        /* Transitions Brutalistes nettes entre les pages */
         .slide.active.forward {
             display: flex;
-            animation: slideEnterForward 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideEnterForward 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .slide.active.backward {
             display: flex;
-            animation: slideEnterBackward 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideEnterBackward 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes slideEnterForward {
             from {
                 opacity: 0;
-                transform: translateX(30px) scale(0.995);
-                filter: blur(3px);
+                transform: translateX(20px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0) scale(1);
-                filter: blur(0);
+                transform: translateX(0);
             }
         }
 
         @keyframes slideEnterBackward {
             from {
                 opacity: 0;
-                transform: translateX(-30px) scale(0.995);
-                filter: blur(3px);
+                transform: translateX(-20px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0) scale(1);
-                filter: blur(0);
+                transform: translateX(0);
             }
         }
 
@@ -592,116 +575,121 @@
             flex-grow: 1;
         }
 
-        /* --- COMPOSANT "CARD GLASSMORPHISM" --- */
+        /* --- COMPOSANT "CARD BRUTALISM" --- */
         .card {
             background: var(--card-midnight);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid var(--border-subtle);
-            border-radius: 12px;
+            border: 3px solid #000;
+            border-radius: 0px;
             padding: 1.8rem 2rem;
             position: relative;
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 6px 6px 0px #000;
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #000;
         }
         
         body.light-theme .card {
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.04);
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px #000;
         }
         
         body.light-theme .card:hover {
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.08);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px #000;
         }
 
-        /* Accent sémantique stylé sur toute la bordure avec lueur diffuse */
+        /* Accent sémantique stylé avec ombre décalée unie (Neo-Brutalisme) */
         .card-cyan { 
-            border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(0, 242, 254, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--accent-cyan);
         }
         body.light-theme .card-cyan {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border-color: rgba(2, 132, 199, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--accent-cyan);
         }
         .card-cyan:hover { 
-            border-color: var(--accent-cyan);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--accent-cyan);
         }
 
         .card-lavender { 
-            border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(167, 139, 250, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--accent-lavender);
         }
         body.light-theme .card-lavender {
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-            border-color: rgba(109, 40, 217, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--accent-lavender);
         }
         .card-lavender:hover { 
-            border-color: var(--accent-lavender);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--accent-lavender);
         }
 
         .card-mint { 
-            border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--color-mint);
         }
         body.light-theme .card-mint {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border-color: rgba(5, 150, 105, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--color-mint);
         }
         .card-mint:hover { 
-            border-color: var(--color-mint);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--color-mint);
         }
 
         .card-coral { 
-            border-color: color-mix(in srgb, var(--color-coral) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(251, 113, 133, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--color-coral);
         }
         body.light-theme .card-coral {
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border-color: rgba(220, 38, 38, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--color-coral);
         }
         .card-coral:hover { 
-            border-color: var(--color-coral);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 113, 133, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--color-coral);
         }
 
         .card-orange { 
-            border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(255, 123, 0, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--arch-orange);
         }
         body.light-theme .card-orange {
-            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-            border-color: rgba(217, 119, 6, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--arch-orange);
         }
         .card-orange:hover { 
-            border-color: var(--arch-orange);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 123, 0, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--arch-orange);
         }
 
         .card-gold { 
-            border-color: color-mix(in srgb, var(--arch-gold) 45%, transparent); 
-            background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.15), rgba(6, 7, 12, 0.85) 70%);
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--arch-gold);
         }
         body.light-theme .card-gold {
-            background: linear-gradient(135deg, #fffdf5 0%, #fef9c3 100%);
-            border-color: rgba(180, 83, 9, 0.3);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px var(--arch-gold);
         }
         .card-gold:hover { 
-            border-color: var(--arch-gold);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 191, 36, 0.15);
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px var(--arch-gold);
         }
 
         .card.focus {
             background: var(--accent-blue-focus);
+            border: 3px solid var(--accent-cyan);
         }
 
 
@@ -797,7 +785,7 @@
 
         .card-title {
             font-family: var(--font-title);
-            font-size: 1.85rem;
+            font-size: 1.95rem;
             font-weight: 700;
             color: var(--text-white);
             margin-bottom: 0.8rem;
@@ -828,7 +816,7 @@
         }
 
         .card-desc {
-            font-size: 1.32rem;
+            font-size: 1.45rem;
             line-height: 1.6;
             color: var(--text-warm-gray);
         }
@@ -847,7 +835,7 @@
             margin-bottom: 0.6rem;
             position: relative;
             padding-left: 1.1rem;
-            font-size: 1.25rem;
+            font-size: 1.38rem;
         }
 
         .card-desc li::before {
@@ -996,52 +984,50 @@
         .flow-step-card {
             flex: 1;
             background: var(--card-midnight);
-            border: 2px solid var(--border-subtle);
-            border-radius: 12px;
+            border: 3px solid #000;
+            border-radius: 0px;
             padding: 1.1rem 1.3rem;
             position: relative;
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+            box-shadow: 5px 5px 0px #000;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.15s, box-shadow 0.15s;
         }
         .flow-step-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5);
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0px #000;
         }
         
         body.light-theme .flow-step-card {
-            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.04);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px #000;
         }
         
         body.light-theme .flow-step-card:hover {
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.08);
+            transform: translate(-3px, -3px);
+            box-shadow: 8px 8px 0px #000;
         }
 
-        .flow-step-card.card-cyan { border-color: color-mix(in srgb, var(--accent-cyan) 45%, transparent); }
+        .flow-step-card.card-cyan { border-color: #000; box-shadow: 5px 5px 0px var(--accent-cyan); }
         .flow-step-card.card-cyan:hover { 
-            border-color: var(--accent-cyan);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 242, 254, 0.15);
+            box-shadow: 8px 8px 0px var(--accent-cyan);
         }
         
-        .flow-step-card.card-orange { border-color: color-mix(in srgb, var(--arch-orange) 45%, transparent); }
+        .flow-step-card.card-orange { border-color: #000; box-shadow: 5px 5px 0px var(--arch-orange); }
         .flow-step-card.card-orange:hover { 
-            border-color: var(--arch-orange);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 123, 0, 0.15);
+            box-shadow: 8px 8px 0px var(--arch-orange);
         }
         
-        .flow-step-card.card-lavender { border-color: color-mix(in srgb, var(--accent-lavender) 45%, transparent); }
+        .flow-step-card.card-lavender { border-color: #000; box-shadow: 5px 5px 0px var(--accent-lavender); }
         .flow-step-card.card-lavender:hover { 
-            border-color: var(--accent-lavender);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(167, 139, 250, 0.15);
+            box-shadow: 8px 8px 0px var(--accent-lavender);
         }
         
-        .flow-step-card.card-mint { border-color: color-mix(in srgb, var(--color-mint) 45%, transparent); }
+        .flow-step-card.card-mint { border-color: #000; box-shadow: 5px 5px 0px var(--color-mint); }
         .flow-step-card.card-mint:hover { 
-            border-color: var(--color-mint);
-            box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
+            box-shadow: 8px 8px 0px var(--color-mint);
         }
 
         .flow-icon-circle {
@@ -1124,7 +1110,7 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 1.15rem;
+            font-size: 1.28rem;
         }
 
         th {
@@ -1206,29 +1192,27 @@
             top: 0rem;
             height: 58px;
             padding: 8px 16px;
-            border-radius: 10px;
+            border-radius: 0px;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
         }
 
         .garde-logo img {
             height: 100%;
             width: auto;
             object-fit: contain;
-            transition: filter 0.3s ease;
+            transition: filter 0.2s ease;
         }
 
         /* Logo de l'école (HESTIM) - Gauche */
         .left-logo {
             left: 0rem;
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #ffffff;
         }
 
         /* Logo de l'entreprise (3D Smart Factory) - Droite */
@@ -1238,25 +1222,23 @@
 
         /* Spécificités Thèmes pour les conteneurs de logos */
         body:not(.light-theme) .right-logo {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #ffffff;
         }
         body:not(.light-theme) .right-logo img {
             filter: none;
         }
 
         body.light-theme .right-logo {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #ffffff;
         }
         body.light-theme .right-logo img {
-            filter: invert(1) brightness(0.1);
+            filter: none;
         }
         
         body.light-theme .left-logo {
-            background: rgba(255, 255, 255, 0.98);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
         }
 
         .garde-inst {
@@ -1271,51 +1253,33 @@
         }
 
         .garde-title-container {
-            background: rgba(6, 7, 12, 0.3);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid var(--border-subtle);
-            border-radius: 16px;
+            background: var(--card-midnight);
+            border: 4px solid #000;
+            border-radius: 0px;
             padding: 2.2rem 3.5rem;
             margin: 1.5rem auto;
             max-width: 95%;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 8px 8px 0px var(--accent-cyan);
             position: relative;
-            
-            /* Corner Brackets on the frame itself for a premium cyber feel */
-            background: 
-                linear-gradient(to right, var(--accent-cyan) 3px, transparent 3px) 0 0,
-                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 0 0,
-                linear-gradient(to left, var(--accent-cyan) 3px, transparent 3px) 100% 0,
-                linear-gradient(to bottom, var(--accent-cyan) 3px, transparent 3px) 100% 0,
-                linear-gradient(to right, var(--accent-lavender) 3px, transparent 3px) 0 100%,
-                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 0 100%,
-                linear-gradient(to left, var(--accent-lavender) 3px, transparent 3px) 100% 100%,
-                linear-gradient(to top, var(--accent-lavender) 3px, transparent 3px) 100% 100%;
-            background-size: 16px 16px;
-            background-repeat: no-repeat;
         }
 
         body.light-theme .garde-title-container {
-            background: rgba(255, 255, 255, 0.65);
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+            background: #ffffff;
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0px var(--accent-cyan);
         }
 
         .garde-title {
             font-family: var(--font-title);
             font-size: 2.8rem;
             line-height: 1.25;
-            font-weight: 700;
+            font-weight: 900;
             color: var(--text-white);
             text-align: center;
             margin: 0 0 1rem 0;
             padding: 0;
             position: relative;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, var(--text-white) 40%, var(--text-warm-gray) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         .garde-dividers {
@@ -1387,18 +1351,19 @@
             left: 50%;
             transform: translateX(-50%);
             width: 40%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            border-radius: 4px;
+            height: 10px;
+            background: var(--card-midnight);
+            border: 2px solid #000;
+            border-radius: 0px;
             z-index: 100;
             overflow: hidden;
+            box-shadow: 3px 3px 0px #000;
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-lavender) 100%);
+            background: var(--accent-cyan);
             /* Segmented progress bar effect */
             mask-image: linear-gradient(to right, black 70%, transparent 70%);
             mask-size: 8px 100%;
@@ -1415,19 +1380,18 @@
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--accent-lavender);
-            background: rgba(13, 15, 26, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 6px;
+            background: var(--card-midnight);
+            border: 2px solid #000;
+            border-radius: 0px;
             padding: 0.4rem 0.8rem;
             z-index: 100;
             letter-spacing: 1.5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 3px 3px 0px #000;
         }
         body.light-theme .page-counter {
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            background: #ffffff;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0px #000;
         }
 
         .btn-control {
@@ -1435,36 +1399,38 @@
             bottom: 1.1rem;
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            background: rgba(13, 15, 26, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--border-subtle);
-            border-radius: 6px;
+            background: var(--card-midnight);
+            border: 2px solid #000;
+            border-radius: 0px;
             padding: 0.4rem 0.8rem;
             color: var(--accent-cyan);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: transform 0.1s, box-shadow 0.1s;
             z-index: 100;
             font-weight: 700;
             letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 3px 3px 0px #000;
         }
 
         .btn-control:hover {
-            border-color: var(--accent-cyan);
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--text-white);
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+            border-color: #000;
+            background: var(--accent-cyan);
+            color: #000;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #000;
         }
 
-        .fullscreen-btn {
-            left: 2rem;
+        body.light-theme .btn-control {
+            background: #ffffff;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0px #000;
+            color: var(--accent-lavender);
         }
 
-        .btn-control:hover {
-            background: rgba(0, 242, 254, 0.1);
-            border-color: var(--accent-cyan);
-            color: var(--text-white);
+        body.light-theme .btn-control:hover {
+            background: var(--accent-lavender);
+            color: #ffffff;
+            border-color: #000;
         }
 
         .fullscreen-btn {
@@ -1639,7 +1605,7 @@
         .laptop-screen img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -1675,22 +1641,121 @@
             position: relative;
         }
         .carousel-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--card-midnight);
+            border: 2px solid #000;
             color: var(--text-warm-gray);
             padding: 0.4rem 0.8rem;
-            border-radius: 6px;
+            border-radius: 0px;
             cursor: pointer;
             font-family: var(--font-numeric);
             font-size: 0.8rem;
             font-weight: 700;
-            transition: all 0.3s;
+            transition: transform 0.1s, box-shadow 0.1s;
+            box-shadow: 3px 3px 0px #000;
         }
         .carousel-btn.active, .carousel-btn:hover {
-            background: rgba(167, 139, 250, 0.12);
-            border-color: var(--accent-lavender);
-            color: var(--text-white);
+            background: var(--accent-lavender);
+            border-color: #000;
+            color: #000 !important;
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px #000;
         }
+
+        /* ====================================================
+           GLOBAL NEO-BRUTALIST OVERRIDES
+           ==================================================== */
+        
+        /* 1. Force absolute 90-degree angles on all design elements (mechanical rigidity) */
+        .slide, .card, .flow-step-card, .tech-badge, .header-nav, .nav-item, 
+        .theme-toggle-btn, .btn-control, .page-counter, .progress-bar-container, 
+        .arch-wrapper, .aws-region, .subnet, .node, .flow-icon-circle, 
+        .carousel-btn, .carousel-tab-indicator, .header-logo, .left-logo, .right-logo,
+        .flow-icon-circle i, .led-dot {
+            border-radius: 0px !important;
+        }
+
+        /* 2. Remove all glassmorphic and blur effects globally */
+        .slide, .card, .header-nav, .theme-toggle-btn, .btn-control, 
+        .page-counter, .header-logo, .garde-title-container {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* 3. High-density solid outlines on secondary containers */
+        .subnet {
+            border: 2px solid #000 !important;
+            box-shadow: 4px 4px 0px #000 !important;
+            border-radius: 0px !important;
+        }
+        .subnet:hover {
+            transform: translate(-2px, -2px) !important;
+            box-shadow: 6px 6px 0px #000 !important;
+            border-color: #000 !important;
+        }
+        
+        .node {
+            border: 2px solid #000 !important;
+            box-shadow: 2px 2px 0px #000 !important;
+            border-radius: 0px !important;
+        }
+        .node:hover {
+            transform: translate(-1px, -1px) !important;
+            box-shadow: 3px 3px 0px #000 !important;
+        }
+        .node.attacker {
+            background: var(--color-coral) !important;
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 2px 2px 0px #000 !important;
+        }
+        .node.victim {
+            background: var(--color-mint) !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            box-shadow: 2px 2px 0px #000 !important;
+        }
+        .node.probe {
+            background: var(--accent-lavender) !important;
+            color: #000 !important;
+            font-weight: 700 !important;
+            box-shadow: 2px 2px 0px #000 !important;
+        }
+
+        /* 4. Tech Badges Brutalistes */
+        .tech-badge {
+            border: 2px solid #000 !important;
+            background: var(--card-midnight) !important;
+            box-shadow: 2px 2px 0px #000 !important;
+            border-radius: 0px !important;
+            color: var(--text-white) !important;
+        }
+        body.light-theme .tech-badge {
+            background: #ffffff !important;
+            color: #000 !important;
+        }
+
+        /* 5. Clean up any remaining soft gradient backgrounds in light theme */
+        body.light-theme {
+            background-color: #F4F4F0 !important;
+        }
+
+        /* 6. Custom adapted font-size overrides for dense slides to prevent layout overflow */
+        #slide-plan .card-title { font-size: 1.55rem !important; }
+        #slide-plan .card-desc { font-size: 1.15rem !important; }
+        #slide-plan .card-desc li { font-size: 1.1rem !important; }
+
+        #slide-9-features .card-title { font-size: 1.35rem !important; }
+        #slide-9-features .card-desc { font-size: 1.12rem !important; }
+
+        #slide-10 .flow-title { font-size: 1.45rem !important; }
+        #slide-10 .flow-desc { font-size: 1.15rem !important; }
+        #slide-10 .flow-desc li { font-size: 1.05rem !important; }
+
+        #slide-11-train table { font-size: 1.15rem !important; }
+        #slide-11-train .card-desc { font-size: 1.18rem !important; }
+
+        #slide-tech-stack table { font-size: 1.15rem !important; }
+        #slide-tech-stack .card-desc { font-size: 1.18rem !important; }
     </style>
 </head>
 <body>
@@ -2531,10 +2596,10 @@
                     <div style="display: flex; flex-direction: column; gap: 0.8rem; flex: 1;">
                         <!-- Quintuplet standard -->
                         <div class="card card-cyan" style="flex: 1.1; display: flex; flex-direction: column; justify-content: center; padding: 0.9rem 1.1rem;">
-                            <h3 class="card-title" style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--accent-cyan);">
+                            <h3 class="card-title" style="font-size: 1.45rem; margin-bottom: 0.5rem; color: var(--accent-cyan);">
                                 <i class="fa-solid fa-network-wired"></i> Le Quintuplet Standard (5-Tuple)
                             </h3>
-                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                            <div class="card-desc" style="font-size: 1.22rem; color: var(--text-warm-gray); line-height: 1.45;">
                                 <p style="margin-bottom: 0.4rem;">Chaque flux réseau est identifié et regroupé de façon bidirectionnelle par :</p>
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-top: 0.4rem;">
                                     <div style="padding: 0.35rem; background: rgba(0, 242, 254, 0.06); border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.15); text-align: center;">
@@ -2561,10 +2626,10 @@
                         
                         <!-- Indicateurs de contrôle TCP (Flags) -->
                         <div class="card card-orange" style="flex: 0.9; display: flex; flex-direction: column; justify-content: center; padding: 0.9rem 1.1rem;">
-                            <h3 class="card-title" style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--arch-orange);">
+                            <h3 class="card-title" style="font-size: 1.45rem; margin-bottom: 0.5rem; color: var(--arch-orange);">
                                 <i class="fa-solid fa-flag"></i> Drapeaux &amp; En-têtes TCP (Flags)
                             </h3>
-                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                            <div class="card-desc" style="font-size: 1.22rem; color: var(--text-warm-gray); line-height: 1.45;">
                                 <p style="margin-bottom: 0.4rem;">Le nombre d'occurrences et la distribution des drapeaux de signalisation réseau :</p>
                                 <ul style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; list-style: none; padding: 0; margin: 0.4rem 0 0.4rem 0;">
                                     <li style="padding: 0.3rem 0.4rem; background: rgba(255, 123, 0, 0.06); border-radius: 4px; border: 1px solid rgba(255, 123, 0, 0.12); text-align: center; font-size: 0.98rem;"><strong style="color: var(--text-white);">SYN</strong></li>
@@ -2585,12 +2650,12 @@
                     <div class="card card-lavender" style="flex: 1.25; display: flex; flex-direction: column; justify-content: space-between; padding: 0.9rem 1.1rem;">
                         <div>
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                <h3 class="card-title" style="font-size: 1.35rem; margin: 0; color: var(--accent-lavender);">
+                                <h3 class="card-title" style="font-size: 1.45rem; margin: 0; color: var(--accent-lavender);">
                                     <i class="fa-solid fa-calculator"></i> Les Variables Statistiques (77 Features)
                                 </h3>
-                                <span style="font-size: 0.9rem; background: rgba(167, 139, 250, 0.12); color: var(--accent-lavender); padding: 0.15rem 0.4rem; border-radius: 3px; border: 1px solid rgba(167, 139, 250, 0.2); font-weight: bold;">Stats Réelles</span>
+                                <span style="font-size: 1.0rem; background: rgba(167, 139, 250, 0.12); color: var(--accent-lavender); padding: 0.15rem 0.4rem; border-radius: 3px; border: 1px solid rgba(167, 139, 250, 0.2); font-weight: bold;">Stats Réelles</span>
                             </div>
-                            <div class="card-desc" style="font-size: 1.1rem; color: var(--text-warm-gray); line-height: 1.45;">
+                            <div class="card-desc" style="font-size: 1.22rem; color: var(--text-warm-gray); line-height: 1.45;">
                                 <p style="margin-bottom: 0.5rem;">
                                     Extraites par <strong>NFStream / CICFlowMeter</strong>. Dispersion réelle calculée sur 150k flux (Monday Dataset) :
                                 </p>
@@ -2648,17 +2713,17 @@
                             <div class="flow-icon-circle" style="width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-broom"></i></div>
                             <div class="flow-badge" style="font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 01</div>
                             <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Nettoyage &amp; Imputation</h3>
-                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                            <div class="flow-desc" style="font-size: 1.25rem; line-height: 1.55;">
                                 <div style="margin-bottom: 0.6rem;">
                                     <span class="tech-badge" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem;">Nettoyage NaN</span>
                                     <span class="tech-badge" style="font-size: 0.88rem; padding: 0.25rem 0.55rem;">Label Encoding</span>
                                 </div>
                                 <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-cyan); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-cyan);"></span>
                                         Conversion des <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">±Inf</code> en <code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">NaN</code> et imputation par la médiane du Train Set (anti-leakage).
                                     </li>
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-cyan); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-cyan);"></span>
                                         Encodage Label des variables catégorielles et des 15 classes cibles.
                                     </li>
@@ -2675,17 +2740,17 @@
                             <div class="flow-icon-circle" style="border-color: var(--arch-orange); color: var(--arch-orange); background: rgba(245, 158, 11, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-crop-simple"></i></div>
                             <div class="flow-badge" style="color: var(--arch-orange); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 02</div>
                             <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Écrêtage IQR</h3>
-                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                            <div class="flow-desc" style="font-size: 1.25rem; line-height: 1.55;">
                                 <div style="margin-bottom: 0.6rem;">
                                     <span class="tech-badge badge-orange" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(255, 123, 0, 0.25); background: rgba(255, 123, 0, 0.05);">Clipping IQR</span>
                                     <span class="tech-badge badge-orange" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(255, 123, 0, 0.25); background: rgba(255, 123, 0, 0.05);">Facteur 1.5</span>
                                 </div>
                                 <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--arch-orange); transform: rotate(45deg); box-shadow: 0 0 5px var(--arch-orange);"></span>
                                         Calcul des bornes de confiance stables par variable : <code style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-white);">Q1/Q3 ± 1.5 &times; IQR</code>.
                                     </li>
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--arch-orange); transform: rotate(45deg); box-shadow: 0 0 5px var(--arch-orange);"></span>
                                         Écrêtage sans suppression pour préserver l'intégrité des signatures d'attaques volumétriques.
                                     </li>
@@ -2702,17 +2767,17 @@
                             <div class="flow-icon-circle" style="border-color: var(--color-mint); color: var(--color-mint); background: rgba(16, 185, 129, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-scale-balanced"></i></div>
                             <div class="flow-badge" style="color: var(--color-mint); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 03</div>
                             <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Normalisation</h3>
-                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                            <div class="flow-desc" style="font-size: 1.25rem; line-height: 1.55;">
                                 <div style="margin-bottom: 0.6rem;">
                                     <span class="tech-badge badge-mint" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05);">Z-Score</span>
                                     <span class="tech-badge badge-mint" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(16, 185, 129, 0.25); background: rgba(16, 185, 129, 0.05);">Scaler</span>
                                 </div>
                                 <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--color-mint); transform: rotate(45deg); box-shadow: 0 0 5px var(--color-mint);"></span>
                                         Standardisation centré-réduite (<code style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-white);">z = (x-&mu;)/&sigma;</code>) des 77 caractéristiques physiques.
                                     </li>
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--color-mint); transform: rotate(45deg); box-shadow: 0 0 5px var(--color-mint);"></span>
                                         Sauvegarde de la moyenne et variance du Train Set pour l'inférence temps réel.
                                     </li>
@@ -2729,17 +2794,17 @@
                             <div class="flow-icon-circle" style="border-color: var(--accent-lavender); color: var(--accent-lavender); background: rgba(167, 139, 250, 0.1); width: 52px; height: 52px; font-size: 1.6rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-code-fork"></i></div>
                             <div class="flow-badge" style="color: var(--accent-lavender); font-size: 1.05rem; margin-bottom: 0.5rem;">ÉTAPE 04</div>
                             <h3 class="flow-title" style="font-size: 1.55rem; margin-bottom: 0.6rem;">Équilibrage</h3>
-                            <div class="flow-desc" style="font-size: 1.15rem; line-height: 1.55;">
+                            <div class="flow-desc" style="font-size: 1.25rem; line-height: 1.55;">
                                 <div style="margin-bottom: 0.6rem;">
                                     <span class="tech-badge badge-lavender" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; margin-right: 0.4rem; border-color: rgba(167, 139, 250, 0.25); background: rgba(167, 139, 250, 0.05);">RUS (50k)</span>
                                     <span class="tech-badge badge-lavender" style="font-size: 0.88rem; padding: 0.25rem 0.55rem; border-color: rgba(167, 139, 250, 0.25); background: rgba(167, 139, 250, 0.05);">SMOTE (k=5)</span>
                                 </div>
                                 <ul style="padding-left: 0.8rem; list-style-type: none; margin: 0;">
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-lavender); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-lavender);"></span>
                                         Sous-échantillonnage de la classe saine (`BENIGN`) à 50k pour élaguer la redondance.
                                     </li>
-                                    <li style="font-size: 1.08rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
+                                    <li style="font-size: 1.16rem; margin-bottom: 0.4rem; padding-left: 0.9rem; position: relative;">
                                         <span style="position: absolute; left: 0; top: 0.6rem; width: 5px; height: 5px; background: var(--accent-lavender); transform: rotate(45deg); box-shadow: 0 0 5px var(--accent-lavender);"></span>
                                         Interpolation linéaire vectorielle locale pour rééquilibrer les classes minoritaires à 5 796.
                                     </li>
@@ -2837,7 +2902,7 @@
                             <i class="fa-solid fa-scale-balanced"></i> Pondération des Classes (Loss)
                         </h3>
                         <div class="card-desc" style="font-size: 1rem; color: var(--text-warm-gray); line-height: 1.5;">
-                            Utilisation de la <strong>Cross-Entropy pondérée</strong> (`CrossEntropyLoss`) pour pénaliser plus fortement les erreurs sur les classes minoritaires (les attaques) et compenser le fort déséquilibre du dataset.
+                            Utilisation de la <strong>Cross-Entropy pondérée</strong> (<code>CrossEntropyLoss</code>) pour pénaliser plus fortement les erreurs sur les classes minoritaires (les attaques) et compenser le fort déséquilibre du dataset.
                         </div>
                     </div>
                     
@@ -2858,40 +2923,52 @@
                 
                 <!-- ROW 2 : Les Hyperparamètres Clés (Horizontal Dashboard Cards) -->
                 <div class="card card-lavender" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem 1.5rem; width: 100%;">
-                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 1rem;">
+                    <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between; gap: 0.6rem;">
                         
-                        <h3 class="card-title" style="font-size: 1.3rem; margin-bottom: 0.2rem; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.6rem;">
+                        <h3 class="card-title" style="font-size: 1.3rem; margin-bottom: 0.1rem; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.6rem;">
                             <i class="fa-solid fa-sliders"></i> Configuration du Training (Hyperparamètres Clés)
                         </h3>
                         
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; flex: 1; align-items: center; width: 100%;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; flex: 1; align-items: stretch; width: 100%; margin-top: 0.4rem;">
                             
                             <!-- Param 1 -->
-                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Taux d'Apprentissage</span>
-                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--accent-cyan); font-weight: 800; text-shadow: 0 0 10px rgba(0,242,254,0.15);">0.001</span>
-                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Initial / Adam</span>
+                            <div class="card card-cyan" style="padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; justify-content: flex-start; text-align: left;">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-warm-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Taux d'Apprentissage</span>
+                                <span style="font-family: var(--font-title); font-size: 2.5rem; color: var(--accent-cyan); font-weight: 900; line-height: 1; margin: 0.1rem 0;">0.001</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-white); font-weight: bold; text-transform: uppercase;">Adam Optimiseur</span>
+                                <p style="font-size: 1.2rem; color: var(--text-warm-gray); line-height: 1.4; margin-top: 0.3rem;">
+                                    Valeur initiale. Ajustement automatique via <code>ReduceLROnPlateau</code> (facteur 0.5, patience 3).
+                                </p>
                             </div>
                             
                             <!-- Param 2 -->
-                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Taille de Batch</span>
-                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--accent-lavender); font-weight: 800; text-shadow: 0 0 10px rgba(167,139,250,0.15);">512</span>
-                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Échantillons</span>
+                            <div class="card card-lavender" style="padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; justify-content: flex-start; text-align: left;">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-warm-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Taille de Batch</span>
+                                <span style="font-family: var(--font-title); font-size: 2.5rem; color: var(--accent-lavender); font-weight: 900; line-height: 1; margin: 0.1rem 0;">512</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-white); font-weight: bold; text-transform: uppercase;">Échantillons</span>
+                                <p style="font-size: 1.2rem; color: var(--text-warm-gray); line-height: 1.4; margin-top: 0.3rem;">
+                                    Taille de batch élevée pour stabiliser les gradients de loss pondée et accélérer l'inférence.
+                                </p>
                             </div>
                             
                             <!-- Param 3 -->
-                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Époques Maximales</span>
-                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--arch-orange); font-weight: 800; text-shadow: 0 0 10px rgba(255,123,0,0.15);">50</span>
-                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Limite d'Époques</span>
+                            <div class="card card-orange" style="padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; justify-content: flex-start; text-align: left;">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-warm-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Époques Max</span>
+                                <span style="font-family: var(--font-title); font-size: 2.5rem; color: var(--arch-orange); font-weight: 900; line-height: 1; margin: 0.1rem 0;">50</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-white); font-weight: bold; text-transform: uppercase;">Limite d'Époques</span>
+                                <p style="font-size: 1.2rem; color: var(--text-warm-gray); line-height: 1.4; margin-top: 0.3rem;">
+                                    Seuil théorique de fin d'entraînement. La convergence optimale est atteinte entre 15 et 30 époques.
+                                </p>
                             </div>
                             
                             <!-- Param 4 -->
-                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.2rem; border-radius: 8px; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
-                                <span style="font-size: 0.95rem; color: var(--text-warm-gray); font-weight: 500;">Early Stopping</span>
-                                <span style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--color-mint); font-weight: 800; text-shadow: 0 0 10px rgba(16,185,129,0.15);">10</span>
-                                <span style="font-size: 0.8rem; color: var(--text-warm-gray); opacity: 0.85; font-style: italic;">Patience d'Arrêt</span>
+                            <div class="card card-mint" style="padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem; justify-content: flex-start; text-align: left;">
+                                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-warm-gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Early Stopping</span>
+                                <span style="font-family: var(--font-title); font-size: 2.5rem; color: var(--color-mint); font-weight: 900; line-height: 1; margin: 0.1rem 0;">10</span>
+                                <span style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-white); font-weight: bold; text-transform: uppercase;">Patience d'Arrêt</span>
+                                <p style="font-size: 1.2rem; color: var(--text-warm-gray); line-height: 1.4; margin-top: 0.3rem;">
+                                    Arrêt prématuré si la loss de validation ne diminue plus pendant 10 époques (anti-overfitting).
+                                </p>
                             </div>
                             
                         </div>
@@ -3118,7 +3195,7 @@
                     <!-- HTML NODES ABSOLUTE POSITIONED -->
                     
                     <!-- 1. Entrée des Caractéristiques -->
-                    <div class="card card-cyan" style="position: absolute; left: 2%; top: 25%; width: 15%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-cyan); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                    <div class="card card-cyan" style="position: absolute; left: 2%; top: 25%; width: 15%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-cyan); background: var(--bg-obsidian); z-index: 5;">
                         <i class="fa-solid fa-list-check" style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 0.3rem;"></i>
                         <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">1. Entrée Brute</span>
                         <div style="font-family: var(--font-title); font-size: 0.95rem; font-weight: bold; margin-top: 0.2rem; text-align: center; color: var(--text-white);">x &isin; &Ropf;<sup>77</sup></div>
@@ -3126,7 +3203,7 @@
                     </div>
 
                     <!-- 2. Branche Attention -->
-                    <div class="card card-lavender" style="position: absolute; left: 27%; top: 6%; width: 18%; height: 40%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-lavender); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                    <div class="card card-lavender" style="position: absolute; left: 27%; top: 6%; width: 18%; height: 40%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--accent-lavender); background: var(--bg-obsidian); z-index: 5;">
                         <i class="fa-solid fa-brain" style="color: var(--accent-lavender); font-size: 1.2rem; margin-bottom: 0.3rem;"></i>
                         <span style="font-family: var(--font-numeric); font-size: 0.6rem; color: var(--accent-lavender); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">Poids d'Attention</span>
                         <div style="font-size: 0.72rem; color: var(--text-white); text-align: center; font-family: var(--font-mono); margin-top: 0.15rem; line-height: 1.25;">
@@ -3137,7 +3214,7 @@
                     </div>
 
                     <!-- 3. Noeud de Hadamard (Multiplication) -->
-                    <div class="card card-orange" style="position: absolute; left: 49%; top: 38%; width: 4.5%; height: 24%; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; border-color: var(--arch-orange); background: color-mix(in srgb, var(--arch-orange) 15%, var(--bg-obsidian)); box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); z-index: 10;">
+                    <div class="card card-orange" style="position: absolute; left: 49%; top: 38%; width: 4.5%; height: 24%; border-radius: 0px; padding: 0; display: flex; align-items: center; justify-content: center; border-color: var(--arch-orange); background: color-mix(in srgb, var(--arch-orange) 15%, var(--bg-obsidian)); box-shadow: 6px 6px 0px var(--arch-orange); z-index: 10;">
                         <div style="font-family: var(--font-title); font-size: 1.4rem; font-weight: bold; color: var(--arch-orange);">&odot;</div>
                     </div>
                     <!-- Label au dessus du multiplicateur -->
@@ -3147,7 +3224,7 @@
                     </div>
 
                     <!-- 4. Classificateur MLP -->
-                    <div class="card card-orange" style="position: absolute; left: 61%; top: 15%; width: 20%; height: 70%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--arch-orange); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                    <div class="card card-orange" style="position: absolute; left: 61%; top: 15%; width: 20%; height: 70%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--arch-orange); background: var(--bg-obsidian); z-index: 5;">
                         <i class="fa-solid fa-layer-group" style="color: var(--arch-orange); font-size: 1.3rem; margin-bottom: 0.3rem;"></i>
                         <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--arch-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">2. Classificateur MLP</span>
                         <div style="font-size: 0.72rem; color: var(--text-white); font-family: var(--font-mono); margin-top: 0.2rem; line-height: 1.35; text-align: center;">
@@ -3159,7 +3236,7 @@
                     </div>
 
                     <!-- 5. Tête de Classification (Sortie) -->
-                    <div class="card card-mint" style="position: absolute; left: 87%; top: 25%; width: 11%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--color-mint); background: var(--bg-obsidian); backdrop-filter: blur(6px); z-index: 5;">
+                    <div class="card card-mint" style="position: absolute; left: 87%; top: 25%; width: 11%; height: 50%; padding: 0.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-color: var(--color-mint); background: var(--bg-obsidian); z-index: 5;">
                         <i class="fa-solid fa-circle-nodes" style="color: var(--color-mint); font-size: 1.3rem; margin-bottom: 0.3rem;"></i>
                         <span style="font-family: var(--font-numeric); font-size: 0.65rem; color: var(--color-mint); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">3. Classification</span>
                         <div style="font-family: var(--font-title); font-size: 0.85rem; font-weight: bold; margin-top: 0.2rem; color: var(--color-mint); text-align: center; line-height: 1.2;">15 Logits<br>(Attaques)</div>
@@ -3171,30 +3248,30 @@
                 <div class="cols-3" style="margin-top: 0.1rem;">
                     <!-- Masquage attentionnel -->
                     <div class="card card-lavender" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
-                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                        <h4 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--accent-lavender); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
                             <i class="fa-solid fa-bolt"></i> Pondération Attentionnelle
                         </h4>
-                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                        <p style="font-size: 1.12rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
                             Calcul des poids d'attention &alpha;<sub>i</sub> par Softmax. Permet au réseau de se focaliser dynamiquement sur les variables les plus discriminantes à chaque instant.
                         </p>
                     </div>
                     
                     <!-- Hadamard Gating -->
                     <div class="card card-orange" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
-                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--arch-orange); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                        <h4 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--arch-orange); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
                             <i class="fa-solid fa-filter"></i> Gating de Hadamard (x &odot; &alpha;)
                         </h4>
-                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                        <p style="font-size: 1.12rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
                             Multiplication terme à terme qui filtre et élimine dynamiquement le bruit (les variables redondantes induites par le collecteur de flux).
                         </p>
                     </div>
-
+ 
                     <!-- Compacité & Latence -->
                     <div class="card card-mint" style="padding: 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center;">
-                        <h4 style="font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--color-mint); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
-                            <i class="fa-solid fa-gauge-high"></i> Compacité & Rapidité
+                        <h4 style="font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--color-mint); display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.2rem 0;">
+                            <i class="fa-solid fa-gauge-high"></i> Compacité &amp; Rapidité
                         </h4>
-                        <p style="font-size: 0.95rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
+                        <p style="font-size: 1.12rem; color: var(--text-warm-gray); line-height: 1.5; margin: 0;">
                             Seulement <strong>50 Ko</strong> (49,9k paramètres). Latence d'inférence de <strong>0,42 ms</strong> sur CPU simple, permettant une classification réseau en temps réel à très haut débit.
                         </p>
                     </div>
@@ -3629,7 +3706,7 @@
         <div class="slide" id="slide-19">
             <div class="slide-header">
                 <div class="slide-category"><i class="fa-solid fa-tv"></i> Supervision SOC</div>
-                <h2 class="slide-title">Dashboard du SOC (Interface Réelle)</h2>
+                <h2 class="slide-title">Dashboard du SOC</h2>
             </div>
             <div class="slide-content">
                 <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
@@ -3688,21 +3765,43 @@
                         </div>
                     </div>
                     
-                    <div class="card card-mint" style="background: var(--accent-blue-focus);">
-                        <div class="big-number-container">
-                            <div class="big-number-wrapper">
-                                <div class="big-number" data-count-to="100" data-count-suffix=" %" data-count-duration="1800" style="--num-color: var(--color-mint); background: linear-gradient(105deg, var(--color-mint) 0%, var(--color-mint) 40%, rgba(255,255,255,0.85) 50%, var(--color-mint) 60%, var(--color-mint) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">0</div>
-                                <div class="big-number-label"><i class="fa-solid fa-circle-check"></i> Vrais Positifs (Détectés)</div>
+                    <div style="display: flex; flex-direction: column; gap: 1.2rem; height: 100%; justify-content: space-between;">
+                        <!-- Panel 1 -->
+                        <div class="card card-mint" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-color: var(--color-mint); background: var(--card-midnight); flex-grow: 1;">
+                            <div class="big-number-wrapper" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0; background: transparent; text-align: left;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <div class="big-number-label" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-mint); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+                                        <i class="fa-solid fa-circle-check"></i> Vrais Positifs (Détectés)
+                                    </div>
+                                    <span style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-warm-gray);">Précision du modèle en conditions réelles</span>
+                                </div>
+                                <div class="big-number" data-count-to="100" data-count-suffix=" %" data-count-duration="1800" style="font-size: 3.2rem; font-weight: 900; color: var(--color-mint); font-family: var(--font-title); line-height: 1; text-shadow: none; background: none; -webkit-text-fill-color: var(--color-mint); -webkit-background-clip: initial; background-clip: initial;">0</div>
                             </div>
-                            <div class="big-number-divider" style="background: var(--border-subtle);"></div>
-                            <div class="big-number-wrapper">
-                                <div class="big-number" data-count-text="&lt; 2 s" data-count-duration="1200" style="--num-color: var(--color-mint); background: linear-gradient(105deg, var(--color-mint) 0%, var(--color-mint) 40%, rgba(255,255,255,0.85) 50%, var(--color-mint) 60%, var(--color-mint) 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">—</div>
-                                <div class="big-number-label"><i class="fa-solid fa-stopwatch"></i> Latence Globale Bout-en-Bout</div>
+                        </div>
+
+                        <!-- Panel 2 -->
+                        <div class="card card-cyan" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-color: var(--accent-cyan); background: var(--card-midnight); flex-grow: 1;">
+                            <div class="big-number-wrapper" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0; background: transparent; text-align: left;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <div class="big-number-label" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+                                        <i class="fa-solid fa-stopwatch"></i> Latence Globale
+                                    </div>
+                                    <span style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-warm-gray);">Délai de traitement bout-en-bout</span>
+                                </div>
+                                <div class="big-number" data-count-text="&lt; 2 s" data-count-duration="1200" style="font-size: 3.2rem; font-weight: 900; color: var(--accent-cyan); font-family: var(--font-title); line-height: 1; text-shadow: none; background: none; -webkit-text-fill-color: var(--accent-cyan); -webkit-background-clip: initial; background-clip: initial;">—</div>
                             </div>
-                            <div class="big-number-divider" style="background: var(--border-subtle);"></div>
-                            <div class="big-number-wrapper">
-                                <div class="big-number" data-count-to="0" data-count-suffix=" %" data-count-decimals="2" data-count-duration="1400" style="--num-color: #fff; background: linear-gradient(105deg, #fff 0%, #fff 40%, rgba(200,220,255,0.85) 50%, #fff 60%, #fff 100%); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">—</div>
-                                <div class="big-number-label"><i class="fa-solid fa-microchip"></i> Charge CPU sur machines cibles</div>
+                        </div>
+
+                        <!-- Panel 3 -->
+                        <div class="card card-lavender" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-color: var(--accent-lavender); background: var(--card-midnight); flex-grow: 1;">
+                            <div class="big-number-wrapper" style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0; background: transparent; text-align: left;">
+                                <div style="display: flex; flex-direction: column; gap: 0.3rem;">
+                                    <div class="big-number-label" style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-lavender); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+                                        <i class="fa-solid fa-microchip"></i> Impact CPU
+                                    </div>
+                                    <span style="font-family: var(--font-body); font-size: 0.95rem; color: var(--text-warm-gray);">Charge sur les serveurs cibles</span>
+                                </div>
+                                <div class="big-number" data-count-to="0" data-count-suffix=" %" data-count-decimals="2" data-count-duration="1400" style="font-size: 3.2rem; font-weight: 900; color: var(--accent-lavender); font-family: var(--font-title); line-height: 1; text-shadow: none; background: none; -webkit-text-fill-color: var(--accent-lavender); -webkit-background-clip: initial; background-clip: initial;">—</div>
                             </div>
                         </div>
                     </div>
@@ -3757,15 +3856,66 @@
             </div>
         </div>
 
+        <!-- ====================================================
+             SLIDE 22 : THANKS / QUESTIONS
+             ==================================================== -->
+        <div class="slide" id="slide-thanks">
+            <div class="slide-header" style="text-align: center; width: 100%;">
+                <div class="slide-category" style="margin: 0 auto;"><i class="fa-solid fa-comments"></i> Fin de la présentation</div>
+                <h2 class="slide-title" style="text-align: center; margin-top: 1.5rem; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1;">Merci pour votre attention</h2>
+            </div>
+            <div class="slide-content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%; flex-grow: 1; padding: 2rem 0;">
+                <div class="card card-cyan" style="max-width: 850px; width: 90%; text-align: center; padding: 4rem 5rem; box-shadow: 12px 12px 0px var(--accent-cyan); display: flex; flex-direction: column; gap: 2rem; border: 4px solid #000;">
+                    <div style="font-size: 5.5rem; color: var(--accent-cyan); line-height: 1;">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <h3 style="font-family: var(--font-title); font-size: 3.2rem; font-weight: 900; color: var(--text-white); margin: 0; text-transform: uppercase; letter-spacing: -1px; line-height: 1.1;">Place aux questions</h3>
+                    <p style="font-family: var(--font-mono); font-size: 1.35rem; color: var(--text-warm-gray); line-height: 1.6; margin: 0; text-transform: uppercase; letter-spacing: 1.5px;">
+                        J'attends vos questions avec intérêt.
+                    </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Contrôles et Pagination en bas de l'écran -->
-    <button class="btn-control fullscreen-btn" onclick="toggleFullScreen(); event.stopPropagation();">PLEIN ÉCRAN (F)</button>
+    <div style="position: absolute; bottom: 1.1rem; left: 2rem; display: flex; gap: 0.8rem; z-index: 100;">
+        <button class="btn-control" style="position: relative; bottom: auto; left: auto;" onclick="toggleFullScreen(); event.stopPropagation();">PLEIN ÉCRAN (F)</button>
+        <button class="btn-control" style="position: relative; bottom: auto; left: auto;" onclick="toggleDirectory(); event.stopPropagation();">INDEX (M)</button>
+    </div>
     
     <div class="page-counter" id="page-counter">[  01  /  24  ]</div>
     
     <div class="progress-bar-container">
         <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- ====================================================
+         MODAL : DIRECTOIRE DES DIAPOSITIVES (INDEX)
+         ==================================================== -->
+    <div id="directory-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="card" style="background: var(--bg-obsidian); border: 4px solid #000; box-shadow: 12px 12px 0px var(--accent-cyan); width: 100%; max-width: 900px; max-height: 85vh; display: flex; flex-direction: column; padding: 2rem; position: relative;">
+            
+            <!-- Modal Header -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #000; padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                <h3 style="font-family: var(--font-title); font-size: 1.6rem; font-weight: 900; color: var(--text-white); margin: 0; text-transform: uppercase; letter-spacing: -0.5px; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-list" style="color: var(--accent-cyan);"></i> Directoire des Slides
+                </h3>
+                <button onclick="toggleDirectory();" style="background: var(--card-midnight); border: 2px solid #000; color: var(--text-white); cursor: pointer; padding: 0.4rem 0.8rem; font-family: var(--font-mono); font-weight: bold; box-shadow: 3px 3px 0px #000; font-size: 0.8rem;" onmouseover="this.style.transform='translate(-1px,-1px)'; this.style.boxShadow='4px 4px 0px #000'" onmouseout="this.style.transform='none'; this.style.boxShadow='3px 3px 0px #000'">
+                    FERMER [ESC]
+                </button>
+            </div>
+
+            <!-- Modal Body (Grid of slides) -->
+            <div id="directory-grid" style="overflow-y: auto; flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; padding-right: 0.5rem; text-align: left;">
+                <!-- Dynamically populated via Javascript -->
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: right; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-warm-gray); border-top: 2px solid var(--border-subtle); padding-top: 0.8rem;">
+                Raccourci clavier : touche <kbd style="background:#000; color:#fff; padding:0.1rem 0.4rem; border:1px solid var(--border-subtle)">M</kbd> pour basculer le directoire.
+            </div>
+        </div>
     </div>
 
     <!-- --- LOGIQUE JAVASCRIPT DE NAVIGATION --- -->
@@ -3812,7 +3962,8 @@
             'slide-20': 5,
             
             // Section VI : Bilan & Perspectives
-            'slide-21': 6
+            'slide-21': 6,
+            'slide-thanks': 6
         };
 
         // Assigner les data-section dynamiquement
@@ -4002,8 +4153,109 @@
             }
         }
 
+        // Directory popup functions
+        function populateDirectory() {
+            const grid = document.getElementById('directory-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            slides.forEach((slide, idx) => {
+                let titleText = '';
+                let catText = '';
+                
+                if (slide.id === 'slide-1') {
+                    titleText = 'Page de garde';
+                    catText = 'Début';
+                } else if (slide.id === 'slide-plan') {
+                    titleText = 'Sommaire / Plan';
+                    catText = 'Sommaire';
+                } else {
+                    const catEl = slide.querySelector('.slide-category');
+                    const titleEl = slide.querySelector('.slide-title');
+                    titleText = titleEl ? titleEl.innerText : `Slide ${idx + 1}`;
+                    catText = catEl ? catEl.innerText : '';
+                }
+                
+                const btn = document.createElement('button');
+                btn.className = 'card';
+                const sectionIdx = parseInt(slide.getAttribute('data-section')) || 0;
+                const colors = ['card-cyan', 'card-lavender', 'card-orange', 'card-mint', 'card-gold'];
+                const colorClass = colors[sectionIdx % colors.length] || 'card-cyan';
+                btn.classList.add(colorClass);
+                
+                btn.style.display = 'flex';
+                btn.style.flexDirection = 'column';
+                btn.style.gap = '0.3rem';
+                btn.style.padding = '0.8rem 1rem';
+                btn.style.cursor = 'pointer';
+                btn.style.textAlign = 'left';
+                btn.style.width = '100%';
+                
+                btn.innerHTML = `
+                    <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-warm-gray); text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between;">
+                        <span>${catText}</span>
+                        <span>[ ${String(idx + 1).padStart(2, '0')} ]</span>
+                    </div>
+                    <div style="font-family: var(--font-title); font-size: 0.9rem; font-weight: 700; color: var(--text-white); margin-top: 0.2rem; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        ${titleText}
+                    </div>
+                `;
+                
+                btn.addEventListener('click', () => {
+                    currentSlideIdx = idx;
+                    updateSlide();
+                    toggleDirectory(false);
+                });
+                
+                grid.appendChild(btn);
+            });
+        }
+
+        function toggleDirectory(forceState) {
+            const modal = document.getElementById('directory-modal');
+            if (!modal) return;
+            const isVisible = modal.style.display === 'flex';
+            const show = forceState !== undefined ? forceState : !isVisible;
+            
+            if (show) {
+                populateDirectory();
+                modal.style.display = 'flex';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Close modal when clicking on background
+        setTimeout(() => {
+            const dirModal = document.getElementById('directory-modal');
+            if (dirModal) {
+                dirModal.addEventListener('click', (e) => {
+                    if (e.target === dirModal) {
+                        toggleDirectory(false);
+                    }
+                });
+            }
+        }, 100);
+
         // Écouteurs de clavier
         document.addEventListener('keydown', (e) => {
+            const modal = document.getElementById('directory-modal');
+            const isModalOpen = modal && modal.style.display === 'flex';
+
+            if (e.key === 'm' || e.key === 'M') {
+                toggleDirectory();
+                e.preventDefault();
+                return;
+            } else if (e.key === 'Escape') {
+                toggleDirectory(false);
+                e.preventDefault();
+                return;
+            }
+
+            if (isModalOpen) {
+                return; // Disable slide navigation if directory is open
+            }
+
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
                 nextSlide();
             } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
@@ -4030,8 +4282,8 @@
 
         // Clic sur l'écran pour avancer (optionnel et désactivable)
         document.addEventListener('click', (e) => {
-            // N'avance pas si on clique sur un bouton de contrôle ou toggle theme
-            if (e.target.classList.contains('btn-control') || e.target.classList.contains('carousel-btn') || e.target.closest('.theme-toggle-btn')) return;
+            // N'avance pas si on clique sur un bouton de contrôle, toggle theme ou dans le directoire
+            if (e.target.classList.contains('btn-control') || e.target.classList.contains('carousel-btn') || e.target.closest('.theme-toggle-btn') || e.target.closest('#directory-modal')) return;
             
             // Clic sur la moitié droite avance, moitié gauche recule
             if (e.clientX > window.innerWidth / 2) {
