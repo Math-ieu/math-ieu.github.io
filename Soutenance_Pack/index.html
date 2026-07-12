@@ -1870,6 +1870,38 @@
             box-shadow: 0 0 4px var(--arch-orange);
         }
 
+        /* --- HEADER TIMELINE STYLES --- */
+        .header-timeline-item {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-warm-gray);
+            white-space: nowrap;
+            opacity: 0.6;
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .header-timeline-item:hover {
+            opacity: 0.9;
+            color: var(--text-white);
+        }
+        .header-timeline-item.active {
+            opacity: 1;
+            color: #fff !important;
+            background: var(--accent-cyan);
+            border: 2px solid #000;
+            box-shadow: 2px 2px 0px #000;
+            transform: scale(1.05);
+        }
+        body.light-theme .header-timeline-item.active {
+            background: var(--accent-cyan);
+            color: #fff !important;
+        }
+
         /* --- PRINT OVERRIDES FOR PDF --- */
         @media print {
             .theme-toggle-btn,
@@ -1908,19 +1940,16 @@
         <div class="header-logo left-header-logo" title="Logo HESTIM">
             <img src="logo-hestim.webp" alt="HESTIM Logo">
         </div>
-        <nav class="header-nav">
-            <span class="nav-item" data-section="1">I. Contexte</span>
-            <span class="nav-arrow">&rarr;</span>
-            <span class="nav-item" data-section="2">II. Deep Learning</span>
-            <span class="nav-arrow">&rarr;</span>
-            <span class="nav-item" data-section="3">III. Architecture</span>
-            <span class="nav-arrow">&rarr;</span>
-            <span class="nav-item" data-section="4">IV. Technologies</span>
-            <span class="nav-arrow">&rarr;</span>
-            <span class="nav-item" data-section="5">V. Validation</span>
-            <span class="nav-arrow">&rarr;</span>
-            <span class="nav-item" data-section="6">VI. Conclusion</span>
-        </nav>
+        <div class="header-nav" style="width: 1050px; max-width: 85vw; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: flex-start; background: var(--card-midnight); border: 3px solid #000; padding: 0.3rem 0.5rem; box-shadow: 4px 4px 0px #000; pointer-events: auto;">
+            <!-- Left fade overlay -->
+            <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 45px; background: linear-gradient(to right, var(--card-midnight), transparent); z-index: 2; pointer-events: none;"></div>
+            <!-- Right fade overlay -->
+            <div style="position: absolute; right: 0; top: 0; bottom: 0; width: 45px; background: linear-gradient(to left, var(--card-midnight), transparent); z-index: 2; pointer-events: none;"></div>
+            
+            <!-- Scrolling tracks containing all slide titles -->
+            <div id="header-timeline-track" style="display: flex; gap: 1.5rem; align-items: center; transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); will-change: transform;">
+            </div>
+        </div>
         <div style="display: flex; align-items: center; gap: 1rem; pointer-events: auto;">
             <!-- Minuteur de Présentation (Top) -->
             <div id="presentation-timer" class="timer-widget paused" onclick="toggleTimerState(event);" ondblclick="resetTimer(event);" title="Clic : Play/Pause | Double-clic : Réinitialiser (15 min)">
@@ -2622,6 +2651,67 @@
             </div>
         </div>
 
+
+        <!-- ====================================================
+             SLIDE 8 : L'AVÈNEMENT DU DEEP LEARNING
+             ==================================================== -->
+        <div class="slide" id="slide-8">
+            <div class="slide-header">
+                <div class="slide-category"><i class="fa-solid fa-brain"></i> Révolution IA</div>
+                <h2 class="slide-title">L'avènement du Deep Learning pour le NIDS</h2>
+            </div>
+            <div class="slide-content">
+                <div class="cols-3">
+                    <div class="card card-orange">
+                        <div class="card-number">01</div>
+                        <h3 class="card-title">
+                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
+                            <i class="fa-solid fa-cubes"></i> Auto-Apprentissage
+                        </h3>
+                        <div class="card-desc">
+                            <span class="tech-badge badge-orange">Self-Feature</span>
+                            <span class="tech-badge badge-orange">Deep Net</span>
+                            <ul style="margin-top: 0.4rem;">
+                                <li><strong>Fin du Manuel :</strong> Plus besoin de Feature Engineering manuel et fastidieux.</li>
+                                <li><strong>Représentations :</strong> Extraction automatique des patterns abstraits et non-linéaires profonds.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card card-cyan">
+                        <div class="card-number">02</div>
+                        <h3 class="card-title">
+                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
+                            <i class="fa-solid fa-route"></i> Généralisation
+                        </h3>
+                        <div class="card-desc">
+                            <span class="tech-badge">Zero-Day Protection</span>
+                            <span class="tech-badge">Probabiliste</span>
+                            <ul style="margin-top: 0.4rem;">
+                                <li><strong>Comportemental :</strong> Modélisation fine du trafic normal vs malveillant.</li>
+                                <li><strong>Adaptabilité :</strong> Détection de variantes d'attaques et de menaces inconnues.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card card-lavender">
+                        <div class="card-number">03</div>
+                        <h3 class="card-title">
+                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
+                            <i class="fa-solid fa-user-lock"></i> Anti-Chiffrement
+                        </h3>
+                        <div class="card-desc">
+                            <span class="tech-badge badge-lavender">TLS 1.3</span>
+                            <span class="tech-badge badge-lavender">Statistiques</span>
+                            <ul style="margin-top: 0.4rem;">
+                                <li><strong>Zéro Déchiffrement :</strong> S'affranchit de l'inspection de contenu du payload.</li>
+                                <li><strong>Métadonnées :</strong> Focus sur les durées, volumes d'octets et écarts inter-paquets.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- ====================================================
              SLIDE 7 : MÉTHODOLOGIE DE TRAVAIL & PLANNING (NEW)
              ==================================================== -->
@@ -2753,66 +2843,6 @@
             </div>
         </div>
 
-
-        <!-- ====================================================
-             SLIDE 8 : L'AVÈNEMENT DU DEEP LEARNING
-             ==================================================== -->
-        <div class="slide" id="slide-8">
-            <div class="slide-header">
-                <div class="slide-category"><i class="fa-solid fa-brain"></i> Révolution IA</div>
-                <h2 class="slide-title">L'avènement du Deep Learning pour le NIDS</h2>
-            </div>
-            <div class="slide-content">
-                <div class="cols-3">
-                    <div class="card card-orange">
-                        <div class="card-number">01</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
-                            <i class="fa-solid fa-cubes"></i> Auto-Apprentissage
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-orange">Self-Feature</span>
-                            <span class="tech-badge badge-orange">Deep Net</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Fin du Manuel :</strong> Plus besoin de Feature Engineering manuel et fastidieux.</li>
-                                <li><strong>Représentations :</strong> Extraction automatique des patterns abstraits et non-linéaires profonds.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card card-cyan">
-                        <div class="card-number">02</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
-                            <i class="fa-solid fa-route"></i> Généralisation
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge">Zero-Day Protection</span>
-                            <span class="tech-badge">Probabiliste</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Comportemental :</strong> Modélisation fine du trafic normal vs malveillant.</li>
-                                <li><strong>Adaptabilité :</strong> Détection de variantes d'attaques et de menaces inconnues.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card card-lavender">
-                        <div class="card-number">03</div>
-                        <h3 class="card-title">
-                            <span class="led-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
-                            <i class="fa-solid fa-user-lock"></i> Anti-Chiffrement
-                        </h3>
-                        <div class="card-desc">
-                            <span class="tech-badge badge-lavender">TLS 1.3</span>
-                            <span class="tech-badge badge-lavender">Statistiques</span>
-                            <ul style="margin-top: 0.4rem;">
-                                <li><strong>Zéro Déchiffrement :</strong> S'affranchit de l'inspection de contenu du payload.</li>
-                                <li><strong>Métadonnées :</strong> Focus sur les durées, volumes d'octets et écarts inter-paquets.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- ====================================================
              SLIDE 9 : LE DATASET DE RÉFÉRENCE
              ==================================================== -->
@@ -2917,86 +2947,109 @@
             <div class="slide-content" style="display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; height: 100%;">
                 
                 <!-- Le 5-Tuple (Horizontal Technical Bar) -->
-                <div class="card card-cyan" style="padding: 0.8rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; justify-content: center; width: 100%;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3 class="card-title" style="font-size: 1.25rem; margin: 0; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem;">
+                <div class="card card-cyan" style="padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; justify-content: center; width: 100%;">
+                    <div style="display: flex; justify-content: flex-start; align-items: center;">
+                        <h3 class="card-title" style="font-size: 1.55rem; margin: 0; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem;">
                             <i class="fa-solid fa-network-wired"></i> Le Quintuplet Standard (5-Tuple d'Identification)
                         </h3>
-                        <span style="font-size: 0.85rem; background: rgba(0, 242, 254, 0.1); color: var(--accent-cyan); padding: 0.15rem 0.4rem; border: 1px solid rgba(0, 242, 254, 0.2); font-weight: bold; text-transform: uppercase;">Clé d'Agrégation</span>
                     </div>
-                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem; margin-top: 0.2rem;">
-                        <div style="padding: 0.5rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-white);">IP Source</div>
-                        <div style="padding: 0.5rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-white);">Port Source</div>
-                        <div style="padding: 0.5rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.05rem; color: var(--text-white);">IP Dest.</div>
-                        <div style="padding: 0.5rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent-cyan); font-weight: bold;">Port Dest. *</div>
-                        <div style="padding: 0.5rem; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.05rem; color: var(--color-mint); font-weight: bold;">Protocole</div>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 0.2rem;">
+                        <div style="padding: 0.6rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-white); font-weight: bold;">IP Source</div>
+                        <div style="padding: 0.6rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-white); font-weight: bold;">Port Source</div>
+                        <div style="padding: 0.6rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.2rem; color: var(--text-white); font-weight: bold;">IP Dest.</div>
+                        <div style="padding: 0.6rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.2rem; color: var(--accent-cyan); font-weight: bold;">Port Dest. *</div>
+                        <div style="padding: 0.6rem; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--border-subtle); box-shadow: 3px 3px 0px var(--border-subtle); text-align: center; font-family: var(--font-mono); font-size: 1.2rem; color: var(--color-mint); font-weight: bold;">Protocole</div>
                     </div>
                 </div>
 
                 <div class="cols-3" style="gap: 1rem; align-items: stretch; margin-top: 0.2rem; flex: 1;">
                     
                     <!-- Card 1: TCP Flags -->
-                    <div class="card card-orange" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem;">
+                    <div class="card card-orange" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem;">
                         <div>
-                            <h3 class="card-title" style="font-size: 1.25rem; color: var(--arch-orange); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <h3 class="card-title" style="font-size: 1.55rem; color: var(--arch-orange); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
                                 <i class="fa-solid fa-flag"></i> Drapeaux TCP (Flags)
                             </h3>
-                            <p style="font-size: 1.15rem; color: var(--text-warm-gray); margin-bottom: 1.2rem; line-height: 1.4;">Indicateurs clés pour identifier les scans et inondations (ex: SYN Flood).</p>
+                            <p style="font-size: 1.3rem; color: var(--text-warm-gray); margin-bottom: 1.2rem; line-height: 1.45;">Indicateurs clés pour identifier les scans et inondations (ex: SYN Flood).</p>
                             
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">SYN</span>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem;">
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">SYN</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">ACK</span>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">ACK</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">PSH</span>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">PSH</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">FIN</span>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">FIN</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">RST</span>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">RST</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem; background: var(--accent-blue-focus); border: 1px solid var(--border-subtle);">
-                                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
-                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white);">URG</span>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.8rem; background: var(--accent-blue-focus); border: 2px solid var(--border-subtle); box-shadow: 2px 2px 0px var(--border-subtle);">
+                                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--arch-orange); box-shadow: 0 0 6px var(--arch-orange);"></span>
+                                    <span style="font-family: var(--font-mono); font-weight: bold; color: var(--text-white); font-size: 1.2rem;">URG</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Card 2: Stats Temporelles -->
-                    <div class="card card-lavender" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem;">
+                    <div class="card card-lavender" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 1.2rem; box-shadow: 4px 4px 0px var(--border-subtle);">
                         <div>
-                            <h3 class="card-title" style="font-size: 1.25rem; color: var(--accent-lavender); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <h3 class="card-title" style="font-size: 1.55rem; color: var(--accent-lavender); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
                                 <i class="fa-solid fa-clock"></i> Variables Temporelles
                             </h3>
-                            <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 0.5rem;">
-                                <!-- Item 1 -->
+                            <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 0.2rem;">
+                                <!-- Item 1: Flow Duration -->
                                 <div>
-                                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.3rem;">
-                                        <span style="font-family: var(--font-mono); color: var(--text-white);">Flow Duration</span>
-                                        <span style="color: var(--accent-cyan); font-weight: bold;">16.1 s</span>
-                                    </div>
-                                    <div style="height: 10px; background: rgba(128, 128, 128, 0.15); border: 1px solid rgba(167, 139, 250, 0.3);">
-                                        <div style="width: 45%; height: 100%; background: var(--accent-lavender);"></div>
+                                    <div style="font-family: var(--font-mono); color: var(--text-white); font-weight: bold; font-size: 1.35rem; margin-bottom: 0.3rem;">Flow Duration</div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem; padding: 0.4rem 0.2rem; border-bottom: 1.5px dashed rgba(167, 139, 250, 0.2); padding-bottom: 0.8rem;">
+                                        <!-- Sain -->
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3;">
+                                            <span style="color: var(--color-mint); font-weight: bold;">Sain (Normal) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">15s - 30s</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                            <div style="width: 80%; height: 100%; background: var(--color-mint);"></div>
+                                        </div>
+                                        <!-- Attaque -->
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3; margin-top: 0.1rem;">
+                                            <span style="color: var(--arch-orange); font-weight: bold;">Attaque (DDoS) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">&lt; 1s</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                                            <div style="width: 5%; height: 100%; background: var(--arch-orange);"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Item 2 -->
+                                <!-- Item 2: Fwd IAT Total -->
                                 <div>
-                                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.3rem;">
-                                        <span style="font-family: var(--font-mono); color: var(--text-white);">Fwd IAT Total</span>
-                                        <span style="color: var(--accent-cyan); font-weight: bold;">Std ~33 s</span>
-                                    </div>
-                                    <div style="height: 10px; background: rgba(128, 128, 128, 0.15); border: 1px solid rgba(167, 139, 250, 0.3);">
-                                        <div style="width: 80%; height: 100%; background: var(--accent-lavender);"></div>
+                                    <div style="font-family: var(--font-mono); color: var(--text-white); font-weight: bold; font-size: 1.35rem; margin-bottom: 0.3rem;">Fwd IAT Total</div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem; padding: 0.4rem 0.2rem;">
+                                        <!-- Sain -->
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3;">
+                                            <span style="color: var(--color-mint); font-weight: bold;">Sain (Normal) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">&gt; 10s (Fluide)</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                            <div style="width: 75%; height: 100%; background: var(--color-mint);"></div>
+                                        </div>
+                                        <!-- Attaque -->
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3; margin-top: 0.1rem;">
+                                            <span style="color: var(--arch-orange); font-weight: bold;">Attaque (Flood) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">&lt; 0.1s (Rafale)</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                                            <div style="width: 2%; height: 100%; background: var(--arch-orange);"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -3004,40 +3057,70 @@
                     </div>
 
                     <!-- Card 3: Volumétrie & Débits -->
-                    <div class="card card-mint" style="display: flex; flex-direction: column; justify-content: space-between; padding: 1.2rem;">
+                    <div class="card card-mint" style="display: flex; flex-direction: column; justify-content: flex-start; padding: 1.2rem; box-shadow: 4px 4px 0px var(--border-subtle);">
                         <div>
-                            <h3 class="card-title" style="font-size: 1.25rem; color: var(--color-mint); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <h3 class="card-title" style="font-size: 1.55rem; color: var(--color-mint); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
                                 <i class="fa-solid fa-gauge"></i> Volumétrie &amp; Débits
                             </h3>
-                            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem;">
-                                <!-- Item 1 -->
+                            <div style="display: flex; flex-direction: column; gap: 0.9rem; margin-top: 0.2rem;">
+                                <!-- Item 1: Total Length Bwd -->
                                 <div>
-                                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.3rem;">
-                                        <span style="font-family: var(--font-mono); color: var(--text-white);">Total Length Bwd</span>
-                                        <span style="color: var(--accent-cyan); font-weight: bold;">655 Mo</span>
-                                    </div>
-                                    <div style="height: 10px; background: rgba(128, 128, 128, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);">
-                                        <div style="width: 90%; height: 100%; background: var(--color-mint);"></div>
+                                    <div style="font-family: var(--font-mono); color: var(--text-white); font-weight: bold; font-size: 1.35rem; margin-bottom: 0.3rem;">Total Length Bwd</div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem; padding: 0.4rem 0.2rem; border-bottom: 1.5px dashed rgba(16, 185, 129, 0.2); padding-bottom: 0.8rem;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3;">
+                                            <span style="color: var(--color-mint); font-weight: bold;">Sain (Requête) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">&lt; 1 Mo</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                            <div style="width: 10%; height: 100%; background: var(--color-mint);"></div>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3; margin-top: 0.1rem;">
+                                            <span style="color: var(--arch-orange); font-weight: bold;">Alerte (Fuite) :</span>
+                                            <span style="color: var(--accent-cyan); font-weight: bold; font-family: var(--font-mono);">655 Mo (Exfiltré)</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                                            <div style="width: 95%; height: 100%; background: var(--arch-orange);"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Item 2 -->
+                                <!-- Item 2: Fwd Packets/s -->
                                 <div>
-                                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.3rem;">
-                                        <span style="font-family: var(--font-mono); color: var(--text-white);">Fwd Packets/s</span>
-                                        <span style="color: var(--accent-cyan); font-weight: bold;">76.7k p/s</span>
-                                    </div>
-                                    <div style="height: 10px; background: rgba(128, 128, 128, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);">
-                                        <div style="width: 70%; height: 100%; background: var(--color-mint);"></div>
+                                    <div style="font-family: var(--font-mono); color: var(--text-white); font-weight: bold; font-size: 1.35rem; margin-bottom: 0.3rem;">Fwd Packets/s</div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem; padding: 0.4rem 0.2rem; border-bottom: 1.5px dashed rgba(16, 185, 129, 0.2); padding-bottom: 0.8rem;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3;">
+                                            <span style="color: var(--color-mint); font-weight: bold;">Sain (Standard) :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">&lt; 100 p/s</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                            <div style="width: 5%; height: 100%; background: var(--color-mint);"></div>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3; margin-top: 0.1rem;">
+                                            <span style="color: var(--arch-orange); font-weight: bold;">DDoS (Inondation) :</span>
+                                            <span style="color: var(--accent-cyan); font-weight: bold; font-family: var(--font-mono);">76.7k p/s (Saturé)</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                                            <div style="width: 90%; height: 100%; background: var(--arch-orange);"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Item 3 -->
+                                <!-- Item 3: Init Win Fwd -->
                                 <div>
-                                    <div style="display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: 0.3rem;">
-                                        <span style="font-family: var(--font-mono); color: var(--text-white);">Init Win Fwd</span>
-                                        <span style="color: var(--accent-cyan); font-weight: bold;">14.4k oct.</span>
-                                    </div>
-                                    <div style="height: 10px; background: rgba(128, 128, 128, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);">
-                                        <div style="width: 50%; height: 100%; background: var(--color-mint);"></div>
+                                    <div style="font-family: var(--font-mono); color: var(--text-white); font-weight: bold; font-size: 1.35rem; margin-bottom: 0.3rem;">Init Win Fwd</div>
+                                    <div style="display: flex; flex-direction: column; gap: 0.3rem; padding: 0.4rem 0.2rem;">
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3;">
+                                            <span style="color: var(--color-mint); font-weight: bold;">OS Standard :</span>
+                                            <span style="color: var(--text-warm-gray); font-family: var(--font-mono);">8k / 29k / 65k</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                            <div style="width: 85%; height: 100%; background: var(--color-mint);"></div>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; line-height: 1.3; margin-top: 0.1rem;">
+                                            <span style="color: var(--arch-orange); font-weight: bold;">Scanner (Nmap) :</span>
+                                            <span style="color: var(--accent-cyan); font-weight: bold; font-family: var(--font-mono);">14.4k (Signature)</span>
+                                        </div>
+                                        <div style="height: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                                            <div style="width: 25%; height: 100%; background: var(--arch-orange);"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -3047,6 +3130,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- ====================================================
              SLIDE 10 : PRÉTRAITEMENT ET ÉQUILIBRAGE
@@ -4473,10 +4557,10 @@
             'slide-4': 1,
             'slide-5': 1,
             'slide-6': 1,
+            'slide-8': 1,
             'slide-7': 1,
             
             // Section II : Modélisation Deep Learning
-            'slide-8': 2,
             'slide-9': 2,
             'slide-9-features': 2,
             'slide-10': 2,
@@ -4509,21 +4593,10 @@
             }
         });
 
-        // Navigation par clic sur le plan
-        document.querySelectorAll('.header-nav .nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const section = parseInt(e.currentTarget.dataset.section);
-                // Trouver la première slide de cette section
-                const targetSlideIdx = Array.from(slides).findIndex(slide => {
-                    return parseInt(slide.getAttribute('data-section')) === section;
-                });
-                if (targetSlideIdx !== -1) {
-                    currentSlideIdx = targetSlideIdx;
-                    updateSlide();
-                }
-                e.stopPropagation();
-            });
-        });
+        // Initialiser la frise chronologique de l'en-tête
+        initHeaderTimeline();
+
+
 
         /* --- COUNT-UP ANIMATION ENGINE --- */
         function formatNumber(n, separator, decimals) {
@@ -4658,16 +4731,27 @@
             const totalStr = String(totalSlides).padStart(2, '0');
             pageCounter.innerText = `[  ${currentStr}  /  ${totalStr}  ]`;
 
-            // Met à jour le navigateur global
+            // Met à jour la timeline dans l'en-tête (décalage horizontal pour centrer le slide actif)
             const sectionIdx = parseInt(activeSlide.getAttribute('data-section')) || 0;
-            const navItems = document.querySelectorAll('.header-nav .nav-item');
-            navItems.forEach(item => {
-                if (parseInt(item.dataset.section) === sectionIdx) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
+            const activeItem = document.getElementById(`timeline-item-${currentSlideIdx}`);
+            const track = document.getElementById('header-timeline-track');
+            const navContainer = document.querySelector('.header-nav');
+            
+            // Retirer la classe active de tous les éléments de la timeline
+            document.querySelectorAll('.header-timeline-item').forEach(el => el.classList.remove('active'));
+            
+            if (activeItem && track && navContainer) {
+                activeItem.classList.add('active');
+                
+                // Calculer le décalage pour centrer l'élément actif
+                const containerWidth = navContainer.offsetWidth;
+                const activeOffsetLeft = activeItem.offsetLeft;
+                const activeWidth = activeItem.offsetWidth;
+                
+                // Centrer l'élément actif dans le conteneur
+                const targetTranslateX = (containerWidth / 2) - activeOffsetLeft - (activeWidth / 2);
+                track.style.transform = `translateX(${targetTranslateX}px)`;
+            }
             
             // Masque ou affiche le navigateur sur les slides d'accueil/plan (section 0)
             const headerNav = document.querySelector('.header-nav');
@@ -4753,6 +4837,39 @@
                 });
                 
                 grid.appendChild(btn);
+            });
+        }
+
+        // Initialisation de la frise des titres dans l'en-tête global
+        function initHeaderTimeline() {
+            const track = document.getElementById('header-timeline-track');
+            if (!track) return;
+            track.innerHTML = '';
+            
+            slides.forEach((slide, idx) => {
+                let titleText = '';
+                if (slide.id === 'slide-1') {
+                    titleText = 'PAGE DE GARDE';
+                } else if (slide.id === 'slide-plan') {
+                    titleText = 'SOMMAIRE / PLAN';
+                } else {
+                    const titleEl = slide.querySelector('.slide-title');
+                    titleText = titleEl ? titleEl.innerText.toUpperCase() : `DIAPO ${idx + 1}`;
+                }
+                
+                const item = document.createElement('span');
+                item.className = 'header-timeline-item';
+                item.id = `timeline-item-${idx}`;
+                item.innerText = titleText;
+                
+                // Clic pour naviguer directement au slide
+                item.addEventListener('click', (e) => {
+                    currentSlideIdx = idx;
+                    updateSlide();
+                    e.stopPropagation();
+                });
+                
+                track.appendChild(item);
             });
         }
 
