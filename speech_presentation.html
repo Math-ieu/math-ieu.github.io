@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide de Présentation de la Soutenance (15 Minutes)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+        
+        :root {
+            --primary: #ef4444;
+            --secondary: #00f2fe;
+            --accent: #a78bfa;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --border-subtle: #cbd5e1;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --font-title: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+        }
+        
+        /* A4 Print Layout Rules */
+        @page {
+            size: A4;
+            margin: 18mm 15mm 20mm 15mm;
+        }
+        
+        @media print {
+            body {
+                background: #fff;
+            }
+            .page-break {
+                page-break-before: always;
+                break-before: page;
+            }
+            .slide-card {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+        }
+        
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            height: 255mm; /* Dynamic spacing to prevent spillover */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 10px;
+            box-sizing: border-box;
+            page-break-after: always;
+        }
+        
+        .cover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+        }
+        
+        .cover-logo-text {
+            font-family: var(--font-title);
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+        
+        .cover-logo-sub {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .cover-center {
+            margin: auto 0;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.08);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            box-shadow: 3px 3px 0px #000;
+        }
+        
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin: 0 0 15px 0;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+        }
+        
+        .cover-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.35rem;
+            color: #64748b;
+            margin: 0 0 40px 0;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        
+        .timing-box {
+            background: var(--light-bg);
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px #000;
+            padding: 20px;
+            margin-top: 10px;
+        }
+        
+        .timing-title {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin: 0 0 12px 0;
+            border-bottom: 2.5px solid var(--primary);
+            padding-bottom: 6px;
+            display: inline-block;
+        }
+        
+        .timing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .timing-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--border-subtle);
+            padding-bottom: 4px;
+        }
+        
+        .timing-item strong {
+            color: var(--text-dark);
+        }
+        
+        .cover-footer {
+            border-top: 2px solid #000;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            color: #64748b;
+        }
+        
+        /* Section Title Page-Break block */
+        .section-header {
+            border-left: 6px solid var(--primary);
+            padding-left: 15px;
+            margin-top: 45px;
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Slide Presentation Card styling */
+        .slide-card {
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            background: #fff;
+            padding: 24px;
+            margin-bottom: 30px;
+            border-radius: 0px;
+        }
+        
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2.5px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .slide-num {
+            font-family: var(--font-mono);
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+        }
+        
+        .slide-title-text {
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            flex-grow: 1;
+            margin: 0 20px;
+            text-transform: uppercase;
+            letter-spacing: -0.3px;
+        }
+        
+        .slide-duration {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            background: #000;
+            color: #fff;
+            padding: 3px 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .speech-box {
+            background: var(--light-bg);
+            border-left: 5px solid var(--accent);
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.55;
+            font-style: italic;
+            font-weight: 400;
+        }
+        
+        .meta-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .meta-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .meta-label {
+            font-family: var(--font-title);
+            font-weight: 900;
+            width: 150px;
+            flex-shrink: 0;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .meta-content {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+            <div class="cover-header">
+                <div>
+                    <div class="cover-logo-text">HESTIM</div>
+                    <div class="cover-logo-sub">ENGINEERING & BUSINESS SCHOOL</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="cover-logo-text" style="color: var(--primary);">3D SMART FACTORY</div>
+                    <div class="cover-logo-sub" style="color: var(--text-dark);">R&D CYBERSECURITY LAB</div>
+                </div>
+            </div>
+            
+            <div class="cover-center">
+                <div class="cover-badge">SCRIPT ORAL OFFICIEL</div>
+                <h1 class="cover-title">Guide de Présentation<br>Soutenance PFE</h1>
+                <p class="cover-subtitle">Script fidèle de soutenance de stage de fin d'études pour l'obtention du diplôme d'Ingénieur d'État en Ingénierie Informatique et Intelligence Artificielle.</p>
+                
+                <div class="timing-box">
+                    <h3 class="timing-title">Timing Global &amp; Gestion des 15 Minutes</h3>
+                    <div class="timing-grid">
+                        <div class="timing-item"><strong>Partie 1 : Contexte & Enjeux (Slides 1 à 10) :</strong> <span>~4 minutes 30s</span></div><div class="timing-item"><strong>Partie 2 : Modélisation Deep Learning (Slides 11 à 18) :</strong> <span>~4 minutes 30s</span></div><div class="timing-item"><strong>Partie 3 : Déploiement Cloud & SOC (Slides 19 à 21) :</strong> <span>~3 minutes (incluant 2 min de démonstration vidéo)</span></div><div class="timing-item"><strong>Partie 4 : Validation & Perspectives (Slides 22 à 24) :</strong> <span>~3 minutes</span></div><div class="timing-item"><strong>Total :</strong> <span>15 minutes.</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cover-footer">
+                <div>Présenté par : Option IA &amp; Big Data</div>
+                <div>Session : Juillet 2026</div>
+            </div>
+        </div>
+        
+        <!-- SECTIONS AND SLIDES -->
+
+        <!-- SECTION 1 -->
+        <div class="section-header ">
+            <h2 class="section-title">⏱️ Partie 1 : Contexte & Enjeux (Slides 1 à 10) - Cible : 4 min 30s</h2>
+        </div>
+        
+            <!-- SLIDE 1 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 1</span>
+                    <h3 class="slide-title-text">Page de garde</h3>
+                    <span class="slide-duration">30s</span>
+                </div>
+                <div class="speech-box">
+                    "Bonjour Madame la Présidente, bonjour à tous les membres du jury. Je suis très heureux de vous présenter aujourd'hui mon projet de fin d'études pour l'obtention de mon diplôme d'Ingénieur d'État. Mon travail porte sur le développement d'un système de détection d'intrusions réseau, basé sur le Deep Learning. J'ai réalisé ce projet au sein du service R&D de 3D Smart Factory à Mohammedia, sous l'encadrement de Mme Saida HAIDRAR pour l'école HESTIM, et de M. Hamza MOUNCIF, mon maître de stage."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Posture droite, regardez l'ensemble du jury.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour cette présentation, voici le plan que nous allons suivre."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 2 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 2</span>
+                    <h3 class="slide-title-text">Plan de la présentation</h3>
+                    <span class="slide-duration">20s</span>
+                </div>
+                <div class="speech-box">
+                    "Notre présentation va suivre un plan en six étapes. Nous commencerons par l'introduction et le contexte du projet. Ensuite, nous verrons la partie Deep Learning avec le comparatif de nos 11 modèles. Après cela, je vous présenterai l'architecture cloud sur AWS. Nous verrons ensuite le pipeline technique en détail. Puis, nous passerons à la démonstration et à la validation avec de vraies attaques. Et enfin, nous terminerons par le bilan et les perspectives du projet."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Balayez d'un geste de la main les 6 parties affichées à l'écran.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Débutons par le contexte général de la sécurité de nos réseaux."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 3 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 3</span>
+                    <h3 class="slide-title-text">Introduction Générale</h3>
+                    <span class="slide-duration">40s</span>
+                </div>
+                <div class="speech-box">
+                    "Aujourd'hui, avec le cloud et les objets connectés, les réseaux d'entreprises sont plus exposés que jamais à des attaques complexes et discrètes. Pour les surveiller, on utilise des NIDS (des systèmes de détection d'intrusions). Mais les outils actuels ont des limites : ils ratent les nouvelles attaques (les Zero-Days), ils génèrent trop de fausses alertes à cause de règles trop rigides, et ils sont bloqués par le chiffrement du trafic, comme avec TLS 1.3, qui empêche de lire le contenu des paquets."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la carte gauche (Contexte Cyber) puis la carte droite (Limites du SOC : Zéro-Day, Faux Positifs, TLS 1.3).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour bien comprendre ces limites, étudions un scénario d'attaque type."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 4 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 4</span>
+                    <h3 class="slide-title-text">Scénario d'Attaque & Problématique Centrale</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Prenons un exemple concret : une attaque de force brute lente et distribuée sur SSH, lancée depuis 15 adresses IP différentes, avec seulement une tentative par minute. Les outils classiques comme Fail2ban ne voient rien car l'attaque est trop lente. Et les systèmes à signatures échouent aussi car chaque connexion a l'air normale. Notre approche par Deep Learning permet de régler ce problème : en analysant les statistiques des flux (comme la taille des paquets et le timing), l'IA détecte ce comportement anormal. Notre problématique est donc : comment créer un système de détection par IA qui soit très précis, léger, ultra-rapide (moins d'une milliseconde) et connecté en temps réel sur le cloud ?"
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la carte rouge « Bruteforce distribué », puis la verte « Analyse comportementale » et l'encadré « Problématique » en bas.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ce projet a été développé en partenariat étroit avec notre structure d'accueil."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 5 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 5</span>
+                    <h3 class="slide-title-text">Présentation de l'Entreprise d'Accueil</h3>
+                    <span class="slide-duration">25s</span>
+                </div>
+                <div class="speech-box">
+                    "J'ai réalisé mon stage au sein du service R&D de 3D Smart Factory à Mohammedia. C'est une entreprise innovante qui fait le pont entre la recherche et la mise en production de solutions industrielles. Durant ces mois, j'ai pu travailler dans un environnement idéal grâce à trois piliers : un fort encouragement à l'innovation, un encadrement technique au quotidien avec la méthode agile, et un accompagnement pour valoriser et bien dimensionner le projet."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Mentionnez le logo de 3D Smart Factory et les trois icônes (Encouragement, Encadrement, Financement).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Sur cette base, nous avons délimité le périmètre du projet."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 6 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 6</span>
+                    <h3 class="slide-title-text">Cadrage & Périmètre du Projet</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "L'objectif principal a été de passer d'une simple étude théorique sur ordinateur à un vrai système opérationnel en continu sur le cloud AWS. Dans le périmètre du projet, on retrouve : l'équilibrage des données, l'entraînement de 11 modèles d'IA, la capture du trafic avec la sonde NFStream, le déploiement automatique de l'infrastructure et la création du dashboard SOC. À l'inverse, nous ne remplaçons pas les outils de gestion de logs existants et nous ne faisons pas de blocage automatique des attaques. Ce système est destiné aux analystes SOC et aux équipes de sécurité."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la bannière « Transition », puis les blocs « Dans le Périmètre », « Hors Périmètre » et « Acteurs/Cible ».</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Afin de concevoir le système, nous avons analysé le cahier des charges."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 7 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 7</span>
+                    <h3 class="slide-title-text">Besoins Fonctionnels & Non Fonctionnels</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour répondre au cahier des charges, nous avons défini deux types de besoins. Côté fonctionnel, le système doit suivre 4 étapes : capturer le trafic de manière passive, nettoyer les données puis lancer l'IA pour détecter les attaques en temps réel, remonter les alertes sur le dashboard, et valider le tout avec des simulations. Côté non-fonctionnel, les exigences sont strictes : le temps de traitement de bout-en-bout doit être de moins de 2 secondes, le système doit absorber les fortes charges, être hautement disponible, et ne pas ralentir le réseau surveillé."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Suivez la timeline A, B, C, D à gauche, puis les 4 blocs de contraintes à droite (Latence, Scalabilité, Disponibilité, Sécurité).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Étudions à présent pourquoi les signatures classiques ont atteint leurs limites."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 8 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 8</span>
+                    <h3 class="slide-title-text">Limites des Approches Traditionnelles</h3>
+                    <span class="slide-duration">30s</span>
+                </div>
+                <div class="speech-box">
+                    "Revenons rapidement sur les limites des outils classiques comme Snort ou Suricata. Ils bloquent sur trois points : d'abord, ils sont incapables de détecter une nouvelle attaque (les Zero-Days) car ils n'ont pas la signature. Ensuite, avec le chiffrement TLS 1.3, ils ne peuvent plus lire le contenu des paquets. Enfin, l'analyse par signatures demande trop de calculs, ce qui sature les processeurs à haut débit et provoque des pertes de paquets."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez les 3 cartes de limites (Zero-Days, Chiffrement TLS 1.3, Surcharges CPU).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Voyons à présent comment le Deep Learning permet de lever ces verrous technologiques."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 9 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 9</span>
+                    <h3 class="slide-title-text">L'avènement du Deep Learning pour le NIDS</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "Le Deep Learning change la donne grâce à trois avantages. Premièrement, l'extraction automatique de caractéristiques : l'IA trouve elle-même les liens invisibles entre les données du réseau, sans qu'un expert ait besoin de concevoir des formules manuellement. Deuxièmement, la capacité de généralisation : le modèle apprend le comportement normal du réseau pour repérer les attaques, même inconnues. Troisièmement, la résistance au chiffrement : plus besoin de lire le contenu des messages, l'IA travaille uniquement sur les statistiques du flux, comme la taille des paquets ou les délais."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Soulignez les 3 concepts clés (Extraction de Caractéristiques, Généralisation, Anti-chiffrement TLS 1.3).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Afin de concevoir et réaliser ce système en 20 semaines, nous avons planifié nos sprints selon une méthodologie rigoureuse."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 10 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 10</span>
+                    <h3 class="slide-title-text">Méthodologie de Travail & Planning</h3>
+                    <span class="slide-duration">25s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour ce projet, j'ai suivi la méthode agile SCRUM. Cela a permis de faire des tests réguliers et d'éviter l'effet tunnel. Sur les 20 semaines de travail, le planning s'est découpé ainsi : le cadrage en février, la préparation et l'équilibrage des données en mars, le comparatif des modèles d'IA en avril, le développement de l'infrastructure en mai, le déploiement sur AWS et la création de l'interface SOC en juin, et enfin les tests de validation."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Faites un balayage rapide du diagramme de Gantt (de février à juin).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour entraîner et valider nos architectures dans le cadre de ce planning, nous avons exploité un jeu de données de référence."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+        <!-- SECTION 2 -->
+        <div class="section-header page-break">
+            <h2 class="section-title">⏱️ Partie 2 : Modélisation Deep Learning (Slides 11 à 18) - Cible : 4 min 30s</h2>
+        </div>
+        
+            <!-- SLIDE 11 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 11</span>
+                    <h3 class="slide-title-text">Le Dataset de Référence : CICIDS2017</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour entraîner nos modèles, nous avons utilisé le jeu de données de référence CICIDS2017. Il contient plus de 2,8 millions de flux réseau, chacun décrit par 77 variables statistiques. Il regroupe 15 classes différentes : du trafic normal et 14 types d'attaques moderne, allant des attaques web aux dénis de service, en passant par les infiltrations de réseau."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez les grands chiffres (2.8M de flux, 77 variables, 15 classes) et la taxonomie des menaces.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour mieux comprendre ces flux réseau, analysons les variables caractéristiques."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 12 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 12</span>
+                    <h3 class="slide-title-text">Variables Caractéristiques</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour chaque flux réseau, on commence par analyser les informations classiques d'identification, comme les adresses IP et les ports, ainsi que les drapeaux TCP pour repérer les scans. Mais la vraie force de notre modèle réside dans les statistiques comportementales du trafic. Par exemple, on surveille la **Durée du Flux** (ou *Flow Duration*), qui s'effondre sous la seconde lors d'un DDoS, et le **Temps Inter-Arrivée** (ou *Fwd IAT Total*), qui mesure l'espacement temporel entre les paquets reçus. Côté volumétrie, on observe le **Volume des Paquets Retour** (ou *Total Length Bwd*), qui correspond à la taille totale des paquets de retour et qui explose en cas d'exfiltration, ainsi que le **Débit de Paquets Aller** (ou *Fwd Packets/s*). Enfin, la **Fenêtre TCP Initiale** (ou *Init Win Fwd*), qui indique la taille de la fenêtre réseau à l'aller, nous permet de repérer instantanément des outils de scan comme Nmap grâce à leur signature réseau spécifique."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez le Quintuplet Standard, les drapeaux TCP à gauche, puis détaillez le contraste Sain (Vert) vs Attaque (Orange) sur les jauges temporelles et de débits à droite.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ces variables brutes doivent passer par un pipeline de prétraitement rigoureux."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 13 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 13</span>
+                    <h3 class="slide-title-text">Pipeline de Prétraitement & Équilibrage des Données</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Avant d'entraîner l'IA, les données passent par un nettoyage en 4 étapes. Première étape : on supprime les valeurs infinies et on remplace les valeurs manquantes par la médiane de l'ensemble d'entraînement pour éviter les fuites de données. Deuxième étape : on utilise la méthode IQR à 1,5 pour réduire l'effet des valeurs aberrantes sans perdre les signatures d'attaques. Troisième étape : on applique une normalisation Z-score sur nos 77 variables. Enfin, quatrième étape : on équilibre le jeu de données en réduisant le trafic normal à 50 000 lignes et en utilisant la méthode SMOTE pour générer de faux exemples des attaques rares, ce qui stabilise l'apprentissage."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Suivez le schéma horizontal de gauche à droite (Étape 1 Nettoyage, Étape 2 IQR, Étape 3 Z-Score, Étape 4 SMOTE).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"C'est sur ces données équilibrées que nous avons entraîné nos architectures."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 14 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 14</span>
+                    <h3 class="slide-title-text">Les 11 Architectures de Deep Learning Testées</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "Nous avons testé et comparé 11 modèles de réseaux de neurones, répartis en 4 familles : des modèles standards simples (MLP), des modèles spatiaux (CNN 1D et ResNet 1D), des modèles séquentiels (LSTM, GRU, BiLSTM) et enfin des modèles intégrant des mécanismes d'attention, comme les réseaux TCN et notre modèle final, l'Attention MLP."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Montrez la grille de répartition en 4 blocs.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour entraîner ces réseaux, nous avons appliqué un protocole d'entraînement strict."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 15 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 15</span>
+                    <h3 class="slide-title-text">Processus d'Entraînement des Modèles</h3>
+                    <span class="slide-duration">35s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour l'entraînement, nous avons configuré le système pour pénaliser plus fortement les erreurs sur les attaques rares grâce à une fonction de perte pondérée. Nous avons utilisé l'optimiseur Adam, avec un taux d'apprentissage de 0,001 qui diminue automatiquement si le modèle stagne. Enfin, l'entraînement est limité à 50 époques, avec un mécanisme d'arrêt précoce (Early Stopping) après 10 époques sans amélioration pour éviter le surapprentissage."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez les 2 blocs théoriques en haut (Cross-Entropy et Adam), puis la ligne des 4 paramètres en bas.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Voici les résultats quantitatifs de ce benchmark."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 16 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 16</span>
+                    <h3 class="slide-title-text">Résultats du Benchmark Quantitatif</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Ce tableau compare la précision des modèles et leur vitesse. On voit que les modèles très complexes comme le BiLSTM sont trop lents (4,8 ms d'inférence) pour du temps réel sans un GPU coûteux. À l'inverse, le MLP de base est très rapide (0,35 ms) mais moins précis. Notre modèle Attention MLP offre le meilleur compromis : il atteint 98,28 % de précision et un F1-score de 98,29 %, tout en s'exécutant en seulement 0,42 ms. De plus, il est très léger avec moins de 50 000 paramètres."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Soulignez la ligne colorée du tableau (Attention MLP) et comparez-la aux lignes BiLSTM et MLP Standard.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Détaillons l'architecture interne et le fonctionnement de notre modèle Attention MLP."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 18 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 18</span>
+                    <h3 class="slide-title-text">Architecture Interne de l'Attention MLP</h3>
+                    <span class="slide-duration">40s</span>
+                </div>
+                <div class="speech-box">
+                    "Voici comment fonctionne notre modèle en interne. Les 77 caractéristiques du flux entrent dans le réseau et se séparent en deux branches. La branche supérieure calcule un score d'attention (entre 0 et 1) pour chaque variable. On multiplie ensuite les données d'entrée par ces scores : c'est le produit de Hadamard. Ce filtrage dynamique permet d'éliminer les informations inutiles ou bruyantes. Le signal filtré passe ensuite dans le classificateur (un MLP à deux couches de 128 et 64 neurones) pour prédire le type d'attaque en seulement 0,42 ms."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Suivez pas à pas le flux sur le diagramme (Entrée -> Branche Attention -> Multiplicateur Hadamard -> Classificateur MLP -> Classification).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ce modèle étant finalisé, voyons comment il s'intègre dans notre infrastructure de production."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+        <!-- SECTION 3 -->
+        <div class="section-header page-break">
+            <h2 class="section-title">⏱️ Partie 3 : Déploiement Cloud & SOC (Slides 19 à 21) - Cible : 3 min</h2>
+        </div>
+        
+            <!-- SLIDE 19 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 19</span>
+                    <h3 class="slide-title-text">Architecture Globale du CyberRange Cloud</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour tester notre système, nous avons créé une infrastructure sur AWS. Depuis une machine d'attaque Kali Linux, nous lançons des attaques contre nos serveurs de production. Le trafic de ces serveurs est copié en direct et de manière invisible grâce au service Traffic Mirroring d'AWS, puis envoyé vers notre sonde IDS. Cette sonde extrait les données de flux avec NFStream et utilise notre IA pour détecter les attaques. Si une anomalie est trouvée, l'alerte est envoyée dans une file d'attente SQS, puis traitée par une fonction Lambda pour être enregistrée dans DynamoDB. Enfin, notre serveur de supervision pousse l'alerte instantanément vers le dashboard du SOC via WebSockets."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la zone d'attaque (gauche), puis le VPC AWS (centre), les subnets (Public, IDS Probe, Supervision), et le pipeline serverless (SQS, Lambda, DynamoDB à droite).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Pour déployer et piloter cette infrastructure, nous avons utilisé des outils modernes."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 20 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 20</span>
+                    <h3 class="slide-title-text">Technologies & Outils par Niveau</h3>
+                    <span class="slide-duration">20s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour réaliser ce projet, nous avons utilisé des technologies modernes : Terraform pour déployer automatiquement toute l'infrastructure sur AWS, Ansible pour configurer les machines à distance, Docker pour empaqueter nos microservices, et Python avec PyTorch pour développer et faire tourner notre modèle de Deep Learning."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez les 4 sections d'outils (Provisioning, Configuration, Dev & CI/CD, Deep Learning).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Voici une démonstration concrète de l'interface SOC lors d'une attaque en temps réel."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 21 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 21</span>
+                    <h3 class="slide-title-text">Dashboard du SOC & Démonstration Vidéo</h3>
+                    <span class="slide-duration">2 min 30s total : 30s Intro + 2 min Vidéo</span>
+                </div>
+                <div class="speech-box">
+                    "Notre tableau de bord en React permet de superviser la sécurité. Il contient quatre onglets : un résumé global, un flux d'alertes en temps réel, des statistiques et un onglet d'enrichissement qui affiche le nom des machines AWS touchées. Je vous propose de lancer une vidéo de démonstration de 2 minutes pour voir comment le système réagit en direct face à une attaque."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Déclenchez la vidéo. Laissez-la tourner durant ses 2 minutes. Vous pouvez faire des commentaires succincts sur les détections d'alertes instantanées qui s'affichent à l'écran.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Comme la démonstration le prouve, l'asynchronisme de l'architecture garantit une alerte en moins de 2 secondes. Analysons les résultats globaux de ces attaques."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+        <!-- SECTION 4 -->
+        <div class="section-header page-break">
+            <h2 class="section-title">⏱️ Partie 4 : Validation & Perspectives (Slides 22 à 24) - Cible : 3 min</h2>
+        </div>
+        
+            <!-- SLIDE 22 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 22</span>
+                    <h3 class="slide-title-text">Validation Expérimentale & Attaques</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour valider le système, nous avons injecter de vraies attaques (DDoS SYN Flood, scans de ports et ICMP Flood) au milieu d'un fort trafic normal. Les résultats sont excellents : l'IA a détecté 100 % des attaques, l'alerte s'affiche sur le dashboard du SOC en moins de 2 secondes de bout-en-bout, et surtout, il y a un impact de 0 % sur les performances des serveurs surveillés grâce à la capture passive du trafic."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Soulignez le bloc gauche (Attaques Simulées) puis les 3 métriques clés à droite (100% Vrais Positifs, Latence < 2s, Impact CPU de 0,00%).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ces validations démontrent une efficacité opérationnelle maximale. Mais comment ces résultats réels se positionnent-ils face aux travaux académiques existants ? C'est ce que nous allons voir avec cette validation comparative."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 22b -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 22b</span>
+                    <h3 class="slide-title-text">Validation Comparative — État de l'Art vs Notre Apport</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "Notre solution se distingue des travaux de recherche de l'état de l'art par sa légèreté et son application concrète. La plupart des publications récentes proposent des modèles inadaptés pour des sondes en bordure : par exemple, le Transformer de Ferrag (2023) ou le LSTM de Yin (2021) souffrent d'une complexité excessive avec des millions de paramètres. D'autres, comme le BiLSTM de Yang (2023) ou le double Autoencodeur en cascade d'Andresini (2022), induisent une latence trop importante pour le temps réel. Enfin, des modèles comme le CNN 1D de Zhang (2022) souffrent d'un biais topologique en dépendant de l'ordre arbitraire des colonnes du trafic. À l'inverse, notre Attention MLP ne compte que 49 915 paramètres, s'exécute en 0,42 ms sur un CPU standard, et surtout, nous l'avons validé en conditions réelles sur notre CyberRange AWS, ce qui manque à la quasi-totalité des travaux académiques."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez le bloc gauche (Limites de l'État de l'Art) puis mettez en valeur le bloc de droite (Notre Apport : modèle compact, vitesse d'inférence CPU et validation en production réelle).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ce positionnement unique confirme la viabilité de notre approche et nous amène naturellement au bilan de notre projet."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 23 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 23</span>
+                    <h3 class="slide-title-text">Conclusion & Perspectives</h3>
+                    <span class="slide-duration">45s</span>
+                </div>
+                <div class="speech-box">
+                    "En conclusion, ce projet a permis de passer d'un modèle d'IA théorique à un système de surveillance concret et opérationnel sur AWS. Le modèle Attention MLP s'est montré idéal grâce à sa petite taille (50 Ko) et sa rapidité. Pour la suite, nous envisageons d'intégrer un pipeline MLOps pour mettre à jour le modèle automatiquement si le trafic change, d'ajouter de l'IA explicable avec la méthode SHAP pour détailler les alertes, et de mettre en place un blocage automatique des attaques en modifiant les règles de sécurité AWS à la volée."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la carte gauche (Bilan) puis la carte droite (Perspectives).</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"J'arrive au terme de mon exposé."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 24 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 24</span>
+                    <h3 class="slide-title-text">Merci pour votre attention</h3>
+                    <span class="slide-duration">30s</span>
+                </div>
+                <div class="speech-box">
+                    "Pour finir, je tiens à remercier chaleureusement les équipes de 3D Smart Factory pour leur accueil et leur aide, ainsi que l'école HESTIM. Merci beaucoup pour votre attention. Je suis maintenant ravi de répondre à vos questions et d'échanger avec vous."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Regardez les membres du jury, souriez poliment et attendez les questions.</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+    </div>
+</body>
+</html>

@@ -23,7 +23,7 @@ Ce document contient le script détaillé et fidèle pour chaque diapositive de 
 
 #### Slide 2 : Plan de la présentation (20s)
 *   **Speech :**
-    > *"Notre présentation s'articulera autour de six parties majeures. D'abord, l'Introduction et le Contexte cyber. Ensuite, la Modélisation Deep Learning avec le benchmark de nos 11 architectures. Troisièmement, la conception de notre Architecture AWS et de son CyberRange. Quatrièmement, la Cartographie Technologique du pipeline avec NFStream, SQS et DynamoDB. Cinquièmement, la Supervision et la Validation expérimentale sous scénarios d'attaques réelles. Et enfin, nous conclurons par le Bilan et les Perspectives d'évolution de ce projet."*
+    > *"Notre présentation s'articulera autour de six parties majeures. D'abord, l'Introduction et le Contexte cyber. Ensuite, la Modélisation Deep Learning avec le benchmark de nos 11 architectures. Troisièmement, la conception de notre Architecture AWS et de son CyberRange. Quatrièmement, la Cartographie Technologique du pipeline avec NFStream, SQS et DynamoDB. Cinquièmement, la Démonstration et la Validation expérimentale sous scénarios d'attaques réelles. Et enfin, nous conclurons par le Bilan et les Perspectives d'évolution de ce projet."*
 *   **Cues visuels :** Balayez d'un geste de la main les 6 parties affichées à l'écran.
 *   **Transition :** *"Débutons par le contexte général de la sécurité de nos réseaux."*
 
