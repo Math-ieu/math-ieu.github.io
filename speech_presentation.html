@@ -491,18 +491,18 @@
                     <span class="slide-duration">35s</span>
                 </div>
                 <div class="speech-box">
-                    "Pour répondre au cahier des charges, nous avons défini deux types de besoins. Côté fonctionnel, le système doit suivre 4 étapes : capturer le trafic de manière passive, nettoyer les données puis lancer l'IA pour détecter les attaques en temps réel, remonter les alertes sur le dashboard, et valider le tout avec des simulations. Côté non-fonctionnel, les exigences sont strictes : le temps de traitement de bout-en-bout doit être de moins de 2 secondes, le système doit absorber les fortes charges, être hautement disponible, et ne pas ralentir le réseau surveillé."
+                    "Pour concevoir notre système, nous avons structuré nos exigences en deux volets en collaboration avec 3D Smart Factory. Côté fonctionnel, nous ciblons 5 points : la détection multi-classes pour classifier 15 types de flux, la capture passive non intrusive, l'alerte temps réel transmise en moins de 5 secondes au SOC, l'archivage persistant des logs, et un dashboard de supervision web. Côté non-fonctionnel, les critères sont très stricts : un F1-score supérieur à 98 %, une inférence ultra-rapide de moins d'une milliseconde par flux sur CPU standard, un modèle de moins de 50 000 paramètres, une reproductibilité complète par IaC Terraform/Ansible, et enfin la sécurité par isolation stricte."
                 </div>
                 <ul class="meta-list">
             
                     <li class="meta-item">
                         <span class="meta-label">🎬 Cues Visuels</span>
-                        <span class="meta-content">Suivez la timeline A, B, C, D à gauche, puis les 4 blocs de contraintes à droite (Latence, Scalabilité, Disponibilité, Sécurité).</span>
+                        <span class="meta-content">Pointez la colonne de gauche (les 5 besoins fonctionnels) puis la colonne de droite (les 6 exigences non fonctionnelles de performance, compacité et sécurité).</span>
                     </li>
                 
                     <li class="meta-item">
                         <span class="meta-label">➡️ Transition</span>
-                        <span class="meta-content">*"Étudions à présent pourquoi les signatures classiques ont atteint leurs limites."*</span>
+                        <span class="meta-content">*"Voyons à présent comment le Deep Learning permet de lever les verrous technologiques de détection réseau pour satisfaire ces exigences."*</span>
                     </li>
                 
                 </ul>
@@ -512,31 +512,6 @@
             <div class="slide-card">
                 <div class="slide-header">
                     <span class="slide-num">Slide 8</span>
-                    <h3 class="slide-title-text">Limites des Approches Traditionnelles</h3>
-                    <span class="slide-duration">30s</span>
-                </div>
-                <div class="speech-box">
-                    "Revenons rapidement sur les limites des outils classiques comme Snort ou Suricata. Ils bloquent sur trois points : d'abord, ils sont incapables de détecter une nouvelle attaque (les Zero-Days) car ils n'ont pas la signature. Ensuite, avec le chiffrement TLS 1.3, ils ne peuvent plus lire le contenu des paquets. Enfin, l'analyse par signatures demande trop de calculs, ce qui sature les processeurs à haut débit et provoque des pertes de paquets."
-                </div>
-                <ul class="meta-list">
-            
-                    <li class="meta-item">
-                        <span class="meta-label">🎬 Cues Visuels</span>
-                        <span class="meta-content">Pointez les 3 cartes de limites (Zero-Days, Chiffrement TLS 1.3, Surcharges CPU).</span>
-                    </li>
-                
-                    <li class="meta-item">
-                        <span class="meta-label">➡️ Transition</span>
-                        <span class="meta-content">*"Voyons à présent comment le Deep Learning permet de lever ces verrous technologiques."*</span>
-                    </li>
-                
-                </ul>
-            </div>
-            
-            <!-- SLIDE 9 -->
-            <div class="slide-card">
-                <div class="slide-header">
-                    <span class="slide-num">Slide 9</span>
                     <h3 class="slide-title-text">L'avènement du Deep Learning pour le NIDS</h3>
                     <span class="slide-duration">35s</span>
                 </div>
@@ -558,10 +533,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 10 -->
+            <!-- SLIDE 9 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 10</span>
+                    <span class="slide-num">Slide 9</span>
                     <h3 class="slide-title-text">Méthodologie de Travail & Planning</h3>
                     <span class="slide-duration">25s</span>
                 </div>
@@ -588,10 +563,10 @@
             <h2 class="section-title">⏱️ Partie 2 : Modélisation Deep Learning (Slides 11 à 18) - Cible : 4 min 30s</h2>
         </div>
         
-            <!-- SLIDE 11 -->
+            <!-- SLIDE 10 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 11</span>
+                    <span class="slide-num">Slide 10</span>
                     <h3 class="slide-title-text">Le Dataset de Référence : CICIDS2017</h3>
                     <span class="slide-duration">35s</span>
                 </div>
@@ -613,10 +588,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 12 -->
+            <!-- SLIDE 11 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 12</span>
+                    <span class="slide-num">Slide 11</span>
                     <h3 class="slide-title-text">Variables Caractéristiques</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -638,10 +613,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 13 -->
+            <!-- SLIDE 12 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 13</span>
+                    <span class="slide-num">Slide 12</span>
                     <h3 class="slide-title-text">Pipeline de Prétraitement & Équilibrage des Données</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -663,10 +638,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 14 -->
+            <!-- SLIDE 13 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 14</span>
+                    <span class="slide-num">Slide 13</span>
                     <h3 class="slide-title-text">Les 11 Architectures de Deep Learning Testées</h3>
                     <span class="slide-duration">35s</span>
                 </div>
@@ -688,10 +663,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 15 -->
+            <!-- SLIDE 14 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 15</span>
+                    <span class="slide-num">Slide 14</span>
                     <h3 class="slide-title-text">Processus d'Entraînement des Modèles</h3>
                     <span class="slide-duration">35s</span>
                 </div>
@@ -713,10 +688,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 16 -->
+            <!-- SLIDE 15 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 16</span>
+                    <span class="slide-num">Slide 15</span>
                     <h3 class="slide-title-text">Résultats du Benchmark Quantitatif</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -738,10 +713,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 18 -->
+            <!-- SLIDE 16 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 18</span>
+                    <span class="slide-num">Slide 16</span>
                     <h3 class="slide-title-text">Architecture Interne de l'Attention MLP</h3>
                     <span class="slide-duration">40s</span>
                 </div>
@@ -768,10 +743,10 @@
             <h2 class="section-title">⏱️ Partie 3 : Déploiement Cloud & SOC (Slides 19 à 21) - Cible : 3 min</h2>
         </div>
         
-            <!-- SLIDE 19 -->
+            <!-- SLIDE 17 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 19</span>
+                    <span class="slide-num">Slide 17</span>
                     <h3 class="slide-title-text">Architecture Globale du CyberRange Cloud</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -793,10 +768,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 20 -->
+            <!-- SLIDE 18 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 20</span>
+                    <span class="slide-num">Slide 18</span>
                     <h3 class="slide-title-text">Technologies & Outils par Niveau</h3>
                     <span class="slide-duration">20s</span>
                 </div>
@@ -818,10 +793,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 21 -->
+            <!-- SLIDE 19 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 21</span>
+                    <span class="slide-num">Slide 19</span>
                     <h3 class="slide-title-text">Dashboard du SOC & Démonstration Vidéo</h3>
                     <span class="slide-duration">2 min 30s total : 30s Intro + 2 min Vidéo</span>
                 </div>
@@ -837,7 +812,57 @@
                 
                     <li class="meta-item">
                         <span class="meta-label">➡️ Transition</span>
-                        <span class="meta-content">*"Comme la démonstration le prouve, l'asynchronisme de l'architecture garantit une alerte en moins de 2 secondes. Analysons les résultats globaux de ces attaques."*</span>
+                        <span class="meta-content">*"Pour aller plus loin, et au cas où la vidéo de démonstration ne puisse pas être jouée, voici un aperçu détaillé des quatre principales vues de ce tableau de bord."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 20 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 20</span>
+                    <h3 class="slide-title-text">Supervision SOC — Vues Synthèse & Inférence</h3>
+                    <span class="slide-duration">20s</span>
+                </div>
+                <div class="speech-box">
+                    "Cette première diapositive montre les vues globales de l'interface. À gauche, la vue d'ensemble, ou Overview, résume les statistiques globales, le statut des sondes et les parts respectives des attaques détectées. À droite, l'onglet Live Feed affiche le flux d'alertes en continu via WebSockets. Chaque ligne représente un flux d'attaque classifié en temps réel, avec des codes couleur alertant l'opérateur en fonction de la sévérité."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez la vue d'ensemble à gauche, puis le journal des alertes dynamique à droite.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Voyons à présent les détails et les statistiques de ces alertes."*</span>
+                    </li>
+                
+                </ul>
+            </div>
+            
+            <!-- SLIDE 21 -->
+            <div class="slide-card">
+                <div class="slide-header">
+                    <span class="slide-num">Slide 21</span>
+                    <h3 class="slide-title-text">Supervision SOC — Métriques & Enrichissement</h3>
+                    <span class="slide-duration">20s</span>
+                </div>
+                <div class="speech-box">
+                    "La deuxième diapositive présente les analyses et l'enrichissement. À gauche, l'onglet Statistiques montre l'activité temporelle, le taux de faux positifs et la latence d'inférence en direct sous la milliseconde. À droite, l'onglet de détails permet d'enrichir une alerte avec ses 77 variables NFStream d'origine, le protocole réseau, l'adresse MAC et l'emplacement géographique de la source."
+                </div>
+                <ul class="meta-list">
+            
+                    <li class="meta-item">
+                        <span class="meta-label">🎬 Cues Visuels</span>
+                        <span class="meta-content">Pointez les graphiques analytiques à gauche, puis la fiche d'enrichissement d'alerte à droite.</span>
+                    </li>
+                
+                    <li class="meta-item">
+                        <span class="meta-label">➡️ Transition</span>
+                        <span class="meta-content">*"Ces visualisations concrétisent les résultats opérationnels de notre système. Analysons maintenant les performances globales lors des attaques."*</span>
                     </li>
                 
                 </ul>
@@ -845,7 +870,7 @@
             
         <!-- SECTION 4 -->
         <div class="section-header page-break">
-            <h2 class="section-title">⏱️ Partie 4 : Validation & Perspectives (Slides 22 à 24) - Cible : 3 min</h2>
+            <h2 class="section-title">⏱️ Partie 4 : Validation & Perspectives (Slides 22 à 25) - Cible : 3 min</h2>
         </div>
         
             <!-- SLIDE 22 -->
@@ -873,10 +898,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 22b -->
+            <!-- SLIDE 23 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 22b</span>
+                    <span class="slide-num">Slide 23</span>
                     <h3 class="slide-title-text">Validation Comparative — État de l'Art vs Notre Apport</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -887,7 +912,7 @@
             
                     <li class="meta-item">
                         <span class="meta-label">🎬 Cues Visuels</span>
-                        <span class="meta-content">Pointez le bloc gauche (Limites de l'État de l'Art) puis mettez en valeur le bloc de droite (Notre Apport : modèle compact, vitesse d'inférence CPU et validation en production réelle).</span>
+                        <span class="meta-content">Pointez d'abord la carte horizontale du haut recensant les modèles référencés, puis comparez la carte des limites critiques (bas gauche) à notre apport & avantages (bas droite).</span>
                     </li>
                 
                     <li class="meta-item">
@@ -898,10 +923,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 23 -->
+            <!-- SLIDE 24 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 23</span>
+                    <span class="slide-num">Slide 24</span>
                     <h3 class="slide-title-text">Conclusion & Perspectives</h3>
                     <span class="slide-duration">45s</span>
                 </div>
@@ -923,10 +948,10 @@
                 </ul>
             </div>
             
-            <!-- SLIDE 24 -->
+            <!-- SLIDE 25 -->
             <div class="slide-card">
                 <div class="slide-header">
-                    <span class="slide-num">Slide 24</span>
+                    <span class="slide-num">Slide 25</span>
                     <h3 class="slide-title-text">Merci pour votre attention</h3>
                     <span class="slide-duration">30s</span>
                 </div>
